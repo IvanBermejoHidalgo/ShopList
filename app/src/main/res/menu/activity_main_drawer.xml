@@ -3,7 +3,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:theme="@style/groupStylegray_901"
+    android:background="@drawable/_bg___frame_169_shape"
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">

@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    style="@style/groupStylegray_901"
+    android:background="@drawable/_bg___frame_169_shape"
     android:layout_height="match_parent"
     tools:context=".SignInFragment">
 
@@ -28,7 +28,7 @@
         android:layout_width="349dp"
         android:layout_height="327dp"
         android:layout_marginTop="-24dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/logosplash"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login1" />
@@ -152,7 +152,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:backgroundTint="@color/red_901"
+            android:backgroundTint="#293B72"
             android:text="ENTRAR"
             android:textAlignment="center"
             android:textSize="20dp"

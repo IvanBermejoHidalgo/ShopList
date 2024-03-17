@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/groupStylegray_901"
+    android:background="@drawable/_bg___frame_169_shape"
     tools:context=".CambioContraFragment">
 
     <TextView android:ellipsize="end"
@@ -46,7 +46,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="230dp"
         android:layout_marginRight="40dp"
-        android:backgroundTint="@color/red_901"
+        android:backgroundTint="#293B72"
         android:text="ENVIAR"
         android:textAlignment="center"
         android:textSize="20dp"
@@ -59,7 +59,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginRight="240dp"
         android:layout_marginBottom="15dp"
-        android:backgroundTint="@color/red_901"
+        android:backgroundTint="#293B72"
         android:text="VOLVER"
         android:textSize="18dp"
         android:textStyle="bold" />
