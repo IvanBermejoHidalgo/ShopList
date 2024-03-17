@@ -1,0 +1,14 @@
+<!-- button_background.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Fondo rojo -->
+    <item android:drawable="@color/red_901" />
+
+    <!-- Borde negro -->
+    <item>
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="2dp"
+                android:color="@android:color/black" />
+        </shape>
+    </item>
+</layer-list>

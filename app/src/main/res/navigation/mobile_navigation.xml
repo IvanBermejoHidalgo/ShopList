@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/logSignFragment">
+
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.socialpuig.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_cambioContraFragment"
+            app:destination="@id/cambioContraFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signOutFragment"
+        android:name="com.example.socialpuig.SignOutFragment"
+        android:label="fragment_sign_out"
+        tools:layout="@layout/fragment_sign_out" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.socialpuig.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.socialpuig.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.socialpuig.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/newPostFragment"
+        android:name="com.example.socialpuig.NewPostFragment"
+        android:label="fragment_new_post"
+        tools:layout="@layout/fragment_new_post" />
+    <fragment
+        android:id="@+id/mediaFragment"
+        android:name="com.example.socialpuig.MediaFragment"
+        android:label="fragment_media"
+        tools:layout="@layout/fragment_media" />
+    <fragment
+        android:id="@+id/logSignFragment"
+        android:name="com.example.socialpuig.LogSignFragment"
+        android:label="fragment_log_sign"
+        tools:layout="@layout/fragment_log_sign" >
+        <action
+            android:id="@+id/action_logSignFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_logSignFragment_to_home2Fragment"
+            app:destination="@id/home2Fragment" />
+        <action
+            android:id="@+id/action_logSignFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cambioContraFragment"
+        android:name="com.example.socialpuig.CambioContraFragment"
+        android:label="fragment_cambio_contra"
+        tools:layout="@layout/fragment_cambio_contra" >
+        <action
+            android:id="@+id/action_cambioContraFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/home2Fragment"
+        android:name="com.example.socialpuig.Home2Fragment"
+        android:label="fragment_home2"
+        tools:layout="@layout/fragment_home2" >
+        <action
+            android:id="@+id/action_home2Fragment_to_mostrarCancionesFragment"
+            app:destination="@id/mostrarCancionesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mostrarCancionesFragment"
+        android:name="com.example.socialpuig.mostrarCancionesFragment"
+        android:label="fragment_mostrar_canciones"
+        tools:layout="@layout/fragment_mostrar_canciones" />
+    <fragment
+        android:id="@+id/noticiasf1Fragment2"
+        android:name="com.example.socialpuig.noticiasf1Fragment"
+        android:label="fragment_noticiasf1"
+        tools:layout="@layout/fragment_noticiasf1" >
+        <action
+            android:id="@+id/action_noticiasf1Fragment2_to_mostrarnoticiasf1Fragment"
+            app:destination="@id/mostrarnoticiasf1Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mostrarnoticiasf1Fragment"
+        android:name="com.example.socialpuig.mostrarnoticiasf1Fragment"
+        android:label="fragment_mostrarnoticiasf1"
+        tools:layout="@layout/fragment_mostrarnoticiasf1" />
+    <fragment
+        android:id="@+id/noticiasmotogpFragment"
+        android:name="com.example.socialpuig.noticiasmotogpFragment"
+        android:label="fragment_noticiasmotogp"
+        tools:layout="@layout/fragment_noticiasmotogp" >
+        <action
+            android:id="@+id/action_noticiasmotogpFragment_to_mostrarnoticiasmotogpFragment"
+            app:destination="@id/mostrarnoticiasmotogpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mostrarnoticiasmotogpFragment"
+        android:name="com.example.socialpuig.mostrarnoticiasmotogpFragment"
+        android:label="fragment_mostrarnoticiasmotogp"
+        tools:layout="@layout/fragment_mostrarnoticiasmotogp" />
+    <fragment
+        android:id="@+id/pilotosf1Fragment"
+        android:name="com.example.socialpuig.pilotosf1Fragment"
+        android:label="fragment_pilotosf1"
+        tools:layout="@layout/fragment_pilotosf1" >
+        <action
+            android:id="@+id/action_pilotosf1Fragment_to_mostrarpilotosf1Fragment"
+            app:destination="@id/mostrarpilotosf1Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mostrarpilotosf1Fragment"
+        android:name="com.example.socialpuig.mostrarpilotosf1Fragment"
+        android:label="fragment_mostrarpilotosf1"
+        tools:layout="@layout/fragment_mostrarpilotosf1" />
+    <fragment
+        android:id="@+id/pilotosmotogpFragment"
+        android:name="com.example.socialpuig.PilotosmotogpFragment"
+        android:label="fragment_pilotosmotogp"
+        tools:layout="@layout/fragment_pilotosmotogp" >
+        <action
+            android:id="@+id/action_pilotosmotogpFragment_to_mostrarpilotosmotogpFragment"
+            app:destination="@id/mostrarpilotosmotogpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mostrarpilotosmotogpFragment"
+        android:name="com.example.socialpuig.mostrarpilotosmotogpFragment"
+        android:label="fragment_mostrarpilotosmotogp"
+        tools:layout="@layout/fragment_mostrarpilotosmotogp" />
+    <fragment
+        android:id="@+id/equiposf1Fragment"
+        android:name="com.example.socialpuig.equiposf1Fragment"
+        android:label="fragment_equiposf1"
+        tools:layout="@layout/fragment_equiposf1" >
+        <action
+            android:id="@+id/action_equiposf1Fragment_to_mostrarequiposf1Fragment"
+            app:destination="@id/mostrarequiposf1Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mostrarequiposf1Fragment"
+        android:name="com.example.socialpuig.mostrarequiposf1Fragment"
+        android:label="fragment_mostrarequiposf1"
+        tools:layout="@layout/fragment_mostrarequiposf1" />
+    <fragment
+        android:id="@+id/equiposmotogpFragment"
+        android:name="com.example.socialpuig.equiposmotogpFragment"
+        android:label="fragment_equiposmotogp"
+        tools:layout="@layout/fragment_equiposmotogp" >
+        <action
+            android:id="@+id/action_equiposmotogpFragment_to_mostrarequiposmtgpFragment"
+            app:destination="@id/mostrarequiposmtgpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mostrarequiposmtgpFragment"
+        android:name="com.example.socialpuig.mostrarequiposmtgpFragment"
+        android:label="fragment_mostrarequiposmtgp"
+        tools:layout="@layout/fragment_mostrarequiposmtgp" />
+    <fragment
+        android:id="@+id/configuracionFragment"
+        android:name="com.example.socialpuig.ConfiguracionFragment"
+        android:label="fragment_configuracion"
+        tools:layout="@layout/fragment_configuracion" />
+    <fragment
+        android:id="@+id/micuentaFragment"
+        android:name="com.example.socialpuig.micuentaFragment"
+        android:label="fragment_micuenta"
+        tools:layout="@layout/fragment_micuenta" />
+    <fragment
+        android:id="@+id/ajustesFragment"
+        android:name="com.example.socialpuig.ajustesFragment"
+        android:label="fragment_ajustes"
+        tools:layout="@layout/fragment_ajustes" />
+    <fragment
+        android:id="@+id/soporteFragment"
+        android:name="com.example.socialpuig.soporteFragment"
+        android:label="fragment_soporte"
+        tools:layout="@layout/fragment_soporte" />
+    <fragment
+        android:id="@+id/calendarioFragment"
+        android:name="com.example.socialpuig.calendarioFragment"
+        android:label="fragment_calendario"
+        tools:layout="@layout/fragment_calendario" />
+    <fragment
+        android:id="@+id/calendariof1Fragment"
+        android:name="com.example.socialpuig.calendariof1Fragment"
+        android:label="fragment_calendariof1"
+        tools:layout="@layout/fragment_calendariof1" />
+    <fragment
+        android:id="@+id/calendariomotogpFragment"
+        android:name="com.example.socialpuig.calendariomotogpFragment"
+        android:label="fragment_calendariomotogp"
+        tools:layout="@layout/fragment_calendariomotogp" />
+    <fragment
+        android:id="@+id/sepf1Fragment"
+        android:name="com.example.socialpuig.sepf1Fragment"
+        android:label="fragment_sepf1"
+        tools:layout="@layout/fragment_sepf1" />
+    <fragment
+        android:id="@+id/octf1Fragment"
+        android:name="com.example.socialpuig.octf1Fragment"
+        android:label="fragment_octf1"
+        tools:layout="@layout/fragment_octf1" />
+    <fragment
+        android:id="@+id/novf1Fragment"
+        android:name="com.example.socialpuig.novf1Fragment"
+        android:label="fragment_novf1"
+        tools:layout="@layout/fragment_novf1" />
+    <fragment
+        android:id="@+id/sepmotoFragment"
+        android:name="com.example.socialpuig.sepmotoFragment"
+        android:label="fragment_sepmoto"
+        tools:layout="@layout/fragment_sepmoto" />
+    <fragment
+        android:id="@+id/octmotoFragment"
+        android:name="com.example.socialpuig.octmotoFragment"
+        android:label="fragment_octmoto"
+        tools:layout="@layout/fragment_octmoto" />
+    <fragment
+        android:id="@+id/novmotoFragment"
+        android:name="com.example.socialpuig.novmotoFragment"
+        android:label="fragment_novmoto"
+        tools:layout="@layout/fragment_novmoto" />
+    <fragment
+        android:id="@+id/sepf1unoFragment"
+        android:name="com.example.socialpuig.sepf1unoFragment"
+        android:label="fragment_sepf1uno"
+        tools:layout="@layout/fragment_sepf1uno" />
+    <fragment
+        android:id="@+id/sepf1dosFragment"
+        android:name="com.example.socialpuig.sepf1dosFragment"
+        android:label="fragment_sepf1dos"
+        tools:layout="@layout/fragment_sepf1dos" />
+    <fragment
+        android:id="@+id/octf1unoFragment"
+        android:name="com.example.socialpuig.octf1unoFragment"
+        android:label="fragment_octf1uno"
+        tools:layout="@layout/fragment_octf1uno" />
+    <fragment
+        android:id="@+id/octf1dosFragment"
+        android:name="com.example.socialpuig.octf1dosFragment"
+        android:label="fragment_octf1dos"
+        tools:layout="@layout/fragment_octf1dos" />
+    <fragment
+        android:id="@+id/novf1unoFragment"
+        android:name="com.example.socialpuig.novf1unoFragment"
+        android:label="fragment_novf1uno"
+        tools:layout="@layout/fragment_novf1uno" />
+    <fragment
+        android:id="@+id/novf1dosFragment"
+        android:name="com.example.socialpuig.novf1dosFragment"
+        android:label="fragment_novf1dos"
+        tools:layout="@layout/fragment_novf1dos" />
+    <fragment
+        android:id="@+id/sepmotounoFragment"
+        android:name="com.example.socialpuig.sepmotounoFragment"
+        android:label="fragment_sepmotouno"
+        tools:layout="@layout/fragment_sepmotouno" />
+    <fragment
+        android:id="@+id/sepmotodosFragment"
+        android:name="com.example.socialpuig.sepmotodosFragment"
+        android:label="fragment_sepmotodos"
+        tools:layout="@layout/fragment_sepmotodos" />
+    <fragment
+        android:id="@+id/octmotounoFragment"
+        android:name="com.example.socialpuig.octmotounoFragment"
+        android:label="fragment_octmotouno"
+        tools:layout="@layout/fragment_octmotouno" />
+    <fragment
+        android:id="@+id/octmotodosFragment"
+        android:name="com.example.socialpuig.octmotodosFragment"
+        android:label="fragment_octmotodos"
+        tools:layout="@layout/fragment_octmotodos" />
+    <fragment
+        android:id="@+id/novmotounoFragment"
+        android:name="com.example.socialpuig.novmotounoFragment"
+        android:label="fragment_novmotouno"
+        tools:layout="@layout/fragment_novmotouno" />
+    <fragment
+        android:id="@+id/novmotodosFragment"
+        android:name="com.example.socialpuig.novmotodosFragment"
+        android:label="fragment_novmotodos"
+        tools:layout="@layout/fragment_novmotodos" />
+    <fragment
+        android:id="@+id/encuestasFragment"
+        android:name="com.example.socialpuig.encuestasFragment"
+        android:label="fragment_encuestas"
+        tools:layout="@layout/fragment_encuestas" />
+    <fragment
+        android:id="@+id/mapaFragment"
+        android:name="com.example.socialpuig.MapaFragment"
+        android:label="fragment_mapa"
+        tools:layout="@layout/fragment_mapa" />
+</navigation>

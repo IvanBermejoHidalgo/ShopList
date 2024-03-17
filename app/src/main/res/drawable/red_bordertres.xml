@@ -1,0 +1,17 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Borde rojo para los lados izquierdo, derecho y superior -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#323741" />
+            <stroke
+                android:width="2dp"
+                android:color="#FF0000" />
+        </shape>
+    </item>
+    <!-- Borde blanco para la parte inferior -->
+    <item android:left="2dp" android:right="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#323741" />
+        </shape>
+    </item>
+</layer-list>

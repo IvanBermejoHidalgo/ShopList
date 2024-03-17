@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="gray_600">#827d7d</color>
+    <color name="red_901">#bf1313</color>
+    <color name="gray_601">#837e7e</color>
+    <color name="deep_orange_50">#efe5e5</color>
+    <color name="gray_901">#0d0e1a</color>
+    <color name="white_A700_1e">#1effffff</color>
+    <color name="red_900">#a52222</color>
+    <color name="gray_900">#0c0e19</color>
+    <color name="bluegray_100">#d9d9d9</color>
+    <color name="black_900_3f">#3f000000</color>
+    <color name="black_900">#000000</color>
+    <color name="bluegray_400">#8a8686</color>
+    <color name="black_901">#0f0e0e</color>
+    <color name="white_A700">#ffffff</color>
+    <color name="whiteflojo">#CABFBF</color>
+    <color name="whitenifrionicalor">#E6DCDC</color>
+    <color name="rojoprimario">#851D1D</color>
+    <color name="rojolineas">#A52222</color>
+    <color name="azulprimario">#0D0E1A</color>
+    <color name="grismenu">#323741</color>
+    <color name="grismenuletra">#B0B8CC</color>
+
+    <color name="_bg__logsign_color">#4169E1</color>
+    <color name="_bg__frame_18_ek1_color">#0D0E1A</color>
+    <color name="__tienes_cuenta__color">#FFFFFF</color>
+    <color name="_bg___frame_169_color">#4169E1</color>
+    <color name="colorsplash">#4169E1</color>
+</resources>

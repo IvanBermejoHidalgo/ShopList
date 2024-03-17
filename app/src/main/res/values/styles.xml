@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="groupStylegray_901">
+        <item name="android:background">@drawable/rectangle_bg_gray_901</item>
+    </style>
+    <style name="groupStylegray_900">
+        <item name="android:background">@drawable/rectangle_bg_gray_900</item>
+    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Aquí puedes definir atributos de estilo -->
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="colorsplash">
+        <item name="android:textColor">@color/colorsplash</item>
+    </style>
+
+    <style name="txt_11">
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/deep_orange_50</item>
+        <item name="android:fontFamily">@font/actor</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_dhi_0</item>
+    </style>
+    <style name="txt_10">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/deep_orange_50</item>
+        <item name="android:fontFamily">@font/actor</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_dhi_0</item>
+    </style>
+    <style name="btnSolid">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/white_A700</item>
+        <item name="android:fontFamily">@font/acme</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_bg_red_901</item>
+    </style>
+    <style name="txt_9">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/white_A700</item>
+        <item name="android:fontFamily">@font/acme</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_dhi_0</item>
+    </style>
+    <style name="txt">
+        <item name="android:textSize">22dp</item>
+        <item name="android:textColor">@color/white_A700</item>
+        <item name="android:fontFamily">@font/acme</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_dhi_0</item>
+    </style>
+    <style name="txt_7">
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/black_901</item>
+        <item name="android:fontFamily">@font/actor</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_dhi_0</item>
+    </style>
+    <style name="txt_13">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/white_A700</item>
+        <item name="android:fontFamily">@font/acme</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_dhi_0</item>
+    </style>
+    <style name="btnSolid_1">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/white_A700</item>
+        <item name="android:fontFamily">@font/acme</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_bg_red_901</item>
+    </style>
+    <style name="txt_8">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/gray_600</item>
+        <item name="android:fontFamily">@font/acme</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_dhi_0</item>
+    </style>
+    <style name="txt_12">
+        <item name="android:textSize">10dp</item>
+        <item name="android:textColor">@color/deep_orange_50</item>
+        <item name="android:fontFamily">@font/actor</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_dhi_1</item>
+    </style>
+    <style name="groupStylebluegray_100">
+        <item name="android:background">@drawable/rectangle_bg_bluegray_100_border_red_901</item>
+    </style>
+    <style name="txt_1">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/white_A700</item>
+        <item name="android:fontFamily">@font/acme</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_dhi_1</item>
+    </style>
+    <style name="etSolidOutline_2">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/gray_600</item>
+        <item name="android:fontFamily">@font/acme</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_bg_bluegray_100_border_red_901</item>
+    </style>
+    <style name="txt_2">
+        <item name="android:textSize">50dp</item>
+        <item name="android:textColor">@color/white_A700</item>
+        <item name="android:fontFamily">@font/abhaya_libre_medium</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+        <item name="android:background">@drawable/rectangle_dhi_1</item>
+    </style>
+    <style name="etSolidOutline_1">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/bluegray_400</item>
+        <item name="android:fontFamily">@font/acme</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_bg_bluegray_100_border_red_901</item>
+    </style>
+    <style name="txt_5">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/white_A700</item>
+        <item name="android:fontFamily">@font/acme</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_dhi_1</item>
+    </style>
+    <style name="txt_6">
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/bluegray_400</item>
+        <item name="android:fontFamily">@font/acme</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_dhi_1</item>
+    </style>
+    <style name="txt_3">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/gray_600</item>
+        <item name="android:fontFamily">@font/acme</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_dhi_0</item>
+    </style>
+    <style name="txt_4">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/bluegray_400</item>
+        <item name="android:fontFamily">@font/acme</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:background">@drawable/rectangle_dhi_0</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/groupStylegray_901"
+    tools:context=".calendarioFragment">
+
+    <TextView
+        android:layout_width="340dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="top|center"
+        android:textSize="22dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:background="@drawable/text_border_background"
+        android:text="CALENDARIO" />
+
+    <LinearLayout
+        android:id="@+id/calendariouno"
+        android:layout_width="match_parent"
+        android:layout_height="242dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/border_reddos"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="73dp"
+            android:orientation="horizontal">
+            <!-- Texto "cuenta" -->
+            <TextView
+                android:id="@+id/cuenta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="30dp"
+                android:text="FORMULA 1"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <!-- Espacio entre el texto y la imagen -->
+            <Space
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <!-- Imagen "imgvec" -->
+            <ImageView
+                android:id="@+id/imgvec"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="40dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/vector_ek1" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/line_10"
+            android:layout_width="300dp"
+            android:layout_height="5dp"
+            android:layout_marginLeft="-340dp"
+            android:layout_marginTop="80dp"
+            android:contentDescription="line_9"
+            android:src="@drawable/line_9" />
+
+        <!-- Nueva ImageView debajo de la línea -->
+        <ImageView
+            android:id="@+id/nueva_imagen"
+            android:layout_width="251dp"
+            android:layout_height="136dp"
+            android:layout_marginLeft="-270dp"
+            android:layout_marginTop="90dp"
+            android:src="@drawable/f1" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/calendariodos"
+        android:layout_width="match_parent"
+        android:layout_height="242dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="330dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/border_reddos"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="73dp"
+            android:orientation="horizontal">
+            <!-- Texto "cuenta" -->
+            <TextView
+                android:id="@+id/cuenta2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="30dp"
+                android:text="MOTOGP"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <!-- Espacio entre el texto y la imagen -->
+            <Space
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <!-- Imagen "imgvec" -->
+            <ImageView
+                android:id="@+id/imgvec2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="40dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/vector_ek1" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/line_101"
+            android:layout_width="300dp"
+            android:layout_height="5dp"
+            android:layout_marginLeft="-340dp"
+            android:layout_marginTop="80dp"
+            android:contentDescription="line_9"
+            android:src="@drawable/line_9" />
+
+        <!-- Nueva ImageView debajo de la línea -->
+        <ImageView
+            android:id="@+id/nueva_imagen2"
+            android:layout_width="251dp"
+            android:layout_height="136dp"
+            android:layout_marginLeft="-270dp"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/motogp" />
+
+    </LinearLayout>
+</FrameLayout>

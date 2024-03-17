@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/groupStylegray_901"
+    tools:context=".CambioContraFragment">
+
+    <TextView android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:id="@+id/txtCAMBIARCONTRAS"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="70dp"
+        android:textSize="23dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:text="CAMBIAR CONTRASEÑA"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/txtIntroduzcaelc"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="130dp"
+        android:textSize="16dp"
+        android:layout_height="wrap_content"
+        android:text="Introduzca el correo electronico y se le enviará un correo para cambiar la contraseña"
+        android:textColor="@color/white" />
+
+    <EditText
+        android:id="@+id/cambiarcontra"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="39dp"
+        android:layout_marginTop="183dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/edit_text_border"
+        android:hint="Correo electrónico" />
+
+    <Button
+        android:id="@+id/enviar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginRight="40dp"
+        android:backgroundTint="@color/red_901"
+        android:text="ENVIAR"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/volver1"
+        android:layout_width="129dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="240dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/red_901"
+        android:text="VOLVER"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+</FrameLayout>
