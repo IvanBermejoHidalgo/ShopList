@@ -23,7 +23,7 @@
                 android:id="@+id/toolbar_image"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/logo"
+                android:src="@drawable/logosplash"
                 android:layout_marginLeft="330dp"
                 android:layout_gravity="top|end" />
 

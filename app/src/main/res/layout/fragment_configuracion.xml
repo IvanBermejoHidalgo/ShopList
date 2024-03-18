@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/groupStylegray_901"
+    android:background="@drawable/_bg___frame_169_shape"
     tools:context=".ConfiguracionFragment">
 
     <TextView
@@ -16,7 +16,7 @@
         android:text="MI CUENTA" />
 
     <ImageView android:id="@+id/line_10"
-        android:src="@drawable/line_9"
+        android:src="@drawable/line_3"
         android:contentDescription="line_9"
         android:layout_marginStart="15dp"
         android:layout_marginTop="85dp"
@@ -75,7 +75,7 @@
         android:text="AJUSTES" />
 
     <ImageView android:id="@+id/line_11"
-        android:src="@drawable/line_9"
+        android:src="@drawable/line_3"
         android:contentDescription="line_9"
         android:layout_marginStart="15dp"
         android:layout_marginTop="243dp"
@@ -137,7 +137,7 @@
         android:text="SOPORTE" />
 
     <ImageView android:id="@+id/line_12"
-        android:src="@drawable/line_9"
+        android:src="@drawable/line_3"
         android:contentDescription="line_9"
         android:layout_marginStart="15dp"
         android:layout_marginTop="393dp"
@@ -187,7 +187,7 @@
 
 
     <ImageView android:id="@+id/line_13"
-        android:src="@drawable/line_9"
+        android:src="@drawable/line_3"
         android:contentDescription="line_9"
         android:layout_marginStart="15dp"
         android:layout_marginTop="490dp"
@@ -203,7 +203,7 @@
         android:layout_marginTop="570dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="5dp"
-        android:backgroundTint="@color/red_901"
+        android:backgroundTint="#293B72"
         android:text="LOG OUT"
         android:textSize="18sp"
         android:textStyle="bold" />
