@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/groupStylegray_901"
+    android:background="@drawable/_bg___frame_169_shape"
     tools:context=".ajustesFragment">
 
     <TextView
@@ -17,7 +17,7 @@
         android:text="NOTICIAS" />
 
     <ImageView android:id="@+id/line_15"
-        android:src="@drawable/line_9"
+        android:src="@drawable/line_3"
         android:contentDescription="line_9"
         android:layout_marginStart="15dp"
         android:layout_marginTop="85dp"
@@ -46,7 +46,7 @@
             android:text="Recibir cualquier notificación  de las\n
 ultima noticias de la pantalla de inicio."
             android:textAlignment="center"
-            android:textColor="@color/grismenuletra"
+            android:textColor="#686161"
             android:textSize="17dp" />
 
         <!-- Espacio entre el texto y la imagen -->
@@ -66,7 +66,7 @@ ultima noticias de la pantalla de inicio."
             android:checked="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:trackTint="@color/rojolineas"
+            app:trackTint="#293B72"
             app:thumbTint="@color/white"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,10 +84,10 @@ ultima noticias de la pantalla de inicio."
         android:layout_marginTop="220dp"
         android:layout_marginLeft="20dp"
         android:textSize="22dp"
-        android:text="NOIFICACIONES DE FORMULA1:" />
+        android:text="NOIFICACIONES:" />
 
     <ImageView
-        android:src="@drawable/line_9"
+        android:src="@drawable/line_3"
         android:contentDescription="line_9"
         android:layout_marginStart="15dp"
         android:layout_marginTop="260dp"
@@ -111,9 +111,9 @@ ultima noticias de la pantalla de inicio."
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="Recibir cualquier notificación  de las\n
-ultima noticias de Formula 1."
+ultima noticias."
             android:textAlignment="center"
-            android:textColor="@color/grismenuletra"
+            android:textColor="#686161"
             android:textSize="17dp" />
 
         <!-- Espacio entre el texto y la imagen -->
@@ -132,7 +132,7 @@ ultima noticias de Formula 1."
             android:checked="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:trackTint="@color/rojolineas"
+            app:trackTint="#293B72"
             app:thumbTint="@color/white"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -141,7 +141,7 @@ ultima noticias de Formula 1."
 
 
 
-    <TextView
+    <!--TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
@@ -151,44 +151,44 @@ ultima noticias de Formula 1."
         android:text="NOIFICACIONES DE FORMULA1:" />
 
     <ImageView
-        android:src="@drawable/line_9"
+        android:src="@drawable/line_3"
         android:contentDescription="line_9"
         android:layout_marginStart="15dp"
         android:layout_marginTop="430dp"
         android:layout_width="370dp"
         android:layout_marginLeft="40dp"
-        android:layout_height="5dp" />
+        android:layout_height="5dp" /-->
 
-    <LinearLayout
+    <!--LinearLayout
         android:layout_width="match_parent"
         android:layout_height="63dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="455dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/border_reddos"
-        android:orientation="horizontal">
+        android:orientation="horizontal"-->
 
 
         <!-- Texto "cuenta" -->
-        <TextView
+        <!--TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="Recibir cualquier notificación  de las\n
 ultima noticias de MotoGP."
             android:textAlignment="center"
-            android:textColor="@color/grismenuletra"
-            android:textSize="17dp" />
+            android:textColor="#686161"
+            android:textSize="17dp" /-->
 
         <!-- Espacio entre el texto y la imagen -->
-        <Space
+        <!--Space
             android:layout_width="16dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1" /-->
 
         <!-- Imagen "imgvec" -->
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
+        <!--com.google.android.material.switchmaterial.SwitchMaterial
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -196,10 +196,10 @@ ultima noticias de MotoGP."
             android:checked="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:trackTint="@color/rojolineas"
+            app:trackTint="#293B72"
             app:thumbTint="@color/white"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" /-->
 
-    </LinearLayout>
+    <!--/LinearLayout-->
 
 </FrameLayout>
