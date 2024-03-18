@@ -91,7 +91,8 @@ public class SignInFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //accederConEmail();
-                navController.navigate(R.id.home2Fragment);
+                //navController.navigate(R.id.home2Fragment);
+                navController.navigate(R.id.homeFragment);
             }
         });
         activityResultLauncher = registerForActivityResult(

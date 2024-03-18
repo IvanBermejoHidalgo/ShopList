@@ -12,6 +12,9 @@
     <item android:top="2dp" android:left="2dp" android:right="2dp">
         <shape android:shape="rectangle">
             <solid android:color="#293B72" />
+            <gradient android:angle="270" android:type="linear" android:startColor="#ff4169e1" android:centerColor="#ff87cefa" android:endColor="#ff4181a8" />
         </shape>
     </item>
+
+
 </layer-list>

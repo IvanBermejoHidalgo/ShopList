@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.home2Fragment,R.id.noticiasf1Fragment2,
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.homeFragment,R.id.home2Fragment,R.id.noticiasf1Fragment2,
                 R.id.pilotosf1Fragment, R.id.equiposf1Fragment, R.id.noticiasmotogpFragment, R.id.pilotosmotogpFragment,
                 R.id.equiposmotogpFragment,R.id.calendarioFragment, R.id.calendariof1Fragment, R.id.calendariomotogpFragment, R.id.configuracionFragment, R.id.encuestasFragment)
                 .setOpenableLayout(drawer)
