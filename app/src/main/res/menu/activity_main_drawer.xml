@@ -10,7 +10,7 @@
         <item
             android:id="@+id/home2Fragment"
             android:title="Inicio" />
-        <item android:title="Formula 1">
+        <!--item android:title="Formula 1">
         <menu>
             <item
                 android:id="@+id/noticiasf1Fragment2"
@@ -22,25 +22,33 @@
             <item
                 android:id="@+id/equiposf1Fragment"
                 android:title="Equipos" />
-        <!--item
+        <!-item
             android:id="@+id/signOutFragment"
-            android:title="Cerrar sesion" /-->
+            android:title="Cerrar sesion" />
         </menu>
-        </item>
+        </item-->
+        <item
+            android:id="@+id/perfilFragment"
+            android:title="Perfil" />
+        <item
+            android:id="@+id/listasFragment"
+            android:title="Listas" />
 
-
-        <item android:title="MotoGP">
+        <item android:title="Tienda">
             <menu>
                 <item
                     android:id="@+id/noticiasmotogpFragment"
-                    android:title="Noticias" />
+                    android:title="General" />
 
                 <item
                     android:id="@+id/pilotosmotogpFragment"
-                    android:title="Pilotos" />
+                    android:title="Hombre" />
                 <item
                     android:id="@+id/equiposmotogpFragment"
-                    android:title="Equipos" />
+                    android:title="Mujer" />
+                <item
+                    android:id="@+id/cestaFragment"
+                    android:title="Cesta" />
                 <!--item
                     android:id="@+id/signOutFragment"
                     android:title="Cerrar sesion" /-->
@@ -49,13 +57,13 @@
 
 
 
-        <item
+        <!--item
             android:id="@+id/calendarioFragment"
             android:title="Calendario" />
 
         <item
             android:id="@+id/encuestasFragment"
-            android:title="Encuestas" />
+            android:title="Encuestas" /-->
 
         <item
             android:id="@+id/configuracionFragment"

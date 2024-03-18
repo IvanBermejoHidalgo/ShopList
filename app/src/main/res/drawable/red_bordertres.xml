@@ -5,13 +5,13 @@
             <solid android:color="#323741" />
             <stroke
                 android:width="2dp"
-                android:color="#FF0000" />
+                android:color="#FFFFFF" />
         </shape>
     </item>
     <!-- Borde blanco para la parte inferior -->
     <item android:left="2dp" android:right="2dp">
         <shape android:shape="rectangle">
-            <solid android:color="#323741" />
+            <solid android:color="#293B72" />
         </shape>
     </item>
 </layer-list>
