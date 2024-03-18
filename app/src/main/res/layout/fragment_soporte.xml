@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/groupStylegray_901"
+    android:background="@drawable/_bg___frame_169_shape"
     tools:context=".soporteFragment">
 
     <FrameLayout
@@ -17,11 +17,11 @@
             android:layout_marginTop="43dp"
             android:layout_marginLeft="20dp"
             android:textSize="22dp"
-            android:text="SOBRE MOTORSPORT NEWS:" />
+            android:text="SOBRE SHOPLIST:" />
 
         <ImageView
             android:id="@+id/line_10"
-            android:src="@drawable/line_9"
+            android:src="@drawable/line_3"
             android:contentDescription="line_9"
             android:layout_marginStart="15dp"
             android:layout_marginTop="85dp"
@@ -32,12 +32,12 @@
         <LinearLayout
             android:id="@+id/configuracionuno"
             android:layout_width="match_parent"
-            android:layout_height="416dp"
+            android:layout_height="444dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="120dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="160dp"
-            android:background="@drawable/border_blackdos"
+            android:background="@drawable/borderinfo"
             android:orientation="horizontal">
 
             <!-- Texto "cuenta" -->
@@ -66,7 +66,7 @@ La aplicación no se limita a ser un centro informativo, sino que también se co
             <ImageView
                 android:layout_width="180dp"
                 android:layout_height="160dp"
-                android:src="@drawable/logo"
+                android:src="@drawable/logosplash"
                 android:layout_gravity="center|bottom"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true" />

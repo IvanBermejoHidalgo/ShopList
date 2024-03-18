@@ -171,7 +171,7 @@
         android:layout_marginTop="650dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="5dp"
-        android:backgroundTint="@color/red_901"
+        android:backgroundTint="#293B72"
         android:text="GUARDAR"
         android:textSize="18sp"
         android:textStyle="bold" />
