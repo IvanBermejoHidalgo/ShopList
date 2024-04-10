@@ -36,7 +36,7 @@ public class RegisterFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_register, container, false);
 
-    }
+    }/*
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -66,4 +66,74 @@ public class RegisterFragment extends Fragment {
 
     }
 
+}*/
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        navController = Navigation.findNavController(view);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        emailEditText = view.findViewById(R.id.emailEditTextreg);
+        passwordEditText = view.findViewById(R.id.passwordEditText);
+
+        emailSignInButton2 = view.findViewById(R.id.emailSignInButton2);
+
+        emailSignInButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                crearCuenta();
+            }
+        });
+
+    }
+    private void crearCuenta() {
+        //if (!validarFormulario()) {
+          //  return;
+        //}
+
+        emailSignInButton2.setEnabled(false);
+
+        mAuth.createUserWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
+                .addOnCompleteListener(requireActivity(), new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            actualizarUI(mAuth.getCurrentUser());
+                        } else {
+                            Snackbar.make(requireView(), "Error: " + task.getException(), Snackbar.LENGTH_LONG).show();
+
+                        }
+                        emailSignInButton2.setEnabled(true);
+                    }
+                });
+
+    }
+
+    private void actualizarUI(FirebaseUser currentUser) {
+        if(currentUser != null){
+            navController.navigate(R.id.homeFragment);
+        }
+    }
+/*
+    private boolean validarFormulario() {
+        boolean valid = true;
+
+        if (TextUtils.isEmpty(emailEditText.getText().toString())) {
+            emailEditText.setError("Required.");
+            valid = false;
+        } else {
+            emailEditText.setError(null);
+        }
+
+        if (TextUtils.isEmpty(passwordEditText.getText().toString())) {
+            passwordEditText.setError("Required.");
+            valid = false;
+        } else {
+            passwordEditText.setError(null);
+        }
+
+        return valid;
+    }*/
 }
