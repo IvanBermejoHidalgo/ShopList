@@ -90,9 +90,9 @@ public class SignInFragment extends Fragment {
         emailSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //accederConEmail();
+                accederConEmail();
                 //navController.navigate(R.id.home2Fragment);
-                navController.navigate(R.id.homeFragment);
+                //navController.navigate(R.id.homeFragment);
             }
         });
         activityResultLauncher = registerForActivityResult(
@@ -142,8 +142,8 @@ public class SignInFragment extends Fragment {
 
     private void actualizarUI(FirebaseUser currentUser) {
         if(currentUser != null){
-            //navController.navigate(R.id.homeFragment);
-            navController.navigate(R.id.home2Fragment);
+            navController.navigate(R.id.homeFragment);
+            //navController.navigate(R.id.home2Fragment);
         }
     }
     private void accederConGoogle() {
