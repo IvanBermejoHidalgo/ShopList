@@ -31,7 +31,8 @@ public class ConfiguracionFragment extends Fragment {
         view.findViewById(R.id.configuracionuno).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navController.navigate(R.id.micuentaFragment);
+                //navController.navigate(R.id.micuentaFragment);
+                navController.navigate(R.id.profileFragment);
             }
         });
 

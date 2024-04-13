@@ -264,49 +264,49 @@
 
 
 
-        <LinearLayout
+        <!--LinearLayout
             android:id="@+id/noticiasnuno"
             android:layout_width="match_parent"
             android:layout_height="63dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="-20dp"
             android:layout_marginEnd="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"-->
 
 
-            <!-- Texto "cuenta" -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="-2dp"
-                android:text="Recibe las últimas ofertas y \npromociones de nuestros partners"
-                android:layout_marginTop="-10dp"
-                android:layout_marginLeft="10dp"
-                android:textColor="#EFE5E5"
-                android:textSize="17dp" />
+        <!-- Texto "cuenta" ->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-2dp"
+            android:text="Recibe las últimas ofertas y \npromociones de nuestros partners"
+            android:layout_marginTop="-10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#EFE5E5"
+            android:textSize="17dp" /-->
 
-            <!-- Espacio entre el texto y la imagen -->
-            <Space
-                android:layout_width="16dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+        <!-- Espacio entre el texto y la imagen ->
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
-            <!-- Imagen "imgvec" -->
+        <!- Imagen "imgvec" ->
 
-            <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/material_switch2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="5dp"
-                android:checked="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:trackTint="#293B72"
-                app:thumbTint="@color/white"
-                app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/material_switch2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="5dp"
+            android:checked="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:trackTint="#293B72"
+            app:thumbTint="@color/white"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        </LinearLayout>
+    </LinearLayout-->
 
 
 
