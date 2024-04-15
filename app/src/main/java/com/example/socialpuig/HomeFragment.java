@@ -15,10 +15,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -126,10 +129,32 @@ public class HomeFragment extends Fragment {
                 holder.mediaImageView.setVisibility(View.GONE);
             }
 
+
+
+            String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            if (post.uid.equals(currentUserId)) {
+                holder.deletePostImageView.setVisibility(View.VISIBLE);
+            } else {
+                holder.deletePostImageView.setVisibility(View.GONE);
+            }
+
+            holder.deletePostImageView.setOnClickListener(view -> {
+                FirebaseFirestore.getInstance().collection("posts")
+                        .document(postKey)
+                        .delete()
+                        .addOnSuccessListener(aVoid -> {
+                            Toast.makeText(getContext(), "Publicación eliminada", Toast.LENGTH_SHORT).show();
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(getContext(), "Error deleting post", Toast.LENGTH_SHORT).show();
+                        });
+            });
+
         }
 
+
         class PostViewHolder extends RecyclerView.ViewHolder {
-            ImageView authorPhotoImageView, likeImageView, mediaImageView;
+            ImageView authorPhotoImageView, likeImageView, mediaImageView, deletePostImageView;
             TextView authorTextView, contentTextView, numLikesTextView, dateTextView;
 
             PostViewHolder(@NonNull View itemView) {
@@ -141,6 +166,7 @@ public class HomeFragment extends Fragment {
                 authorTextView = itemView.findViewById(R.id.authorTextView);
                 contentTextView = itemView.findViewById(R.id.contentTextView);
                 numLikesTextView = itemView.findViewById(R.id.numLikesTextView);
+                deletePostImageView = itemView.findViewById(R.id.deletePostImageView);
                 dateTextView = itemView.findViewById(R.id.dateTextView);
 
             }

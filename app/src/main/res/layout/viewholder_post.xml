@@ -10,8 +10,7 @@
         android:layout_width="match_parent"
         android:background="@drawable/bordeblancopost"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        >
+        android:padding="10dp">
         <ImageView
             android:id="@+id/authorPhotoImageView"
             android:layout_width="60dp"
@@ -70,6 +69,16 @@
                     android:layout_marginStart="4dp"
                     android:layout_gravity="center_vertical"
                     android:text=" DD/MM/AAAA HH:MM"/>
+                <ImageView
+                    android:id="@+id/deletePostImageView"
+                    app:srcCompat="@drawable/delete"
+                    android:adjustViewBounds="true"
+                    android:layout_width="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"/>
+
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
