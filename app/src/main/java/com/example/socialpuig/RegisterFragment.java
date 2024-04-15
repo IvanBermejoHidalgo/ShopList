@@ -108,6 +108,7 @@ public class RegisterFragment extends Fragment {
                             FirebaseUser currentUser = mAuth.getCurrentUser();
                             // Guardar el nombre de usuario en la base de datos
                             guardarNombreUsuario(currentUser, usernametxt.getText().toString());
+                            establecerFotoPerfilPredeterminada(currentUser);
                             // Actualizar la interfaz de usuario
                             actualizarUI(currentUser);
                         } else {
@@ -137,6 +138,29 @@ public class RegisterFragment extends Fragment {
                             }
                         } else {
                             // Error al actualizar el nombre de usuario
+                        }
+                    }
+                });
+    }
+
+    private void establecerFotoPerfilPredeterminada(FirebaseUser user) {
+        Uri defaultPhotoUri = Uri.parse("android.resource://" + requireContext().getPackageName() + "/" + R.drawable.perfildefault);
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setPhotoUri(defaultPhotoUri)
+                .build();
+
+        user.updateProfile(profileUpdates)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            // La foto de perfil predeterminada se estableció correctamente
+                            MainActivity mainActivity = (MainActivity) getActivity(); // Obtén una referencia a MainActivity
+                            if (mainActivity != null) {
+                                mainActivity.updateNavigationHeaderPhoto(defaultPhotoUri); // Llama al método de actualización en MainActivity
+                            }
+                        } else {
+                            // Error al establecer la foto de perfil predeterminada
                         }
                     }
                 });
