@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
@@ -30,7 +31,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 public class RegisterFragment extends Fragment {
 
     NavController navController;
-    private EditText usernametxt,emailEditText, passwordEditText;
+    private EditText usernametxt,emailEditTextreg, passwordEditText, passwordEditText2;
     private Button emailSignInButton2;
     TextView displayNameTextView;
     private FirebaseAuth mAuth;
@@ -80,8 +81,9 @@ public class RegisterFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         usernametxt = view.findViewById(R.id.usernametxt);
-        emailEditText = view.findViewById(R.id.emailEditTextreg);
+        emailEditTextreg = view.findViewById(R.id.emailEditTextreg);
         passwordEditText = view.findViewById(R.id.passwordEditText);
+        passwordEditText2 = view.findViewById(R.id.passwordEditText2);
         displayNameTextView = view.findViewById(R.id.displayNameTextView);
 
         emailSignInButton2 = view.findViewById(R.id.emailSignInButton2);
@@ -98,9 +100,12 @@ public class RegisterFragment extends Fragment {
 
     }
     private void crearCuenta(FirebaseUser user) {
+        if (!validarFormulario()) {
+            return;
+        }
         emailSignInButton2.setEnabled(false);
 
-        mAuth.createUserWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
+        mAuth.createUserWithEmailAndPassword(emailEditTextreg.getText().toString(), passwordEditText.getText().toString())
                 .addOnCompleteListener(requireActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -112,12 +117,18 @@ public class RegisterFragment extends Fragment {
                             // Actualizar la interfaz de usuario
                             actualizarUI(currentUser);
                         } else {
-                            Snackbar.make(requireView(), "Error: " + task.getException(), Snackbar.LENGTH_LONG).show();
+                            // Si el error se debe a que el correo electrónico ya está en uso
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                Snackbar.make(requireView(), "Este correo electrónico ya está en uso.", Snackbar.LENGTH_LONG).show();
+                            } else {
+                                Snackbar.make(requireView(), "Error: " + task.getException(), Snackbar.LENGTH_LONG).show();
+                            }
                             emailSignInButton2.setEnabled(true);
                         }
                     }
                 });
     }
+
 
     private void guardarNombreUsuario(FirebaseUser user, String username) {
         String newName = String.valueOf(usernametxt.getText());
@@ -176,24 +187,44 @@ public class RegisterFragment extends Fragment {
         }
     }
 
-/*
+
     private boolean validarFormulario() {
         boolean valid = true;
-
-        if (TextUtils.isEmpty(emailEditText.getText().toString())) {
-            emailEditText.setError("Required.");
+        if (TextUtils.isEmpty(usernametxt.getText().toString())) {
+            usernametxt.setError("Requerido.");
             valid = false;
         } else {
-            emailEditText.setError(null);
+            usernametxt.setError(null);
+        }
+
+        if (TextUtils.isEmpty(emailEditTextreg.getText().toString())) {
+            emailEditTextreg.setError("Requerido.");
+            valid = false;
+        } else {
+            emailEditTextreg.setError(null);
         }
 
         if (TextUtils.isEmpty(passwordEditText.getText().toString())) {
-            passwordEditText.setError("Required.");
+            passwordEditText.setError("Requerido.");
             valid = false;
         } else {
             passwordEditText.setError(null);
         }
 
+        if (TextUtils.isEmpty(passwordEditText2.getText().toString())) {
+            passwordEditText2.setError("Requerido.");
+            valid = false;
+        } else {
+            passwordEditText2.setError(null);
+        }
+
+        if (!passwordEditText.getText().toString().equals(passwordEditText2.getText().toString())) {
+            passwordEditText2.setError("Las contraseñas no coinciden.");
+            valid = false;
+        } else {
+            passwordEditText2.setError(null);
+        }
+
         return valid;
-    }*/
+    }
 }

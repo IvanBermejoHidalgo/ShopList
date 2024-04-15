@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -122,6 +123,9 @@ public class SignInFragment extends Fragment {
 
 
     private void accederConEmail() {
+        if (!validarFormulario()) {
+            return;
+        }
         signInForm.setVisibility(View.GONE);
         signInProgressBar.setVisibility(View.VISIBLE);
 
@@ -176,6 +180,25 @@ public class SignInFragment extends Fragment {
                                 }
                             }
                         });
+    }
+
+    private boolean validarFormulario() {
+        boolean valid = true;
+        if (TextUtils.isEmpty(emailEditText.getText().toString())) {
+            emailEditText.setError("Requerido.");
+            valid = false;
+        } else {
+            emailEditText.setError(null);
+        }
+
+        if (TextUtils.isEmpty(passwordEditText.getText().toString())) {
+            passwordEditText.setError("Requerido.");
+            valid = false;
+        } else {
+            passwordEditText.setError(null);
+        }
+
+        return valid;
     }
 
 }
