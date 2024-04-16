@@ -32,6 +32,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.collection.BuildConfig;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.File;
 import java.io.IOException;
@@ -106,7 +107,7 @@ public class NewPostFragment extends Fragment {
         }
         else
         {
-            //pujaIguardarEnFirestore(postContent);
+            pujaIguardarEnFirestore(postContent);
         }
     }
     private void guardarEnFirestore(String postContent, String mediaUrl) {
@@ -123,7 +124,7 @@ public class NewPostFragment extends Fragment {
                     }
                 });
     }
-    /*private void pujaIguardarEnFirestore(final String postText) {
+    private void pujaIguardarEnFirestore(final String postText) {
         FirebaseStorage.getInstance().getReference(mediaTipo + "/" +
                         UUID.randomUUID())
                 .putFile(mediaUri)
@@ -131,7 +132,7 @@ public class NewPostFragment extends Fragment {
                         task.getResult().getStorage().getDownloadUrl())
                 .addOnSuccessListener(url -> guardarEnFirestore(postText,
                         url.toString()));
-    }*/
+    }
 
     private final ActivityResultLauncher<String> galeria =
             registerForActivityResult(new ActivityResultContracts.GetContent(),
