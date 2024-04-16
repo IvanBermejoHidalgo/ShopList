@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    android:background="@drawable/red_border"
+    android:background="@drawable/_bg__frame_169_shape3"
     android:gravity="bottom"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="12dp"

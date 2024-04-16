@@ -20,12 +20,13 @@
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:background="@drawable/_bg___frame_169_shape"
+        android:background="@drawable/_bg__frame_169_shape2"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:layout_marginTop="1dp"
         android:fitsSystemWindows="true"
         app:itemTextColor="@color/grismenuletra"
+
         app:subheaderColor="@color/white"
         app:itemBackground="@drawable/red_bordertres"
         app:headerLayout="@layout/nav_header_main"

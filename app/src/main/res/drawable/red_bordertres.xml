@@ -11,7 +11,7 @@
     <!-- Borde blanco para la parte inferior -->
     <item android:left="2dp" android:right="2dp">
         <shape android:shape="rectangle">
-            <solid android:color="#293B72" />
+            <solid android:color="@color/colorpost" />
         </shape>
     </item>
 </layer-list>
