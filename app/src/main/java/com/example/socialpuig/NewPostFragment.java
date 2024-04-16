@@ -78,9 +78,9 @@ public class NewPostFragment extends Fragment {
         });
         appViewModel = new
                 ViewModelProvider(requireActivity()).get(AppViewModel.class);
-        //view.findViewById(R.id.camara_fotos).setOnClickListener(v -> tomarFoto());
-        //view.findViewById(R.id.camara_video).setOnClickListener(v -> tomarVideo());
-        //view.findViewById(R.id.grabar_audio).setOnClickListener(v -> grabarAudio());
+        view.findViewById(R.id.camara_fotos).setOnClickListener(v -> tomarFoto());
+        view.findViewById(R.id.camara_video).setOnClickListener(v -> tomarVideo());
+        view.findViewById(R.id.grabar_audio).setOnClickListener(v -> grabarAudio());
         view.findViewById(R.id.imagen_galeria).setOnClickListener(v ->
                 seleccionarImagen());
         view.findViewById(R.id.video_galeria).setOnClickListener(v ->
@@ -169,7 +169,7 @@ public class NewPostFragment extends Fragment {
         mediaTipo = "audio";
         galeria.launch("audio/*");
     }
-    /*private void tomarFoto() {
+    private void tomarFoto() {
         try {
             mediaUri = FileProvider.getUriForFile(requireContext(),
                     BuildConfig.APPLICATION_ID + ".fileprovider",
@@ -191,5 +191,5 @@ public class NewPostFragment extends Fragment {
     private void grabarAudio() {
         grabadoraAudio.launch(new
                 Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION));
-    }*/
+    }
 }
