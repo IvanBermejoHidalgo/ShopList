@@ -35,4 +35,8 @@
     <color name="_bg___frame_169_color">#4169E1</color>
     <color name="colorpost">#3D619C</color>
     <color name="colorsplash">#4169E1</color>
+    <color name="green">#169955</color>
+    <color name="darkGrey">#616161</color>
+    <color name="lightGrey">#EFEFEF</color>
+    <color name="grey">#d2d2d2</color>
 </resources>

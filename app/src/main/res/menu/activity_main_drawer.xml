@@ -43,7 +43,7 @@
         <item android:title="TIENDA">
             <menu>
                 <item
-                    android:id="@+id/noticiasmotogpFragment"
+                    android:id="@+id/maint"
                     android:title="General" />
 
                 <item
@@ -53,7 +53,7 @@
                     android:id="@+id/equiposmotogpFragment"
                     android:title="Mujer" />
                 <item
-                    android:id="@+id/cestaFragment"
+                    android:id="@+id/maincarrito"
                     android:title="Cesta" />
                 <!--item
                     android:id="@+id/signOutFragment"

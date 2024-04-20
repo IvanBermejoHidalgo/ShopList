@@ -1,8 +1,10 @@
 package com.example.socialpuig;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
@@ -11,6 +13,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.socialpuig.Activity.CartActivity;
+import com.example.socialpuig.Activity.TiendaActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -154,6 +158,31 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
+            }
+        });
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+
+                if (id == R.id.maint) { // ID del elemento de menú "General"
+                    // Abrir la actividad de la tienda
+                    Intent intent = new Intent(MainActivity.this, TiendaActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+
+                if (id == R.id.maincarrito) { // ID del elemento de menú "General"
+                    // Abrir la actividad de la tienda
+                    Intent intent = new Intent(MainActivity.this, CartActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+
+                // Agregar el resto de lógica de manejo de selección de menú aquí si es necesario
+
+                return false;
             }
         });
 
