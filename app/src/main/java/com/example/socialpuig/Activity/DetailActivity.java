@@ -69,14 +69,15 @@ public class DetailActivity extends BaseActivity {
         binding.viewpageSlider.setAdapter(new SliderAdapter(sliderItems, binding.viewpageSlider));
         binding.viewpageSlider.setClipToPadding(false);
         binding.viewpageSlider.setClipChildren(false);
-        binding.viewpageSlider.setOffscreenPageLimit(3);
+        //binding.viewpageSlider.setOffscreenPageLimit(3);
+        binding.viewpageSlider.setOffscreenPageLimit(2);
         binding.viewpageSlider.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
     }
 
     private void getBundles() {
         object = (ItemsDomain) getIntent().getSerializableExtra("object");
         binding.titleTxt.setText(object.getTitle());
-        binding.priceTxt.setText("$" + object.getPrice());
+        binding.priceTxt.setText(object.getPrice() + "€");
         binding.ratingBar.setRating((float) object.getRating());
         binding.ratingTxt.setText(object.getRating() + " Rating");
 
@@ -92,21 +93,21 @@ public class DetailActivity extends BaseActivity {
 
         DescriptionFragment tab1 = new DescriptionFragment();
         ReviewFragment tab2 = new ReviewFragment();
-        SoldFragment tab3 = new SoldFragment();
+        //SoldFragment tab3 = new SoldFragment();
 
         Bundle bundle1 = new Bundle();
         Bundle bundle2 = new Bundle();
-        Bundle bundle3 = new Bundle();
+        //Bundle bundle3 = new Bundle();
 
         bundle1.putString("description", object.getDescription());
 
         tab1.setArguments(bundle1);
         tab2.setArguments(bundle2);
-        tab3.setArguments(bundle3);
+        //tab3.setArguments(bundle3);
 
-        adapter.addFrag(tab1,"Descriptions");
+        adapter.addFrag(tab1,"Descripción");
         adapter.addFrag(tab2,"Reviews");
-        adapter.addFrag(tab3,"Sold");
+        //adapter.addFrag(tab3,"Sold");
 
         binding.viewpager.setAdapter(adapter);
         binding.tabLayout.setupWithViewPager(binding.viewpager);

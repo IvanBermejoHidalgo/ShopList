@@ -40,8 +40,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Viewholder> {
     @Override
     public void onBindViewHolder(@NonNull CartAdapter.Viewholder holder, int position) {
         holder.binding.titleTxt.setText(listItemSelected.get(position).getTitle());
-        holder.binding.feeEachItem.setText("$" + listItemSelected.get(position).getPrice());
-        holder.binding.totalEachItem.setText("$" + Math.round((listItemSelected.get(position).getNumberinCart() * listItemSelected.get(position).getPrice())));
+        holder.binding.feeEachItem.setText(listItemSelected.get(position).getPrice() + "€");
+        holder.binding.totalEachItem.setText(Math.round((listItemSelected.get(position).getNumberinCart() * listItemSelected.get(position).getPrice())) + "€");
         holder.binding.numberItemTxt.setText(String.valueOf(listItemSelected.get(position).getNumberinCart()));
 
         RequestOptions requestOptions = new RequestOptions();
