@@ -39,16 +39,16 @@ public class TiendaActivity extends BaseActivity {
         setContentView(binding.getRoot());
 
 
-        initBanner();
+        //initBanner();
         initCategory();
         initPopular();
-        bottomNavigation();
+        //bottomNavigation();
 
     }
 
-    private void bottomNavigation() {
+    /*private void bottomNavigation() {
         binding.cartBtn.setOnClickListener(v -> startActivity(new Intent(TiendaActivity.this, CartActivity.class)));
-    }
+    }*/
 
     private void initPopular() {
         DatabaseReference myref=database.getReference("Items");
@@ -105,7 +105,7 @@ public class TiendaActivity extends BaseActivity {
         });
     }
 
-    private void initBanner() {
+    /*private void initBanner() {
         DatabaseReference myRef = database.getReference("Banner");
         binding.progressBarBanner.setVisibility(View.VISIBLE);
         ArrayList<SliderItems> items = new ArrayList<>();
@@ -141,5 +141,5 @@ public class TiendaActivity extends BaseActivity {
         compositePageTransformer.addTransformer(new MarginPageTransformer(40));
 
         binding.viewpagerSlider.setPageTransformer(compositePageTransformer);
-    }
+    }*/
 }
