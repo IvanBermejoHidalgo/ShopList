@@ -11,6 +11,7 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginTop="8dp"
+        android:clickable="true"
         app:srcCompat="@drawable/cat1" />
 
     <TextView

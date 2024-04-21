@@ -79,15 +79,15 @@ public class NewPostFragment extends Fragment {
         appViewModel = new
                 ViewModelProvider(requireActivity()).get(AppViewModel.class);
         view.findViewById(R.id.camara_fotos).setOnClickListener(v -> tomarFoto());
-        view.findViewById(R.id.camara_video).setOnClickListener(v -> tomarVideo());
-        view.findViewById(R.id.grabar_audio).setOnClickListener(v -> grabarAudio());
+        //view.findViewById(R.id.camara_video).setOnClickListener(v -> tomarVideo());
+        //view.findViewById(R.id.grabar_audio).setOnClickListener(v -> grabarAudio());
         view.findViewById(R.id.imagen_galeria).setOnClickListener(v ->
                 seleccionarImagen());
-        view.findViewById(R.id.video_galeria).setOnClickListener(v ->
+        /*view.findViewById(R.id.video_galeria).setOnClickListener(v ->
                 seleccionarVideo());
         view.findViewById(R.id.audio_galeria).setOnClickListener(v ->
                 seleccionarAudio());
-        appViewModel.mediaSeleccionado.observe(getViewLifecycleOwner(), media ->
+        */appViewModel.mediaSeleccionado.observe(getViewLifecycleOwner(), media ->
         {
             this.mediaUri = media.uri;
             this.mediaTipo = media.tipo;
@@ -144,7 +144,7 @@ public class NewPostFragment extends Fragment {
                     isSuccess -> {
                         appViewModel.setMediaSeleccionado(mediaUri, "image");
                     });
-    private final ActivityResultLauncher<Uri> camaraVideos =
+    /*private final ActivityResultLauncher<Uri> camaraVideos =
             registerForActivityResult(new ActivityResultContracts.TakeVideo(),
                     isSuccess -> {
                         appViewModel.setMediaSeleccionado(mediaUri, "video");
@@ -156,19 +156,19 @@ public class NewPostFragment extends Fragment {
                     appViewModel.setMediaSeleccionado(result.getData().getData(),
                             "audio");
                 }
-            });
+            });*/
     private void seleccionarImagen() {
         mediaTipo = "image";
         galeria.launch("image/*");
     }
-    private void seleccionarVideo() {
+    /*private void seleccionarVideo() {
         mediaTipo = "video";
         galeria.launch("video/*");
     }
     private void seleccionarAudio() {
         mediaTipo = "audio";
         galeria.launch("audio/*");
-    }
+    }*/
     private void tomarFoto() {
         try {
             mediaUri = FileProvider.getUriForFile(requireContext(),
@@ -179,7 +179,7 @@ public class NewPostFragment extends Fragment {
             camaraFotos.launch(mediaUri);
         } catch (IOException e) {}
     }
-    private void tomarVideo() {
+    /*private void tomarVideo() {
         try {
             mediaUri = FileProvider.getUriForFile(requireContext(),
                     BuildConfig.APPLICATION_ID + ".fileprovider",
@@ -191,5 +191,5 @@ public class NewPostFragment extends Fragment {
     private void grabarAudio() {
         grabadoraAudio.launch(new
                 Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION));
-    }
+    }*/
 }

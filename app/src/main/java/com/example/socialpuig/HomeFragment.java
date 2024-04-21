@@ -108,7 +108,8 @@ public class HomeFragment extends Fragment {
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(post.timeStamp);
 
-            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            //SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
             String fecha = format.format(calendar.getTime());
 
             holder.dateTextView.setText(fecha);

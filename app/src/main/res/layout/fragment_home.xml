@@ -47,6 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/pen" />
+        app:srcCompat="@drawable/pen"
+        app:tint="@android:color/white"
+        android:backgroundTint="#293B72" />
 
 </FrameLayout>

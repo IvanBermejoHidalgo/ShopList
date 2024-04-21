@@ -20,6 +20,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -160,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        /*navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
@@ -179,11 +180,57 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
 
+
+                if (id == R.id.maincarrito) { // ID del elemento de menú "General"
+                    // Navegar al fragmento correspondiente
+                    navController.navigate(R.id.cartFragment);
+                    return true;
+                }
+
                 // Agregar el resto de lógica de manejo de selección de menú aquí si es necesario
 
                 return false;
             }
+        });*/
+
+
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+
+                if (id == R.id.homeFragment) {
+                    // Manejar la selección de Home
+                    NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment_content_main);
+                    navController.navigate(R.id.homeFragment);
+                } if (id == R.id.maint) { // ID del elemento de menú "General"
+                    // Abrir la actividad de la tienda
+                    // Abrir la actividad de la tienda
+                    Intent intent = new Intent(MainActivity.this, TiendaActivity.class);
+                    startActivity(intent);
+                    return true;
+                } if (id == R.id.maincarrito) { // ID del elemento de menú "General"
+                    // Abrir la actividad de la tienda
+                    Intent intent = new Intent(MainActivity.this, CartActivity.class);
+                    startActivity(intent);
+                    return true;
+                } else if (id == R.id.configuracionFragment) {
+                    // Manejar la selección de RecyclerView
+                    NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment_content_main);
+                    navController.navigate(R.id.configuracionFragment);
+                }
+
+
+
+
+                DrawerLayout drawer = findViewById(R.id.drawer_layout);
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            }
+
         });
+
 
 
 

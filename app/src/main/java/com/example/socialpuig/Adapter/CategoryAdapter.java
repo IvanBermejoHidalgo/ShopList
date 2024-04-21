@@ -2,6 +2,8 @@ package com.example.socialpuig.Adapter;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -37,6 +39,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Viewho
         Glide.with(context)
                 .load(items.get(position).getPicUrl())
                 .into(holder.binding.pic);
+
+
+        // Manejar el clic en la imagen de la categoría
+        holder.binding.pic.setOnClickListener(view -> {
+            // Obtener la URL de la categoría seleccionada
+            String url = items.get(position).getUrl();
+            // Abrir la URL en un navegador externo
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            context.startActivity(intent);
+        });
+
     }
 
     @Override
