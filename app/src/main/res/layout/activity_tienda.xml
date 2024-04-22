@@ -209,7 +209,7 @@
         </LinearLayout>
     </ScrollView>
 
-    <!--androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
@@ -229,9 +229,9 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/red"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-
                     android:layout_gravity="center"
                     android:layout_weight="0.25"
                     android:orientation="vertical">
@@ -331,5 +331,5 @@
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.bottomappbar.BottomAppBar>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout-->
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

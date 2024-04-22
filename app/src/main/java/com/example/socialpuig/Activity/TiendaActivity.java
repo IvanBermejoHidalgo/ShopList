@@ -2,6 +2,8 @@ package com.example.socialpuig.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,9 +20,11 @@ import com.example.socialpuig.Adapter.SliderAdapter;
 import com.example.socialpuig.Domain.CategoryDomain;
 import com.example.socialpuig.Domain.ItemsDomain;
 import com.example.socialpuig.Domain.SliderItems;
+import com.example.socialpuig.HomeFragment;
 import com.example.socialpuig.R;
 import com.example.socialpuig.databinding.ActivityMainBinding;
 import com.example.socialpuig.databinding.ActivityTiendaBinding;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +35,7 @@ import java.util.ArrayList;
 
 public class TiendaActivity extends BaseActivity {
     private ActivityTiendaBinding binding;
-
+    private NavController navController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,13 +46,17 @@ public class TiendaActivity extends BaseActivity {
         //initBanner();
         initCategory();
         initPopular();
-        //bottomNavigation();
+        bottomNavigation();
 
     }
 
-    /*private void bottomNavigation() {
+    private void bottomNavigation() {
+
         binding.cartBtn.setOnClickListener(v -> startActivity(new Intent(TiendaActivity.this, CartActivity.class)));
-    }*/
+        binding.red.setOnClickListener(v -> startActivity(new Intent(TiendaActivity.this, HomeFragment.class)));
+
+
+    }
 
     private void initPopular() {
         DatabaseReference myref=database.getReference("Items");

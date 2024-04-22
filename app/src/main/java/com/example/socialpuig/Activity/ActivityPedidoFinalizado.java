@@ -29,7 +29,7 @@ public class ActivityPedidoFinalizado extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     //private ArrayList<Model_Camisetas_Tienda> camisetasTiendaList;
     private ArrayList<ItemsDomain> camisetasTiendaList;
-    private Adapter_Camisetas_Carrito adapterCamisetasCarrito;
+    //private Adapter_Camisetas_Carrito adapterCamisetasCarrito;
     double precioTotal;
 
     @Override
@@ -44,8 +44,8 @@ public class ActivityPedidoFinalizado extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 vaciarCarrito();
-                MetodosApp.addCamisetaPedidos(ActivityPedidoFinalizado.this,"" + camisetasTiendaList.size(),"" + precioTotal);
-                startActivity(new Intent(ActivityPedidoFinalizado.this, Activity_Destinos_Principales.class));
+                //MetodosApp.addCamisetaPedidos(ActivityPedidoFinalizado.this,"" + camisetasTiendaList.size(),"" + precioTotal);
+                //startActivity(new Intent(ActivityPedidoFinalizado.this, Activity_Destinos_Principales.class));
             }
         });
 
@@ -74,8 +74,8 @@ public class ActivityPedidoFinalizado extends AppCompatActivity {
                             camisetasTiendaList.add(modelCamisetasTienda);
                         }
                         binding.numero.setText("" + camisetasTiendaList.size());
-                        adapterCamisetasCarrito = new Adapter_Camisetas_Carrito(ActivityPedidoFinalizado.this, camisetasTiendaList);
-                        binding.recyclerCamisetasCarrito.setAdapter(adapterCamisetasCarrito);
+                        //adapterCamisetasCarrito = new Adapter_Camisetas_Carrito(ActivityPedidoFinalizado.this, camisetasTiendaList);
+                        //binding.recyclerCamisetasCarrito.setAdapter(adapterCamisetasCarrito);
 
                         binding.importe.setText(String.valueOf(precioTotal) + "€");
                     }
