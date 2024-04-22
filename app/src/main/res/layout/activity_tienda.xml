@@ -5,9 +5,9 @@
     android:id="@+id/maint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="@drawable/_bg___frame_169_shape"
     tools:context=".Activity.TiendaActivity">
-
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"

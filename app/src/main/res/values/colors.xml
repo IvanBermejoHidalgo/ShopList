@@ -39,4 +39,21 @@
     <color name="darkGrey">#616161</color>
     <color name="lightGrey">#EFEFEF</color>
     <color name="grey">#d2d2d2</color>
+
+
+
+    // Colores Principales
+    <color name="verde_claro">#AFF474</color>
+    <color name="verde_oscuro">#039536</color>
+    <color name="amarillo">#FDE94C</color>
+    <color name="gris_oscuro">#333333</color>
+    <color name="gris_oscuro_lineas">#222222</color>
+    <color name="gris_oscuro_perfil">#404040</color>
+    <color name="gris_claro">#747474</color>
+    <color name="gris_claro_perfil">#F5F5F5</color>
+    <color name="gris_claro_lineas">#C2C2C2</color>
+    <color name="gris_toolbar_mensajes">#F1ECEC</color>
+    <color name="transparente">#00FFFFFF</color>
+    <color name="color_fondo_camisetas_claro">#f6f8fa</color>
+    <color name="color_fondo_camisetas_oscuro">#3B3A3A</color>
 </resources>

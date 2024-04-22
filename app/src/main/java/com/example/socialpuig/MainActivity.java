@@ -161,37 +161,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
 
-                if (id == R.id.maint) { // ID del elemento de menú "General"
-                    // Abrir la actividad de la tienda
-                    Intent intent = new Intent(MainActivity.this, TiendaActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-
-                if (id == R.id.maincarrito) { // ID del elemento de menú "General"
-                    // Abrir la actividad de la tienda
-                    Intent intent = new Intent(MainActivity.this, CartActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-
-
-                if (id == R.id.maincarrito) { // ID del elemento de menú "General"
-                    // Navegar al fragmento correspondiente
-                    navController.navigate(R.id.cartFragment);
-                    return true;
-                }
-
-                // Agregar el resto de lógica de manejo de selección de menú aquí si es necesario
-
-                return false;
-            }
-        });*/
 
 
 

@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="Activity.Activity_Direcciones_Envio"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <View
+            android:id="@+id/view_portada_direcciones_de_envio"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:elevation="5dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageView
+            android:id="@+id/boton_volver"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            style="@style/iconos_perfil"
+            android:src="@drawable/icono_volver_atras"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <ImageView
+            android:id="@+id/icono_portada_direcciones_de_envio"
+            style="@style/iconos_perfil"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:layout_constraintTop_toTopOf="@id/view_portada_direcciones_de_envio"
+            app:layout_constraintLeft_toLeftOf="@id/view_portada_direcciones_de_envio"
+            app:layout_constraintBottom_toBottomOf="@id/view_portada_direcciones_de_envio"
+            app:layout_constraintRight_toRightOf="@id/view_portada_direcciones_de_envio"
+            android:src="@drawable/icono_envio"
+            />
+
+        <TextView
+            android:id="@+id/texto_titulo_direcciones_de_envio"
+            style="@style/color_texto_predeterminado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Direcciones de envio"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/icono_portada_direcciones_de_envio"
+            app:layout_constraintLeft_toLeftOf="@id/icono_portada_direcciones_de_envio"
+            app:layout_constraintBottom_toBottomOf="@id/view_portada_direcciones_de_envio"
+            app:layout_constraintRight_toRightOf="@id/icono_portada_direcciones_de_envio"
+            />
+        <View
+            android:id="@+id/separacion"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            style="@style/lineas_separatorias_perfil"
+            app:layout_constraintBottom_toBottomOf="@id/view_portada_direcciones_de_envio"
+            android:elevation="10dp" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/text_direccion"
+            style="@style/direccion_envio"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="50dp"
+            android:text="Añadir dirección de envío"
+            android:textSize="16dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="50dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <ImageView
+            style="@style/iconos_perfil"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/icono_envio"
+            app:layout_constraintTop_toTopOf="@id/text_direccion"
+            app:layout_constraintLeft_toLeftOf="@id/text_direccion"
+            app:layout_constraintBottom_toBottomOf="@id/text_direccion" />
+
+        <ImageView
+            android:id="@+id/boton_agregar"
+            style="@style/iconos_perfil"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/icono_agregar_boton"
+            app:layout_constraintTop_toTopOf="@id/text_direccion"
+            app:layout_constraintLeft_toRightOf="@+id/text_direccion"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/text_direccion"
+            android:foreground="?android:attr/selectableItemBackground"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_calle"
+            style="@style/edittext"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/text_direccion"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_calle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Calle"
+                android:textSize="15dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_numero"
+            style="@style/edittext"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/text_direccion"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_numero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Num."
+                android:textSize="15dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_piso"
+            style="@style/edittext"
+            android:layout_marginTop="10dp"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/text_input_calle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/text_input_puerta"
+            app:layout_constraintStart_toStartOf="@id/text_input_calle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_piso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Piso"
+                android:textSize="15dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_puerta"
+            style="@style/edittext"
+            android:layout_marginTop="10dp"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/text_input_calle"
+            app:layout_constraintLeft_toRightOf="@id/text_input_piso"
+            app:layout_constraintRight_toLeftOf="@id/text_input_pais">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_puerta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Puerta"
+                android:textSize="15dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_pais"
+            style="@style/edittext"
+            android:layout_marginTop="10dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/text_input_calle"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_pais"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Pais"
+                android:textSize="15dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_provincia"
+            style="@style/edittext"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/text_input_pais"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="@id/text_input_piso"
+            app:layout_constraintEnd_toEndOf="@id/text_input_pais"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_provincia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Provincia"
+                android:textSize="15dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_localidad"
+            style="@style/edittext"
+            android:layout_marginTop="10dp"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/text_input_provincia"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_localidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Localidad"
+                android:textSize="15dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_cp"
+            style="@style/edittext"
+            android:layout_marginTop="10dp"
+            android:layout_width="100dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/text_input_provincia"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_cp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Codigo postal"
+                android:textSize="15dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/boton_agregar_direccion"
+            style="@style/boton_comprar"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginRight="20dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="10dp"
+            android:hint="Añadir Dirección"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            android:drawableEnd="@drawable/icono_agregar_boton"
+            app:layout_constraintTop_toBottomOf="@id/text_input_localidad"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_direcciones_envio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:elevation="10dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:layout_gravity="center"
+        tools:listitem="@layout/estilo_direcciones_envio"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+
+</LinearLayout>

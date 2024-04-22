@@ -66,4 +66,20 @@ public class ManagmentCart {
         }
         return fee;
     }
+
+    public double getTotalWithTaxAndDelivery() {
+        // Calcula el precio total de los productos en el carrito
+        double subtotal = getTotalFee();
+
+        // Calcula el impuesto
+        double tax = Math.round((subtotal * 0.02 * 100.0)) / 100.0;
+
+        // Tarifa de entrega fija
+        double deliveryFee = 10.0;
+
+        // Calcula el precio total de la compra incluyendo impuestos y tarifa de entrega
+        double total = Math.round((subtotal + tax + deliveryFee) * 100) / 100;
+
+        return total;
+    }
 }

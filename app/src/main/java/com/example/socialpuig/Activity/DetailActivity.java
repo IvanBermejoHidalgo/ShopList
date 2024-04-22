@@ -21,6 +21,7 @@ import com.example.socialpuig.Fragment.SoldFragment;
 import com.example.socialpuig.Helper.ManagmentCart;
 import com.example.socialpuig.R;
 import com.example.socialpuig.databinding.ActivityDetailBinding;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ public class DetailActivity extends BaseActivity {
     private int numberOrder = 1;
     private ManagmentCart managmentCart;
     private Handler slideHandle = new Handler();
+    private FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

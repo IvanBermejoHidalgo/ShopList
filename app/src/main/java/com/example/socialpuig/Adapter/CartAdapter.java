@@ -64,6 +64,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Viewholder> {
         }));
     }
 
+
+
     @Override
     public int getItemCount() {
         return listItemSelected.size();
