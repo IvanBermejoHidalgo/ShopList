@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.socialpuig.Activity.CartActivity;
 import com.example.socialpuig.Domain.ItemsDomain;
 import com.example.socialpuig.Helper.ChangeNumberItemsListener;
 import com.example.socialpuig.Helper.ManagmentCart;

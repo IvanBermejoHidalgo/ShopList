@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ItemsDomain implements Serializable {
-    private String title, id;
+    private String title, id, CartId;
     private String description;
     private ArrayList<String> picUrl;
     private double price;
@@ -26,6 +26,14 @@ public class ItemsDomain implements Serializable {
         this.oldPrice = oldPrice;
         this.review = review;
         this.rating = rating;
+    }
+
+    public String getCartId() {
+        return CartId;
+    }
+
+    public void setCartId(String cartId) {
+        CartId = cartId;
     }
 
     public String getTitle() {

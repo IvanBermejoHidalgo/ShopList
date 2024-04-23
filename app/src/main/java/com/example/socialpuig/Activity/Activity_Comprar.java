@@ -328,7 +328,7 @@ public class Activity_Comprar extends AppCompatActivity {
         camisetasTiendaList = new ArrayList<>();
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference.child(firebaseAuth.getUid()).child("Carrito")
+        databaseReference.child(firebaseAuth.getUid()).child("Cart")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
