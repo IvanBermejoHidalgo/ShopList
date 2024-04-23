@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.socialpuig.Adapter.CartAdapter;
 import com.example.socialpuig.Domain.ItemsDomain;
+import com.example.socialpuig.Helper.ManagmentCart;
 import com.example.socialpuig.R;
 import com.example.socialpuig.databinding.ActivityPedidoFinalizadoBinding;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -43,9 +44,16 @@ public class ActivityPedidoFinalizado extends AppCompatActivity {
         binding.botonVolverInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vaciarCarrito();
-                //MetodosApp.addCamisetaPedidos(ActivityPedidoFinalizado.this,"" + camisetasTiendaList.size(),"" + precioTotal);
-                //startActivity(new Intent(ActivityPedidoFinalizado.this, Activity_Destinos_Principales.class));
+                // Limpiar el carrito localmente
+                ManagmentCart managmentCart = new ManagmentCart(ActivityPedidoFinalizado.this);
+                managmentCart.clearCart();
+
+                // Mostrar un mensaje de éxito
+                Toast.makeText(ActivityPedidoFinalizado.this, "Carrito limpiado exitosamente", Toast.LENGTH_SHORT).show();
+
+                // Aquí puedes iniciar la actividad de inicio u otras acciones según tus necesidades
+                // Intent intent = new Intent(ActivityPedidoFinalizado.this, Activity_Destinos_Principales.class);
+                // startActivity(intent);
             }
         });
 
@@ -91,7 +99,7 @@ public class ActivityPedidoFinalizado extends AppCompatActivity {
 
     private void vaciarCarrito(){
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference.child(firebaseAuth.getUid()).child("Carrito")
+        databaseReference.child(firebaseAuth.getUid()).child("Cart")
                 .removeValue()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

@@ -35,7 +35,13 @@ public class Activity_Tramitando_Pedido extends AppCompatActivity {
         setContentView((binding = ActivityTramitandoPedidoBinding.inflate(getLayoutInflater())).getRoot());
 
         firebaseAuth = FirebaseAuth.getInstance();
-        cargarCamisetasCarrito();
+        //cargarCamisetasCarrito();
+
+        // Obtener el precio total del intent
+        double precioTotalCarrito = getIntent().getDoubleExtra("precio_total", 0.0);
+
+        // Configurar el precio total en el TextView
+        binding.importe.setText(String.valueOf(precioTotalCarrito));
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -52,14 +58,14 @@ public class Activity_Tramitando_Pedido extends AppCompatActivity {
         camisetasTiendaList = new ArrayList<>();
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference.child(firebaseAuth.getUid()).child("Carrito")
+        databaseReference.child(firebaseAuth.getUid()).child("Cart")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         camisetasTiendaList.clear();
                         precioTotal = 0.0;
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                            String idCamiseta = "" + dataSnapshot.child("idCompra").getValue();
+                            String idCamiseta = "" + dataSnapshot.child("cartId").getValue();
                             ItemsDomain modelCamisetasTienda = new ItemsDomain();
                             modelCamisetasTienda.setId(idCamiseta);
                             double precio = Double.parseDouble("" + dataSnapshot.child("precioTotal").getValue());

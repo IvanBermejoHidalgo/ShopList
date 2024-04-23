@@ -51,10 +51,10 @@ public class Activity_Comprar extends AppCompatActivity {
         cargarMetodosPago();
 
         // Obtener el precio total del intent
-        //double precioTotalCarrito = getIntent().getDoubleExtra("precio_total", 0.0);
+        double precioTotalCarrito = getIntent().getDoubleExtra("precio_total", 0.0);
 
         // Configurar el precio total en el TextView
-        //binding.precioTotal.setText(String.valueOf(precioTotalCarrito));
+        binding.precioTotal.setText(String.valueOf(precioTotalCarrito));
 
 
         binding.botonCerrarVentana.setOnClickListener(new View.OnClickListener() {

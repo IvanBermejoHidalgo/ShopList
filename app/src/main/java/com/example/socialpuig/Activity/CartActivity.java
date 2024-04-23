@@ -91,6 +91,7 @@ public class CartActivity extends BaseActivity {
 
     private void saveCartToFirebase(String userId) {
         ArrayList<ItemsDomain> cartItems = managmentCart.getListCart();
+
         // Generar una ID única para el carrito
         String cartId = mDatabase.child("Users").child(userId).child("Cart").push().getKey();
 
@@ -98,8 +99,9 @@ public class CartActivity extends BaseActivity {
         for (ItemsDomain item : cartItems) {
             item.setCartId(cartId);
         }
+
         // Guardar los datos del carrito en la base de datos de Firebase
-        DatabaseReference userCartRef = mDatabase.child("Users").child(userId).child("Cart");
+        DatabaseReference userCartRef = mDatabase.child("Users").child(userId).child("Cart").child(cartId);
         userCartRef.setValue(cartItems)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(CartActivity.this, "Carrito guardado exitosamente en Firebase", Toast.LENGTH_SHORT).show();
@@ -120,6 +122,7 @@ public class CartActivity extends BaseActivity {
                     Toast.makeText(CartActivity.this, "Error al guardar el carrito en Firebase: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
+
 
 
 }

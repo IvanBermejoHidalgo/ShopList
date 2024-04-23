@@ -12,10 +12,15 @@ public class ManagmentCart {
 
     private Context context;
     private TinyDB tinyDB;
+    private ArrayList<ItemsDomain> cartItems;
 
     public ManagmentCart(Context context) {
         this.context = context;
         this.tinyDB = new TinyDB(context);
+        cartItems = new ArrayList<>();
+    }
+    public void clearCart() {
+        cartItems.clear();
     }
 
     public void insertItem(ItemsDomain item) {
