@@ -45,7 +45,7 @@ public class Activity_Comprar extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        cargarPrecioCamisetasCarrito();
+        //cargarPrecioCamisetasCarrito();
         cargarDatosUsuario();
         cargarDireccionesEnvio();
         cargarMetodosPago();
