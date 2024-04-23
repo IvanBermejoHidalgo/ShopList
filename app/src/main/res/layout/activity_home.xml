@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout2"
+    android:background="@drawable/_bg___frame_169_shape"
+    tools:context=".Activity.HomeActivity">
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/_bg___frame_169_shape">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.SocialPuig.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorsplash"
+            app:popupTheme="@style/Theme.SocialPuig.PopupOverlay">
+
+            <!-- ImageView para la imagen -->
+            <ImageView
+                android:id="@+id/toolbar_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/logosplash"
+                android:layout_marginLeft="330dp"
+                android:layout_gravity="top|end" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewRedSocial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:textSize="22dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:text="Red Social" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:id="@+id/bara"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="20dp"
+            android:layout_below="@id/textViewRedSocial"
+            android:background="@color/white" />
+
+    </RelativeLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/postsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_marginTop="130dp"
+        android:layout_below="@id/bara"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/gotoNewPostFragmentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/pen"
+        app:tint="@android:color/white"
+        android:backgroundTint="#293B72" />
+
+</FrameLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:background="@drawable/_bg__frame_169_shape2"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:layout_marginTop="1dp"
+        android:fitsSystemWindows="true"
+        app:itemTextColor="@color/grismenuletra"
+
+        app:subheaderColor="@color/white"
+        app:itemBackground="@drawable/red_bordertres"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
+</androidx.drawerlayout.widget.DrawerLayout>
