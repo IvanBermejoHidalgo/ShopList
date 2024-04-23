@@ -53,7 +53,6 @@ public class TiendaActivity extends BaseActivity {
     private void bottomNavigation() {
 
         binding.cartBtn.setOnClickListener(v -> startActivity(new Intent(TiendaActivity.this, CartActivity.class)));
-        binding.red.setOnClickListener(v -> startActivity(new Intent(TiendaActivity.this, HomeFragment.class)));
 
 
     }

@@ -59,7 +59,7 @@ public class Activity_Tramitando_Pedido extends AppCompatActivity {
                         camisetasTiendaList.clear();
                         precioTotal = 0.0;
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                            String idCamiseta = "" + dataSnapshot.child("idCamiseta").getValue();
+                            String idCamiseta = "" + dataSnapshot.child("idCompra").getValue();
                             ItemsDomain modelCamisetasTienda = new ItemsDomain();
                             modelCamisetasTienda.setId(idCamiseta);
                             double precio = Double.parseDouble("" + dataSnapshot.child("precioTotal").getValue());

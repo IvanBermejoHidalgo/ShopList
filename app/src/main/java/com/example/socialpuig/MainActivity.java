@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.socialpuig.Activity.CartActivity;
+import com.example.socialpuig.Activity.RegistrarseActivity;
 import com.example.socialpuig.Activity.TiendaActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -85,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
 
                 // Navegar a otra pantalla cuando se haga clic en el botón
                 navController.navigate(R.id.action_logSignFragment_to_registerFragment);
+                //Intent intent = new Intent(MainActivity.this, RegistrarseActivity.class);
+                //startActivity(intent);
             }
         });
 
@@ -109,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView = binding.navView; // Inicializar la referencia al NavigationView
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.homeFragment, R.id.pilotosmotogpFragment,
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.homeFragment, R.id.maint,R.id.pilotosmotogpFragment,
                 R.id.equiposmotogpFragment, R.id.configuracionFragment)
                 .setOpenableLayout(drawer)
                 .build();

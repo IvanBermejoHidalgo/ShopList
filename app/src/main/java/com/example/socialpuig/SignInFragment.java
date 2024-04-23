@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.example.socialpuig.Activity.HomeActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -148,6 +149,7 @@ public class SignInFragment extends Fragment {
         if(currentUser != null){
             navController.navigate(R.id.homeFragment);
             //navController.navigate(R.id.home2Fragment);
+            //startActivity(new Intent(getContext(), HomeActivity.class));
         }
     }
     private void accederConGoogle() {

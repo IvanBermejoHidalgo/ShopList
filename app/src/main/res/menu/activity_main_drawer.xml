@@ -11,7 +11,7 @@
         <item android:title="RED SOCIAL">
         <menu>
         <item
-            android:id="@+id/homeFragment"
+            android:id="@+id/homeActivity"
             android:title="Inicio" />
         <!--item android:title="Formula 1">
         <menu>

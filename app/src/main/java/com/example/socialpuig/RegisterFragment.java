@@ -1,5 +1,6 @@
 package com.example.socialpuig;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -18,21 +19,31 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.socialpuig.databinding.FragmentRegisterBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class RegisterFragment extends Fragment {
-
+    private FragmentRegisterBinding binding;
     NavController navController;
-    private EditText usernametxt,emailEditTextreg, passwordEditText, passwordEditText2;
-    private Button emailSignInButton2;
+    private Button boton_volver;
+    private TextInputEditText nombre, correo_electronico, numero_telefono, contraseña, repetir_contraseña;
     TextView displayNameTextView;
     private FirebaseAuth mAuth;
 
@@ -80,21 +91,23 @@ public class RegisterFragment extends Fragment {
         navController = Navigation.findNavController(view);
 
         mAuth = FirebaseAuth.getInstance();
-        usernametxt = view.findViewById(R.id.usernametxt);
-        emailEditTextreg = view.findViewById(R.id.emailEditTextreg);
-        passwordEditText = view.findViewById(R.id.passwordEditText);
-        passwordEditText2 = view.findViewById(R.id.passwordEditText2);
+        nombre = view.findViewById(R.id.nombre);
+        correo_electronico = view.findViewById(R.id.correo_electronico);
+        numero_telefono = view.findViewById(R.id.numero_telefono);
+        contraseña = view.findViewById(R.id.contraseña);
+        repetir_contraseña = view.findViewById(R.id.repetir_contraseña);
         displayNameTextView = view.findViewById(R.id.displayNameTextView);
 
-        emailSignInButton2 = view.findViewById(R.id.emailSignInButton2);
+        boton_volver = view.findViewById(R.id.boton_volver);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
-        emailSignInButton2.setOnClickListener(new View.OnClickListener() {
+        boton_volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                crearCuenta(user);
+                //crearCuenta(user);
+                createAccount();
             }
         });
 
@@ -103,16 +116,16 @@ public class RegisterFragment extends Fragment {
         if (!validarFormulario()) {
             return;
         }
-        emailSignInButton2.setEnabled(false);
+        boton_volver.setEnabled(false);
 
-        mAuth.createUserWithEmailAndPassword(emailEditTextreg.getText().toString(), passwordEditText.getText().toString())
+        mAuth.createUserWithEmailAndPassword(correo_electronico.getText().toString(), contraseña.getText().toString())
                 .addOnCompleteListener(requireActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser currentUser = mAuth.getCurrentUser();
                             // Guardar el nombre de usuario en la base de datos
-                            guardarNombreUsuario(currentUser, usernametxt.getText().toString());
+                            guardarNombreUsuario(currentUser, nombre.getText().toString());
                             establecerFotoPerfilPredeterminada(currentUser);
                             // Actualizar la interfaz de usuario
                             actualizarUI(currentUser);
@@ -123,7 +136,7 @@ public class RegisterFragment extends Fragment {
                             } else {
                                 Snackbar.make(requireView(), "Error: " + task.getException(), Snackbar.LENGTH_LONG).show();
                             }
-                            emailSignInButton2.setEnabled(true);
+                            boton_volver.setEnabled(true);
                         }
                     }
                 });
@@ -131,7 +144,7 @@ public class RegisterFragment extends Fragment {
 
 
     private void guardarNombreUsuario(FirebaseUser user, String username) {
-        String newName = String.valueOf(usernametxt.getText());
+        String newName = String.valueOf(nombre.getText());
         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                 .setDisplayName(username)
                 .build();
@@ -190,41 +203,116 @@ public class RegisterFragment extends Fragment {
 
     private boolean validarFormulario() {
         boolean valid = true;
-        if (TextUtils.isEmpty(usernametxt.getText().toString())) {
-            usernametxt.setError("Requerido.");
+        if (TextUtils.isEmpty(nombre.getText().toString())) {
+            nombre.setError("Requerido.");
             valid = false;
         } else {
-            usernametxt.setError(null);
+            nombre.setError(null);
         }
 
-        if (TextUtils.isEmpty(emailEditTextreg.getText().toString())) {
-            emailEditTextreg.setError("Requerido.");
+        if (TextUtils.isEmpty(correo_electronico.getText().toString())) {
+            correo_electronico.setError("Requerido.");
             valid = false;
         } else {
-            emailEditTextreg.setError(null);
+            correo_electronico.setError(null);
         }
 
-        if (TextUtils.isEmpty(passwordEditText.getText().toString())) {
-            passwordEditText.setError("Requerido.");
+        if (TextUtils.isEmpty(numero_telefono.getText().toString())) {
+            numero_telefono.setError("Requerido.");
             valid = false;
         } else {
-            passwordEditText.setError(null);
+            numero_telefono.setError(null);
         }
 
-        if (TextUtils.isEmpty(passwordEditText2.getText().toString())) {
-            passwordEditText2.setError("Requerido.");
+        if (TextUtils.isEmpty(contraseña.getText().toString())) {
+            contraseña.setError("Requerido.");
             valid = false;
         } else {
-            passwordEditText2.setError(null);
+            contraseña.setError(null);
         }
 
-        if (!passwordEditText.getText().toString().equals(passwordEditText2.getText().toString())) {
-            passwordEditText2.setError("Las contraseñas no coinciden.");
+        if (TextUtils.isEmpty(repetir_contraseña.getText().toString())) {
+            repetir_contraseña.setError("Requerido.");
             valid = false;
         } else {
-            passwordEditText2.setError(null);
+            repetir_contraseña.setError(null);
+        }
+
+        if (!contraseña.getText().toString().equals(repetir_contraseña.getText().toString())) {
+            repetir_contraseña.setError("Las contraseñas no coinciden.");
+            valid = false;
+        } else {
+            repetir_contraseña.setError(null);
         }
 
         return valid;
+    }
+
+
+
+    private void createAccount() {
+        //dialog.showDialog();
+        if (!validarFormulario()) {
+            return;
+        }
+        mAuth.createUserWithEmailAndPassword(correo_electronico.getText().toString(), contraseña.getText().toString())
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        updateUserInfo();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //Toast.makeText(Activity_Crear_Cuenta.this,""+e.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), "Cuenta no Creada", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+    }
+
+    private void updateUserInfo() {
+        long timestamp = System.currentTimeMillis();
+
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        //Crear el map y añadir las claves y valores
+        Map<String, Object> hashMap = new HashMap<>();
+        hashMap.put("uid", uid);
+        hashMap.put("email", correo_electronico);
+        hashMap.put("name", nombre);
+        hashMap.put("telefono", numero_telefono);
+        hashMap.put("profileImage", "");
+        hashMap.put("userType", "user");
+        hashMap.put("timestamp", timestamp);
+        // Crear la referencia de usuarios en la base de datos(si no esta creada aún) y añadir el valor del usuario, si ya esta creada
+        // tan solo se añaden los apartados con las claves y valores del usuario que se crea.
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("Users");
+        ref.child(uid)
+                .setValue(hashMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        try {
+                            Thread.sleep(3000);
+                            //dialog.hideDialog();
+                            //startActivity(new Intent(RegisterFragment.this, HomeFragment.class));
+                            navController.navigate(R.id.homeFragment);
+
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //Toast.makeText(RegisterFragment.this,"Cuenta no Creada",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), "Cuenta no Creada", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
     }
 }

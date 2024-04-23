@@ -26,6 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.socialpuig.Activity.HomeActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -119,8 +120,13 @@ public class NewPostFragment extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        navController.popBackStack();
-                        appViewModel.setMediaSeleccionado( null, null);
+                        //navController.popBackStack();
+                        //appViewModel.setMediaSeleccionado( null, null);
+                        Intent intent = new Intent(requireContext(), HomeActivity.class);
+                        startActivity(intent);
+
+                        // Limpia la pila de fragmentos para que al volver atrás no regrese al fragmento anterior
+                        requireActivity().finish();
                     }
                 });
     }
