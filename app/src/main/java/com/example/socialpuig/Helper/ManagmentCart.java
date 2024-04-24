@@ -21,6 +21,8 @@ public class ManagmentCart {
     }
     public void clearCart() {
         cartItems.clear();
+        tinyDB.putListObject("CartList", cartItems); // Actualiza los datos en TinyDB después de limpiar el carrito
+
     }
 
     public void insertItem(ItemsDomain item) {

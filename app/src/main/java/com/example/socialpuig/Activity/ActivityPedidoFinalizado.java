@@ -44,16 +44,9 @@ public class ActivityPedidoFinalizado extends AppCompatActivity {
         binding.botonVolverInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Limpiar el carrito localmente
-                ManagmentCart managmentCart = new ManagmentCart(ActivityPedidoFinalizado.this);
-                managmentCart.clearCart();
-
-                // Mostrar un mensaje de éxito
-                Toast.makeText(ActivityPedidoFinalizado.this, "Carrito limpiado exitosamente", Toast.LENGTH_SHORT).show();
-
-                // Aquí puedes iniciar la actividad de inicio u otras acciones según tus necesidades
-                // Intent intent = new Intent(ActivityPedidoFinalizado.this, Activity_Destinos_Principales.class);
-                // startActivity(intent);
+                //vaciarCarrito();
+                //MetodosApp.addCamisetaPedidos(ActivityPedido_Finalizado.this,"" + camisetasTiendaList.size(),"" + precioTotal);
+                //startActivity(new Intent(ActivityPedidoFinalizado.this, Activity_Destinos_Principales.class));
             }
         });
 

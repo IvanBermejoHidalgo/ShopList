@@ -106,22 +106,23 @@ public class CartActivity extends BaseActivity {
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(CartActivity.this, "Carrito guardado exitosamente en Firebase", Toast.LENGTH_SHORT).show();
                     // Limpia el carrito local después de guardar en Firebase
-                    //managmentCart.clearCart();
+                    managmentCart.clearCart();
+                    // Limpia el RecyclerView
+                    ArrayList<ItemsDomain> emptyCartList = new ArrayList<>();
+                    binding.cartView.setAdapter(new CartAdapter(emptyCartList, this, () -> calculatorCart()));
                     // Redirige a la pantalla de compra o a donde desees
-                    //startActivity(new Intent(CartActivity.this, Activity_Comprar.class));
-
                     Intent intent = new Intent(new Intent(CartActivity.this, Activity_Comprar.class));
                     double totalCompra = managmentCart.getTotalWithTaxAndDelivery();
                     intent.putExtra("precio_total", totalCompra);
-                    intent.putExtra("numero_productos", managmentCart.getListCart().size());
+                    intent.putExtra("numero_productos", emptyCartList.size());
                     startActivity(intent);
-
                     finish();
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(CartActivity.this, "Error al guardar el carrito en Firebase: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
+
 
 
 
