@@ -31,6 +31,7 @@
         android:layout_marginStart="16dp"
         android:text="title"
         android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/view4"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,7 +41,7 @@
         android:layout_height="wrap_content"
         android:text="$0"
         android:textSize="12sp"
-        android:textColor="@color/green"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/titleTxt"
         app:layout_constraintTop_toBottomOf="@+id/titleTxt" />
 
@@ -49,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="$0"
-        android:textColor="@color/green"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

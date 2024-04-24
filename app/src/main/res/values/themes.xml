@@ -51,7 +51,6 @@
 
     <style name="toolbar" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <!-- Primary brand color. -->
-        <item name="android:background">@color/white</item>
     </style>
     <style name="texto_pantalla_favoritos" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <!-- Primary brand color. -->
