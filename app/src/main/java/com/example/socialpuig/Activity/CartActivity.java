@@ -92,9 +92,6 @@ public class CartActivity extends BaseActivity {
     private void saveCartToFirebase(String userId) {
         ArrayList<ItemsDomain> cartItems = managmentCart.getListCart();
 
-        // Calcular el total de la compra
-        double totalCompra = managmentCart.getTotalWithTaxAndDelivery();
-
         // Generar una ID única para el carrito
         String cartId = mDatabase.child("Users").child(userId).child("Cart").push().getKey();
 
@@ -107,28 +104,24 @@ public class CartActivity extends BaseActivity {
         DatabaseReference userCartRef = mDatabase.child("Users").child(userId).child("Cart").child(cartId);
         userCartRef.setValue(cartItems)
                 .addOnSuccessListener(aVoid -> {
-                    // Limpia el carrito local después de guardar en Firebase
-                    managmentCart.clearCart();
-
-                    // Guardar el total de la compra dentro de la entrada con la clave cartId en Firebase
-                    DatabaseReference totalCompraRef = mDatabase.child("Users").child(userId).child("Cart").child(cartId).child("TotalCompra");
-                    totalCompraRef.setValue(totalCompra);
-
                     Toast.makeText(CartActivity.this, "Carrito guardado exitosamente en Firebase", Toast.LENGTH_SHORT).show();
-
+                    // Limpia el carrito local después de guardar en Firebase
+                    //managmentCart.clearCart();
                     // Redirige a la pantalla de compra o a donde desees
+                    //startActivity(new Intent(CartActivity.this, Activity_Comprar.class));
+
                     Intent intent = new Intent(new Intent(CartActivity.this, Activity_Comprar.class));
+                    double totalCompra = managmentCart.getTotalWithTaxAndDelivery();
                     intent.putExtra("precio_total", totalCompra);
-                    intent.putExtra("numero_productos", cartItems.size());
+                    intent.putExtra("numero_productos", managmentCart.getListCart().size());
                     startActivity(intent);
+
                     finish();
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(CartActivity.this, "Error al guardar el carrito en Firebase: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
-
-
 
 
 

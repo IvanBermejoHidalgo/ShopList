@@ -17,6 +17,14 @@
         android:layout_width="161dp"
         android:scaleType="fitXY"
         tools:ignore="ContentDescription" tools:src="@drawable/img_logosinfondo_305x330"/-->
+    <ImageView
+        android:id="@+id/logo1"
+        android:layout_width="wrap_content"
+        android:layout_height="204dp"
+        android:src="@drawable/logosplash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login1" />
 
     <LinearLayout android:gravity="start"
         android:id="@+id/linearColumnprice"
@@ -25,7 +33,7 @@
         android:layout_gravity="center"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="-20dp"
         android:layout_width="match_parent" android:orientation="vertical">
 
         <!--TextView android:ellipsize="end" android:id="@+id/txtPrice"
@@ -42,12 +50,21 @@
             android:layout_marginTop="35dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
+            app:hintTextColor="@color/colorsplash"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            app:startIconTint="@color/white"
             app:startIconDrawable="@drawable/icono_usuario">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nombre"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorsplash"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombre completo"
@@ -70,15 +87,24 @@
         <com.google.android.material.textfield.TextInputLayout
         style="@style/edittext"
         android:layout_marginTop="10dp"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
+            app:hintTextColor="@color/colorsplash"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+            app:startIconTint="@color/white"
         app:startIconDrawable="@drawable/icono_correo_electronico">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/correo_electronico"
             android:layout_width="match_parent"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/colorsplash"
             android:layout_height="wrap_content"
             android:hint="Correo electrónico"
             android:textSize="15dp" />
@@ -88,14 +114,23 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/edittext"
             android:layout_marginTop="10dp"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
+            app:hintTextColor="@color/colorsplash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            app:startIconTint="@color/white"
             app:startIconDrawable="@drawable/icono_telefono">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/numero_telefono"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorsplash"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Numero de telefono"
@@ -119,16 +154,26 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/edittext"
             android:layout_marginTop="10dp"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
+            app:hintTextColor="@color/colorsplash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            app:endIconTint="@color/white"
             app:endIconMode="password_toggle"
+            app:startIconTint="@color/white"
             app:startIconDrawable="@drawable/icono_candado">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/contraseña"
                 android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorsplash"
                 android:layout_height="wrap_content"
                 android:hint="Contraseña"
                 android:textSize="15dp"
@@ -150,16 +195,26 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/edittext"
             android:layout_marginTop="10dp"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
+            app:hintTextColor="@color/colorsplash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            app:endIconTint="@color/white"
             app:endIconMode="password_toggle"
+            app:startIconTint="@color/white"
             app:startIconDrawable="@drawable/icono_candado">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/repetir_contraseña"
                 style="@style/color_texto_predeterminado"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorsplash"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Repite la contraseña"
@@ -216,15 +271,15 @@
             android:layout_gravity="center"
             android:text="Login with your Google account" /-->
 
-        <LinearLayout
+        <!--LinearLayout
             android:layout_width="match_parent"
             android:layout_height="63dp"
             android:layout_marginEnd="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"-->
 
 
             <!-- Texto "cuenta" -->
-            <TextView
+            <!--TextView
                 android:id="@+id/cuenta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -234,17 +289,17 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginLeft="10dp"
                 android:textColor="#EFE5E5"
-                android:textSize="17dp" />
+                android:textSize="17dp" /-->
 
             <!-- Espacio entre el texto y la imagen -->
-            <Space
+            <!--Space
                 android:layout_width="16dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1" /-->
 
             <!-- Imagen "imgvec" -->
 
-            <com.google.android.material.switchmaterial.SwitchMaterial
+            <!--com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/material_switch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -255,9 +310,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:trackTint="#293B72"
                 app:thumbTint="@color/white"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" /-->
 
-        </LinearLayout>
+        <!--/LinearLayout-->
 
 
 
@@ -318,7 +373,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="6dp"
         android:layout_marginRight="20dp"
-        android:backgroundTint="#293B72"
+        android:backgroundTint="@color/colorsplash"
         android:text="ENTRAR"
         android:textAlignment="center"
         android:textSize="20dp"

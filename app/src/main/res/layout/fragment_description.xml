@@ -5,6 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/_bg___frame_169_shape"
     tools:context=".Fragment.DescriptionFragment">
 
     <ScrollView
@@ -22,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:text="TextView"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

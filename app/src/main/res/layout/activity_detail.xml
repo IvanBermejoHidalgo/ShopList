@@ -7,7 +7,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/_bg___frame_169_shape"
     tools:context=".Activity.DetailActivity">
 
     <ScrollView
@@ -84,7 +84,7 @@
                     android:layout_weight="1"
                     android:singleLine="true"
                     android:text="title"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="23sp"
                     android:textStyle="bold" />
 
@@ -93,7 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0€"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -128,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="0 rat"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -145,7 +145,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="Talla"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -159,12 +159,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+
                 android:orientation="vertical">
 
                 <com.google.android.material.appbar.AppBarLayout
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+
                     android:orientation="vertical">
 
                     <com.google.android.material.tabs.TabLayout
@@ -172,15 +174,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
-                        app:tabBackground="@color/white"
+                        app:tabBackground="@drawable/_bg___frame_169_shape"
+                        android:background="@drawable/_bg___frame_169_shape"
+
                         app:tabGravity="fill"
-                        app:tabIndicatorColor="@color/green"
+                        app:tabIndicatorColor="@color/colorsplash"
                         app:tabIndicatorHeight="3dp"
                         app:tabMaxWidth="0dp"
                         app:tabMode="fixed"
-                        app:tabSelectedTextColor="@color/green"
+                        app:tabSelectedTextColor="@color/colorsplash"
                         app:tabTextAppearance="@style/tab_layout"
-                        app:tabTextColor="@color/black" />
+                        app:tabTextColor="@color/white" />
 
                     <View
                         android:id="@+id/view2"
@@ -193,7 +197,7 @@
                     android:id="@+id/viewpager"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:background="@color/white" />
+                    android:background="@color/gray_901" />
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton

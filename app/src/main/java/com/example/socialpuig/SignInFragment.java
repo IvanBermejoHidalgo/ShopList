@@ -34,6 +34,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -47,6 +48,7 @@ public class SignInFragment extends Fragment {
     private Button emailSignInButton;
     private LinearLayout signInForm;
     private ProgressBar signInProgressBar;
+    private TextInputEditText correo_electronico, contraseña;
 
     private FirebaseAuth mAuth;
     private SignInButton googleSignInButton;
@@ -68,6 +70,8 @@ public class SignInFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
 
         emailEditText = view.findViewById(R.id.emailEditText);
+        correo_electronico = view.findViewById(R.id.correo_electronico);
+        contraseña = view.findViewById(R.id.contraseña);
         passwordEditText = view.findViewById(R.id.passwordEditText);
         emailSignInButton = view.findViewById(R.id.emailSignInButton);
         signInForm = view.findViewById(R.id.signInForm);
@@ -130,7 +134,7 @@ public class SignInFragment extends Fragment {
         signInForm.setVisibility(View.GONE);
         signInProgressBar.setVisibility(View.VISIBLE);
 
-        mAuth.signInWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
+        mAuth.signInWithEmailAndPassword(correo_electronico.getText().toString(), contraseña.getText().toString())
                 .addOnCompleteListener(requireActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -186,18 +190,18 @@ public class SignInFragment extends Fragment {
 
     private boolean validarFormulario() {
         boolean valid = true;
-        if (TextUtils.isEmpty(emailEditText.getText().toString())) {
-            emailEditText.setError("Requerido.");
+        if (TextUtils.isEmpty(correo_electronico.getText().toString())) {
+            correo_electronico.setError("Requerido.");
             valid = false;
         } else {
-            emailEditText.setError(null);
+            correo_electronico.setError(null);
         }
 
-        if (TextUtils.isEmpty(passwordEditText.getText().toString())) {
-            passwordEditText.setError("Requerido.");
+        if (TextUtils.isEmpty(contraseña.getText().toString())) {
+            contraseña.setError("Requerido.");
             valid = false;
         } else {
-            passwordEditText.setError(null);
+            contraseña.setError(null);
         }
 
         return valid;

@@ -31,6 +31,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Viewholder> {
 
     }
 
+    public void clear() {
+        listItemSelected.clear();
+        notifyDataSetChanged();
+    }
+
+
     @NonNull
     @Override
     public CartAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
