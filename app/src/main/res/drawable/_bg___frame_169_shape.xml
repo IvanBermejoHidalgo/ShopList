@@ -6,4 +6,3 @@
 	<solid android:color="@color/gray_901" />
 	<!--gradient android:angle="270" android:type="linear" android:startColor="#ff4169e1" android:centerColor="#ff87cefa" android:endColor="#ff4181a8" /-->
 </shape>
-

@@ -61,7 +61,7 @@
     </style>
 
     <style name="iconos_perfil" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="tint">@color/black</item>
+        <item name="tint">@color/white</item>
         <item name="android:background">@color/transparente</item>
     </style>
     <style name="lineas_separatorias_perfil" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
