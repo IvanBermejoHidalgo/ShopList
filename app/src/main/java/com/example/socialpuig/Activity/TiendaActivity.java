@@ -105,7 +105,7 @@ public class TiendaActivity extends BaseActivity {
 
 
 
-                DrawerLayout drawer = findViewById(R.id.drawer_layout2);
+                DrawerLayout drawer = findViewById(R.id.maint);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             }

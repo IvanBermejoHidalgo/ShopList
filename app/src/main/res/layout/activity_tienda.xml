@@ -18,6 +18,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fui_wrapper_padding_horiz"
             android:theme="@style/Theme.SocialPuig.AppBarOverlay">
 
             <androidx.appcompat.widget.Toolbar
@@ -52,6 +53,7 @@
         <LinearLayout
             android:id="@+id/layoutForImages"
             android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingBottom="70dp">
@@ -62,7 +64,7 @@
                 android:orientation="vertical"
                 android:paddingBottom="70dp">
 
-                <LinearLayout
+                <!--LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="24dp"
@@ -82,7 +84,7 @@
                         android:ems="10"
                         android:hint="Search anything"
                         android:inputType="text"
-                        android:padding="8dp" />
+                        android:padding="8dp" /-->
 
                     <!--androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="50dp"
@@ -121,7 +123,7 @@
                             app:layout_constraintStart_toStartOf="@+id/imageView2"
                             app:layout_constraintTop_toTopOf="@+id/imageView2" />
                     </androidx.constraintlayout.widget.ConstraintLayout-->
-                </LinearLayout>
+                <!--/LinearLayout-->
 
                 <!--androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
