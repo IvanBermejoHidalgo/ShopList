@@ -38,13 +38,16 @@ import com.example.socialpuig.MainActivity;
 import com.example.socialpuig.Post;
 import com.example.socialpuig.R;
 import com.example.socialpuig.databinding.ActivityHomeBinding;
+import com.example.socialpuig.databinding.ActivityMainBinding;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.Query;
 
 import java.text.SimpleDateFormat;
@@ -74,15 +77,59 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        binding = ActivityHomeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
+        setSupportActionBar(binding.toolbar);
 
-        //setSupportActionBar(binding.toolbar);
-        /*drawerLayout = findViewById(R.id.drawer_layout);
+        // Setup Toolbar and Drawer Layout
+        setSupportActionBar(binding.toolbar);
+        drawerLayout = findViewById(R.id.drawer_layout2);
         navigationView = findViewById(R.id.nav_view);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
+
+        // Enable Up Button for Navigation Drawer
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // Setup Navigation withNavController
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.homeActivity, R.id.maint
+        )
+                .setOpenableLayout(drawerLayout)
+                .build();
+
+        //navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        //NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        //NavigationUI.setupWithNavController(navigationView, navController);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                // Handle navigation view item clicks here.
+                int id = item.getItemId();
+
+                if (id == R.id.homeActivity) {
+                    Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                } else if (id == R.id.maint) {
+                    Intent intent = new Intent(HomeActivity.this, TiendaActivity.class);
+                    startActivity(intent);
+                } else if (id == R.id.maincarrito) {
+                    Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+                    startActivity(intent);
+                } else if (id == R.id.configuracionFragment) {
+                    // Manejar la selección de RecyclerView
+                    NavController navController = Navigation.findNavController(HomeActivity.this, R.id.nav_host_fragment_content_main);
+                    navController.navigate(R.id.configuracionFragment);
+                }
+
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
+
         // Recuperar referencias de vistas y realizar configuraciones necesarias
         // por ejemplo, configurar el RecyclerView y adaptador
         RecyclerView postsRecyclerView = findViewById(R.id.postsRecyclerView);
@@ -110,9 +157,41 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        View header = navigationView.getHeaderView(0);
+        final ImageView photo = header.findViewById(R.id.imageView);
+        final TextView name = header.findViewById(R.id.displayNameTextView);
+        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
 
+                if(user != null){
+                    if (user.getPhotoUrl()!= null) {
+                        Glide.with(HomeActivity.this)
+                                .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
+                                .circleCrop()
+                                .into(photo);
+                    }
+                    if (user.getDisplayName()!= null) {
+                        name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+                    }
+                    //email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                }
+            }
+        });
 
+        FirebaseFirestore.getInstance().setFirestoreSettings(new FirebaseFirestoreSettings.Builder()
+                .setPersistenceEnabled(false)
+                .build());
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (drawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     class PostsAdapter extends FirestoreRecyclerAdapter<Post, PostsAdapter.PostViewHolder> {

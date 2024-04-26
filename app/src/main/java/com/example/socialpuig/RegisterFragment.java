@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.socialpuig.Activity.HomeActivity;
 import com.example.socialpuig.databinding.FragmentRegisterBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -297,8 +298,9 @@ public class RegisterFragment extends Fragment {
                         try {
                             Thread.sleep(3000);
                             //dialog.hideDialog();
-                            //startActivity(new Intent(RegisterFragment.this, HomeFragment.class));
-                            navController.navigate(R.id.homeFragment);
+                            //startActivity(new Intent(RegisterFragment.this, HomeActivity.class));
+                            startActivity(new Intent(getContext(), HomeActivity.class));
+                            //navController.navigate(R.id.homeFragment);
 
                         } catch (InterruptedException e) {
                             throw new RuntimeException(e);
