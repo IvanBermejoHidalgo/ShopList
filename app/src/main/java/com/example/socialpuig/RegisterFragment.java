@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.socialpuig.Activity.HomeActivity;
+import com.example.socialpuig.Activity.TiendaActivity;
 import com.example.socialpuig.databinding.FragmentRegisterBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -144,10 +145,10 @@ public class RegisterFragment extends Fragment {
     }
 
 
-    private void guardarNombreUsuario(FirebaseUser user, String username) {
+    private void guardarNombreUsuario(FirebaseUser user, String name) {
         String newName = String.valueOf(nombre.getText());
         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                .setDisplayName(username)
+                .setDisplayName(name)
                 .build();
 
         user.updateProfile(profileUpdates)
@@ -181,7 +182,10 @@ public class RegisterFragment extends Fragment {
                         if (task.isSuccessful()) {
                             // La foto de perfil predeterminada se estableció correctamente
                             MainActivity mainActivity = (MainActivity) getActivity(); // Obtén una referencia a MainActivity
+                            TiendaActivity tiendaActivity = (TiendaActivity) getActivity(); // Obtén una referencia a MainActivity
                             if (mainActivity != null) {
+                                mainActivity.updateNavigationHeaderPhoto(defaultPhotoUri); // Llama al método de actualización en MainActivity
+                            } else if (tiendaActivity != null) {
                                 mainActivity.updateNavigationHeaderPhoto(defaultPhotoUri); // Llama al método de actualización en MainActivity
                             }
                         } else {
@@ -191,9 +195,9 @@ public class RegisterFragment extends Fragment {
                 });
     }
 
-    private void actualizarUI(FirebaseUser currentUser) {
-        if(currentUser != null){
-            String username = currentUser.getDisplayName();
+    private void actualizarUI(FirebaseUser name) {
+        if(name != null){
+            String username = name.getDisplayName();
             if (!TextUtils.isEmpty(username)) {
                 Toast.makeText(requireContext(), "Bienvenido, " + username, Toast.LENGTH_SHORT).show();
             }
@@ -275,19 +279,24 @@ public class RegisterFragment extends Fragment {
 
     private void updateUserInfo() {
         long timestamp = System.currentTimeMillis();
-
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        // Obtener los valores de los EditText correctamente
+        String email = correo_electronico.getText().toString();
+        String name = nombre.getText().toString();
+        String telefono = numero_telefono.getText().toString();
+
         //Crear el map y añadir las claves y valores
         Map<String, Object> hashMap = new HashMap<>();
         hashMap.put("uid", uid);
-        hashMap.put("email", correo_electronico);
-        hashMap.put("name", nombre);
-        hashMap.put("telefono", numero_telefono);
+        hashMap.put("email", email);
+        hashMap.put("name", name);
+        hashMap.put("telefono", telefono);
         hashMap.put("profileImage", "");
         hashMap.put("userType", "user");
         hashMap.put("timestamp", timestamp);
-        // Crear la referencia de usuarios en la base de datos(si no esta creada aún) y añadir el valor del usuario, si ya esta creada
-        // tan solo se añaden los apartados con las claves y valores del usuario que se crea.
+
+        // Crear la referencia de usuarios en la base de datos y añadir los datos del usuario
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("Users");
         ref.child(uid)
@@ -295,26 +304,23 @@ public class RegisterFragment extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        try {
-                            Thread.sleep(3000);
-                            //dialog.hideDialog();
-                            //startActivity(new Intent(RegisterFragment.this, HomeActivity.class));
-                            startActivity(new Intent(getContext(), HomeActivity.class));
-                            //navController.navigate(R.id.homeFragment);
-
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
+                        // Éxito al guardar los datos del usuario
+                        // Redirigir a la pantalla de inicio o realizar otras acciones necesarias
+                        //navController.navigate(R.id.homeFragment);
+                        FirebaseUser currentUser = mAuth.getCurrentUser();
+                        // Guardar el nombre de usuario en la base de datos
+                        guardarNombreUsuario(currentUser, nombre.getText().toString());
+                        establecerFotoPerfilPredeterminada(currentUser);
+                        // Actualizar la interfaz de usuario
+                        actualizarUI(currentUser);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        //Toast.makeText(RegisterFragment.this,"Cuenta no Creada",Toast.LENGTH_SHORT).show();
+                        // Error al guardar los datos del usuario
                         Toast.makeText(requireContext(), "Cuenta no Creada", Toast.LENGTH_SHORT).show();
-
                     }
                 });
-
     }
 }
