@@ -310,7 +310,7 @@ public class RegisterFragment extends Fragment {
                         FirebaseUser currentUser = mAuth.getCurrentUser();
                         // Guardar el nombre de usuario en la base de datos
                         guardarNombreUsuario(currentUser, nombre.getText().toString());
-                        establecerFotoPerfilPredeterminada(currentUser);
+                        //establecerFotoPerfilPredeterminada(currentUser);
                         // Actualizar la interfaz de usuario
                         actualizarUI(currentUser);
                     }
