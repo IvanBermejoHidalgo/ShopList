@@ -47,10 +47,10 @@
                     android:title="General" />
 
                 <item
-                    android:id="@+id/pilotosmotogpFragment"
+                    android:id="@+id/hombreOption"
                     android:title="Hombre" />
                 <item
-                    android:id="@+id/equiposmotogpFragment"
+                    android:id="@+id/mujerOption"
                     android:title="Mujer" />
                 <item
                     android:id="@+id/maincarrito"

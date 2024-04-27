@@ -100,6 +100,12 @@ public class TiendaActivity extends BaseActivity {
                     // Manejar la selección de RecyclerView
                     NavController navController = Navigation.findNavController(TiendaActivity.this, R.id.nav_host_fragment_content_main);
                     navController.navigate(R.id.configuracionFragment);
+                } else if (id == R.id.hombreOption) {
+                    // Lógica para obtener y mostrar productos para hombres
+                    obtenerProductosPorGenero("hombre");
+                } else if (id == R.id.mujerOption) {
+                    // Lógica para obtener y mostrar productos para mujeres
+                    obtenerProductosPorGenero("mujer");
                 }
 
 
@@ -111,6 +117,7 @@ public class TiendaActivity extends BaseActivity {
             }
 
         });
+
 
         View header = navigationView.getHeaderView(0);
         final ImageView photo = header.findViewById(R.id.imageView);
@@ -146,6 +153,61 @@ public class TiendaActivity extends BaseActivity {
         initPopular();
         bottomNavigation();
 
+    }
+
+    private void obtenerProductosPorMarca(String brand) {
+        DatabaseReference myRef = database.getReference("Items");
+        binding.progressBarPopular.setVisibility(View.VISIBLE);
+        ArrayList<ItemsDomain> items = new ArrayList<>();
+
+        myRef.orderByChild("brand").equalTo(brand).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        items.add(issue.getValue(ItemsDomain.class));
+                    }
+                    if (!items.isEmpty()) {
+                        binding.recyclerviewPopular.setLayoutManager(new GridLayoutManager(TiendaActivity.this, 2));
+                        binding.recyclerviewPopular.setAdapter(new PopularAdapter(items));
+                    }
+                    binding.progressBarPopular.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Manejar error
+            }
+        });
+    }
+
+        // Método para obtener y mostrar productos según el género seleccionado
+    private void obtenerProductosPorGenero(String genero) {
+        DatabaseReference myref = database.getReference("Items");
+        binding.progressBarPopular.setVisibility(View.VISIBLE);
+        ArrayList<ItemsDomain> items = new ArrayList<>();
+
+        myref.orderByChild("gender").equalTo(genero).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        items.add(issue.getValue(ItemsDomain.class));
+                    }
+                    if(!items.isEmpty()){
+                        binding.recyclerviewPopular.setLayoutManager(new GridLayoutManager(TiendaActivity.this,2));
+                        binding.recyclerviewPopular.setAdapter(new PopularAdapter(items));
+                    }
+                    binding.progressBarPopular.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Manejar error
+            }
+        });
     }
 
     private void bottomNavigation() {

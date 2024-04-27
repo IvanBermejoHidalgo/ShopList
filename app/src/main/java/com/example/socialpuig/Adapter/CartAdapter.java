@@ -23,6 +23,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Viewholder> {
     ArrayList<ItemsDomain> listItemSelected;
     ChangeNumberItemsListener changeNumberItemsListener;
     private ManagmentCart managmentCart;
+    private OnItemClickListener listener;
 
     public CartAdapter(ArrayList<ItemsDomain> listItemSelected, Context context, ChangeNumberItemsListener changeNumberItemsListener) {
         this.listItemSelected = listItemSelected;
@@ -31,11 +32,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.Viewholder> {
 
     }
 
-    public void clear() {
-        listItemSelected.clear();
-        notifyDataSetChanged();
+    public interface OnItemClickListener {
+        void onItemClick(String brand);
     }
 
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     @NonNull
     @Override

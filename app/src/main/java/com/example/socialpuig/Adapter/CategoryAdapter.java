@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,14 @@ import java.util.ArrayList;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Viewholder> {
     private ArrayList<CategoryDomain> items;
     private Context context;
+
+    public interface OnItemClickListener {
+        void onItemClick(String brand);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public CategoryAdapter(ArrayList<CategoryDomain> items) {
         this.items = items;
@@ -56,13 +65,27 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Viewho
     public int getItemCount() {
         return items.size();
     }
+    private OnItemClickListener listener; // Agregar esta línea
 
-    public class Viewholder extends RecyclerView.ViewHolder {
+
+    public class Viewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ViewholderCategoryBinding binding;
 
         public Viewholder(ViewholderCategoryBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            if (listener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    listener.onItemClick(items.get(position).getBrand());
+                }
+            }
+        }
+
     }
 }

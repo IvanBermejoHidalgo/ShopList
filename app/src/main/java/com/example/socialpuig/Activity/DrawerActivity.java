@@ -23,7 +23,7 @@ public class DrawerActivity extends AppCompatActivity {
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 // Top-level destinations:
-                R.id.homeActivity, R.id.equiposmotogpFragment, R.id.maint, R.id.maincarrito
+                R.id.homeActivity, R.id.maint, R.id.hombreOption, R.id.mujerOption, R.id.maincarrito
         )
                 .setOpenableLayout(binding.drawerLayout)
                 .build();

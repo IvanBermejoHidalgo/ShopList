@@ -112,8 +112,9 @@ public class MainActivity extends AppCompatActivity {
         navigationView = binding.navView; // Inicializar la referencia al NavigationView
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.homeFragment, R.id.maint,R.id.pilotosmotogpFragment,
-                R.id.equiposmotogpFragment, R.id.configuracionFragment)
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.homeFragment, R.id.maint, R.id.hombreOption, R.id.mujerOption, R.id.maincarrito
+        )
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -192,6 +193,15 @@ public class MainActivity extends AppCompatActivity {
                     // Manejar la selección de RecyclerView
                     NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment_content_main);
                     navController.navigate(R.id.configuracionFragment);
+                } else if (id == R.id.hombreOption) {
+                    // Lógica para obtener y mostrar productos para hombres
+                    Intent intent = new Intent(MainActivity.this, TiendaActivity.class);
+                    intent.putExtra("gender", "hombre");
+                    startActivity(intent);
+                    return true;
+                } else if (id == R.id.mujerOption) {
+                    // Lógica para obtener y mostrar productos para mujeres
+                    //obtenerProductosPorGenero("mujer");
                 }
 
 
