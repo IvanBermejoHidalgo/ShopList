@@ -41,7 +41,7 @@ public class Activity_Tramitando_Pedido extends AppCompatActivity {
         double precioTotalCarrito = getIntent().getDoubleExtra("precio_total", 0.0);
 
         // Configurar el precio total en el TextView
-        binding.importe.setText(String.valueOf(precioTotalCarrito));
+        //binding.importe.setText(String.valueOf(precioTotalCarrito));
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -74,8 +74,8 @@ public class Activity_Tramitando_Pedido extends AppCompatActivity {
                             camisetasTiendaList.add(modelCamisetasTienda);
                         }
 
-                        binding.importe.setText(String.valueOf(precioTotal) + " €");
-                        binding.numero.setText(""+camisetasTiendaList.size());
+                        //binding.importe.setText(String.valueOf(precioTotal) + " €");
+                        //binding.numero.setText(""+camisetasTiendaList.size());
                     }
 
                     @Override
