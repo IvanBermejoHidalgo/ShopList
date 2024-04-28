@@ -16,6 +16,7 @@ import androidx.viewpager2.widget.MarginPageTransformer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -45,7 +46,7 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import java.util.ArrayList;
 
 
-public class TiendaActivity extends BaseActivity {
+public class TiendaActivity extends BaseActivity implements CategoryAdapter.OnItemClickListener {
     private ActivityTiendaBinding binding;
     private NavController navController;
     private NavigationView navigationView;
@@ -154,8 +155,11 @@ public class TiendaActivity extends BaseActivity {
         bottomNavigation();
 
     }
-
-    private void obtenerProductosPorMarca(String brand) {
+    @Override
+    public void onItemClick(String brand) {
+        obtenerProductosPorMarca(brand);
+    }
+    public void obtenerProductosPorMarca(String brand) {
         DatabaseReference myRef = database.getReference("Items");
         binding.progressBarPopular.setVisibility(View.VISIBLE);
         ArrayList<ItemsDomain> items = new ArrayList<>();
@@ -177,9 +181,10 @@ public class TiendaActivity extends BaseActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Manejar error
+                // Handle error
             }
         });
+
     }
 
         // Método para obtener y mostrar productos según el género seleccionado
@@ -266,8 +271,15 @@ public class TiendaActivity extends BaseActivity {
                     if(!items.isEmpty()){
                         binding.recyclerViewOfficial.setLayoutManager(new LinearLayoutManager(TiendaActivity.this,
                                 LinearLayoutManager.HORIZONTAL,false));
-                        binding.recyclerViewOfficial.setAdapter(new CategoryAdapter(items));
-
+                        CategoryAdapter adapter = new CategoryAdapter(items);
+                        adapter.setOnItemClickListener(new CategoryAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(String brand) {
+                                Log.d("TiendaActivity", "Brand: " + brand);
+                                obtenerProductosPorMarca(brand);
+                            }
+                        });
+                        binding.recyclerViewOfficial.setAdapter(adapter);
                     }
                     binding.progressBarOffical.setVisibility(View.GONE);
                 }
@@ -275,7 +287,7 @@ public class TiendaActivity extends BaseActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.e("TiendaActivity", "Database error: " + error.getMessage());
             }
         });
     }

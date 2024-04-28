@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.socialpuig.Activity.TiendaActivity;
 import com.example.socialpuig.Domain.CategoryDomain;
 import com.example.socialpuig.databinding.ViewholderCategoryBinding;
 
@@ -20,7 +21,8 @@ import java.util.ArrayList;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Viewholder> {
     private ArrayList<CategoryDomain> items;
     private Context context;
-
+    private TiendaActivity tiendaActivity; // Agregar esta variable
+    private OnItemClickListener listener; // Agregar esta línea
     public interface OnItemClickListener {
         void onItemClick(String brand);
     }
@@ -51,12 +53,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Viewho
 
 
         // Manejar el clic en la imagen de la categoría
+        // Manejar el clic en la imagen de la categoría
         holder.binding.pic.setOnClickListener(view -> {
-            // Obtener la URL de la categoría seleccionada
-            String url = items.get(position).getUrl();
-            // Abrir la URL en un navegador externo
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            context.startActivity(intent);
+            if (listener != null) {
+                String brand = items.get(position).getBrand();
+                listener.onItemClick(brand);
+            }
         });
 
     }
@@ -65,7 +67,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Viewho
     public int getItemCount() {
         return items.size();
     }
-    private OnItemClickListener listener; // Agregar esta línea
+
 
 
     public class Viewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -82,7 +84,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Viewho
             if (listener != null) {
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
-                    listener.onItemClick(items.get(position).getBrand());
+                    String brand = items.get(position).getBrand();
+                    listener.onItemClick(brand);
                 }
             }
         }
