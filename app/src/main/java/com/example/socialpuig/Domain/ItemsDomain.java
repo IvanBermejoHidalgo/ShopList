@@ -14,11 +14,12 @@ public class ItemsDomain implements Serializable {
     private double rating;
     private int NumberinCart;
     private String gender;
+    private String brand;
 
     public ItemsDomain() {
     }
 
-    public ItemsDomain(String title, String id, String description, ArrayList<String> picUrl, double price, double oldPrice, int review, double rating, String gender) {
+    public ItemsDomain(String title, String id, String description, ArrayList<String> picUrl, double price, double oldPrice, int review, double rating, String gender, String brand) {
         this.title = title;
         this.id = id;
         this.description = description;
@@ -28,6 +29,7 @@ public class ItemsDomain implements Serializable {
         this.review = review;
         this.rating = rating;
         this.gender = gender;
+        this.brand = brand;
     }
 
     public String getCartId() {
@@ -116,5 +118,13 @@ public class ItemsDomain implements Serializable {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 }

@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     private NavigationView navigationView;
-
+    TiendaActivity tiendaActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -195,9 +195,13 @@ public class MainActivity extends AppCompatActivity {
                     navController.navigate(R.id.configuracionFragment);
                 } else if (id == R.id.hombreOption) {
                     // Lógica para obtener y mostrar productos para hombres
-                    Intent intent = new Intent(MainActivity.this, TiendaActivity.class);
-                    intent.putExtra("gender", "hombre");
+                    String genero = "hombre"; // Definir el género como "hombre"
+
+                    // Lanzar la actividad TiendaActivity después de filtrar los productos
+                    Intent intent = new Intent(getApplicationContext(), TiendaActivity.class);
+                    intent.putExtra("gendero", genero); // Pasar el género como extra al intent
                     startActivity(intent);
+
                     return true;
                 } else if (id == R.id.mujerOption) {
                     // Lógica para obtener y mostrar productos para mujeres

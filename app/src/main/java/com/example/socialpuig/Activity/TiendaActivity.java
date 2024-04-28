@@ -2,6 +2,7 @@ package com.example.socialpuig.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -44,11 +45,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class TiendaActivity extends BaseActivity implements CategoryAdapter.OnItemClickListener {
     private ActivityTiendaBinding binding;
     private NavController navController;
+    private List<ItemsDomain> itemList;
     private NavigationView navigationView;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
@@ -152,9 +155,10 @@ public class TiendaActivity extends BaseActivity implements CategoryAdapter.OnIt
         //initBanner();
         initCategory();
         initPopular();
-        bottomNavigation();
+        //bottomNavigation();
 
     }
+
     @Override
     public void onItemClick(String brand) {
         obtenerProductosPorMarca(brand);
@@ -181,14 +185,13 @@ public class TiendaActivity extends BaseActivity implements CategoryAdapter.OnIt
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle error
+                // Manejar error
             }
         });
-
     }
 
         // Método para obtener y mostrar productos según el género seleccionado
-    private void obtenerProductosPorGenero(String genero) {
+        public void obtenerProductosPorGenero(String genero) {
         DatabaseReference myref = database.getReference("Items");
         binding.progressBarPopular.setVisibility(View.VISIBLE);
         ArrayList<ItemsDomain> items = new ArrayList<>();
