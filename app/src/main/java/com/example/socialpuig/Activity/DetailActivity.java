@@ -177,26 +177,26 @@ public class DetailActivity extends BaseActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
-                        // Obtener la lista de nombres de listas disponibles
-                        String[] listNames = new String[(int) dataSnapshot.getChildrenCount()];
-                        int i = 0;
+                        ArrayList<String> listNames = new ArrayList<>();
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             String listName = snapshot.child("nombre").getValue(String.class);
                             if (listName != null) {
-                                listNames[i] = listName;
-                                i++;
+                                listNames.add(listName);
                             }
                         }
 
-                        builder.setItems(listNames, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                String selectedListName = listNames[which];
-                                addToSelectedList(selectedListName);
-                            }
-                        });
+                        if (!listNames.isEmpty()) {
+                            builder.setItems(listNames.toArray(new String[0]), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    String selectedListName = listNames.get(which);
+                                    addToSelectedList(selectedListName);
+                                }
+                            });
+                        } else {
+                            builder.setMessage("No hay listas disponibles");
+                        }
                     } else {
-                        // No hay listas disponibles
                         builder.setMessage("No hay listas disponibles");
                     }
 
@@ -221,6 +221,7 @@ public class DetailActivity extends BaseActivity {
             Toast.makeText(DetailActivity.this, "Usuario no autenticado", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     private void addToSelectedList(String listName) {
         // Aquí implementa la lógica para agregar el producto a la lista seleccionada
