@@ -18,6 +18,8 @@ public class ListasAdapter extends RecyclerView.Adapter<ListasAdapter.ListasView
         void onItemClick(int position);
     }
 
+
+
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }

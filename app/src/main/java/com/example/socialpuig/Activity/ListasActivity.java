@@ -61,10 +61,6 @@ public class ListasActivity extends BaseActivity {
         binding = ActivityListasBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
-
-
-
         // Setup Toolbar and Drawer Layout
         setSupportActionBar(binding.toolbar);
         drawerLayout = findViewById(R.id.listas);
@@ -83,10 +79,6 @@ public class ListasActivity extends BaseActivity {
                 .setOpenableLayout(drawerLayout)
                 .build();
 
-        //navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        //NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        //NavigationUI.setupWithNavController(navigationView, navController);
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -96,8 +88,7 @@ public class ListasActivity extends BaseActivity {
                 if (id == R.id.homeActivity) {
                     Intent intent = new Intent(ListasActivity.this, HomeActivity.class);
                     startActivity(intent);
-                } else if (id == R.id.listas) { // ID del elemento de menú "General"
-                    // Abrir la actividad de la tienda
+                } else if (id == R.id.listas) {
                     Intent intent = new Intent(ListasActivity.this, ListasActivity.class);
                     startActivity(intent);
                     return true;
@@ -108,7 +99,6 @@ public class ListasActivity extends BaseActivity {
                     Intent intent = new Intent(ListasActivity.this, CartActivity.class);
                     startActivity(intent);
                 } else if (id == R.id.configuracionFragment) {
-                    // Manejar la selección de RecyclerView
                     NavController navController = Navigation.findNavController(ListasActivity.this, R.id.nav_host_fragment_content_main);
                     navController.navigate(R.id.configuracionFragment);
                 }
@@ -118,7 +108,6 @@ public class ListasActivity extends BaseActivity {
                 return true;
             }
         });
-
 
         View header = navigationView.getHeaderView(0);
         final ImageView photo = header.findViewById(R.id.imageView);
@@ -139,7 +128,6 @@ public class ListasActivity extends BaseActivity {
                     if (user.getDisplayName()!= null) {
                         name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
                     }
-                    //email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
                 }
             }
         });
@@ -148,22 +136,15 @@ public class ListasActivity extends BaseActivity {
                 .setPersistenceEnabled(false)
                 .build());
 
-
-
-
-
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        // Inicializar RecyclerView
         recyclerView = binding.productosView;
 
-        // Configurar el botón para crear una nueva lista
         btnCrearLista = binding.btnCrearLista;
         btnCrearLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Acción cuando se hace clic en el botón para crear una nueva lista
                 crearNuevaLista();
             }
         });
@@ -228,14 +209,21 @@ public class ListasActivity extends BaseActivity {
             @Override
             public void onItemClick(int position) {
                 String tituloLista = listaTitulos.get(position);
-                Toast.makeText(ListasActivity.this, "Has seleccionado la lista: " + tituloLista, Toast.LENGTH_SHORT).show();
+                abrirContenidoLista(tituloLista);
             }
         });
     }
 
-
     private void crearNuevaLista() {
         Intent intent = new Intent(ListasActivity.this, NuevaListaActivity.class);
+        startActivity(intent);
+    }
+
+    private void abrirContenidoLista(String tituloLista) {
+        // Aquí debes implementar la navegación al contenido de la lista
+        // Por ejemplo:
+        Intent intent = new Intent(ListasActivity.this, ContenidoListaActivity.class);
+        intent.putExtra("tituloLista", tituloLista);
         startActivity(intent);
     }
 }

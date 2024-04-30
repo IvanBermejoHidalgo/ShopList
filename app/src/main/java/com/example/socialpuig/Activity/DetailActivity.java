@@ -2,6 +2,8 @@ package com.example.socialpuig.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -10,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.socialpuig.Adapter.SizeAdapter;
 import com.example.socialpuig.Adapter.SliderAdapter;
@@ -21,6 +25,13 @@ import com.example.socialpuig.Fragment.SoldFragment;
 import com.example.socialpuig.Helper.ManagmentCart;
 import com.example.socialpuig.R;
 import com.example.socialpuig.databinding.ActivityDetailBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -30,6 +41,8 @@ import java.util.List;
 public class DetailActivity extends BaseActivity {
     ActivityDetailBinding binding;
     private ItemsDomain object;
+    private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
     private int numberOrder = 1;
     private ManagmentCart managmentCart;
     private Handler slideHandle = new Handler();
@@ -42,6 +55,14 @@ public class DetailActivity extends BaseActivity {
         setContentView(binding.getRoot());
 
         managmentCart = new ManagmentCart(this);
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        binding.favBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showListSelectionDialog();
+            }
+        });
 
         getBundles();
         initBanners();
@@ -143,6 +164,67 @@ public class DetailActivity extends BaseActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
+    }
+
+    private void showListSelectionDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Seleccionar Lista");
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            DatabaseReference listasRef = mDatabase.child("Users").child(currentUser.getUid()).child("Listas");
+            listasRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        // Obtener la lista de nombres de listas disponibles
+                        String[] listNames = new String[(int) dataSnapshot.getChildrenCount()];
+                        int i = 0;
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            String listName = snapshot.child("nombre").getValue(String.class);
+                            if (listName != null) {
+                                listNames[i] = listName;
+                                i++;
+                            }
+                        }
+
+                        builder.setItems(listNames, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String selectedListName = listNames[which];
+                                addToSelectedList(selectedListName);
+                            }
+                        });
+                    } else {
+                        // No hay listas disponibles
+                        builder.setMessage("No hay listas disponibles");
+                    }
+
+                    builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(DetailActivity.this, "Error al obtener las listas: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            // El usuario no está autenticado
+            Toast.makeText(DetailActivity.this, "Usuario no autenticado", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void addToSelectedList(String listName) {
+        // Aquí implementa la lógica para agregar el producto a la lista seleccionada
+        Toast.makeText(DetailActivity.this, "Agregado a la lista: " + listName, Toast.LENGTH_SHORT).show();
     }
 
 
