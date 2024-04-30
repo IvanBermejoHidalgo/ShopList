@@ -25,6 +25,8 @@ import com.example.socialpuig.Fragment.SoldFragment;
 import com.example.socialpuig.Helper.ManagmentCart;
 import com.example.socialpuig.R;
 import com.example.socialpuig.databinding.ActivityDetailBinding;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -224,9 +226,27 @@ public class DetailActivity extends BaseActivity {
 
 
     private void addToSelectedList(String listName) {
-        // Aquí implementa la lógica para agregar el producto a la lista seleccionada
-        Toast.makeText(DetailActivity.this, "Agregado a la lista: " + listName, Toast.LENGTH_SHORT).show();
+        // Aquí implementa la lógica para agregar el producto a la lista seleccionada en Firebase
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            DatabaseReference listaSeleccionadaRef = mDatabase.child("Users").child(currentUser.getUid()).child("Listas").child(listName).child("Productos").push();
+            listaSeleccionadaRef.setValue(object)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(DetailActivity.this, "Producto agregado a la lista: " + listName, Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(DetailActivity.this, "Error al agregar producto a la lista: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
     }
+
 
 
 }
