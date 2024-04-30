@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.socialpuig.Activity.CartActivity;
+import com.example.socialpuig.Activity.ListasActivity;
 import com.example.socialpuig.Activity.RegistrarseActivity;
 import com.example.socialpuig.Activity.TiendaActivity;
 import com.google.android.material.snackbar.Snackbar;
@@ -178,13 +179,18 @@ public class MainActivity extends AppCompatActivity {
                     // Manejar la selección de Home
                     NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment_content_main);
                     navController.navigate(R.id.homeFragment);
-                } if (id == R.id.maint) { // ID del elemento de menú "General"
+                } else if (id == R.id.listas) { // ID del elemento de menú "General"
+                    // Abrir la actividad de la tienda
+                    Intent intent = new Intent(MainActivity.this, ListasActivity.class);
+                    startActivity(intent);
+                    return true;
+                } else if (id == R.id.maint) { // ID del elemento de menú "General"
                     // Abrir la actividad de la tienda
                     // Abrir la actividad de la tienda
                     Intent intent = new Intent(MainActivity.this, TiendaActivity.class);
                     startActivity(intent);
                     return true;
-                } if (id == R.id.maincarrito) { // ID del elemento de menú "General"
+                } else if (id == R.id.maincarrito) { // ID del elemento de menú "General"
                     // Abrir la actividad de la tienda
                     Intent intent = new Intent(MainActivity.this, CartActivity.class);
                     startActivity(intent);

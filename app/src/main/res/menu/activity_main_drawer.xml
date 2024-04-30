@@ -34,7 +34,7 @@
             android:id="@+id/perfilFragment"
             android:title="Perfil" />
         <item
-            android:id="@+id/listasFragment"
+            android:id="@+id/listas"
             android:title="Listas" />
 
         </menu>
