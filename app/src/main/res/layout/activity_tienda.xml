@@ -16,7 +16,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/fui_wrapper_padding_horiz"
+            android:layout_marginTop="26dp"
             android:theme="@style/Theme.SocialPuig.AppBarOverlay">
 
             <androidx.appcompat.widget.Toolbar

@@ -25,7 +25,8 @@
             android:exported="false" />
         <activity
             android:name=".Activity.ListasActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.SocialPuig2"/>
         <activity
             android:name=".Activity.DrawerActivity"
             android:exported="false" />

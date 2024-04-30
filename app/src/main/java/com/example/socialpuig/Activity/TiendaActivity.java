@@ -31,6 +31,7 @@ import com.example.socialpuig.Domain.CategoryDomain;
 import com.example.socialpuig.Domain.ItemsDomain;
 import com.example.socialpuig.Domain.SliderItems;
 import com.example.socialpuig.HomeFragment;
+import com.example.socialpuig.MainActivity;
 import com.example.socialpuig.R;
 import com.example.socialpuig.databinding.ActivityMainBinding;
 import com.example.socialpuig.databinding.ActivityTiendaBinding;
@@ -94,6 +95,11 @@ public class TiendaActivity extends BaseActivity implements CategoryAdapter.OnIt
                 if (id == R.id.homeActivity) {
                     Intent intent = new Intent(TiendaActivity.this, HomeActivity.class);
                     startActivity(intent);
+                } else if (id == R.id.listas) { // ID del elemento de menú "General"
+                    // Abrir la actividad de la tienda
+                    Intent intent = new Intent(TiendaActivity.this, ListasActivity.class);
+                    startActivity(intent);
+                    return true;
                 } else if (id == R.id.maint) {
                     Intent intent = new Intent(TiendaActivity.this, TiendaActivity.class);
                     startActivity(intent);

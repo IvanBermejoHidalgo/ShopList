@@ -1,21 +1,33 @@
 package com.example.socialpuig.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.socialpuig.Adapter.ListasAdapter;
 import com.example.socialpuig.Domain.ListaDomain;
+import com.example.socialpuig.MainActivity;
 import com.example.socialpuig.R;
 import com.example.socialpuig.databinding.ActivityListasBinding;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +36,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
 import java.util.ArrayList;
 
@@ -35,12 +49,108 @@ public class ListasActivity extends BaseActivity {
     private ListasAdapter listasAdapter;
     private ArrayList<String> listaTitulos;
     private RecyclerView recyclerView;
+    private AppBarConfiguration mAppBarConfiguration;
+
+    DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityListasBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+
+
+
+        // Setup Toolbar and Drawer Layout
+        setSupportActionBar(binding.toolbar);
+        drawerLayout = findViewById(R.id.listas);
+        navigationView = findViewById(R.id.nav_view);
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+
+        // Enable Up Button for Navigation Drawer
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // Setup Navigation withNavController
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.homeActivity, R.id.maint, R.id.hombreOption, R.id.mujerOption, R.id.maincarrito
+        )
+                .setOpenableLayout(drawerLayout)
+                .build();
+
+        //navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        //NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        //NavigationUI.setupWithNavController(navigationView, navController);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                // Handle navigation view item clicks here.
+                int id = item.getItemId();
+
+                if (id == R.id.homeActivity) {
+                    Intent intent = new Intent(ListasActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                } else if (id == R.id.listas) { // ID del elemento de menú "General"
+                    // Abrir la actividad de la tienda
+                    Intent intent = new Intent(ListasActivity.this, ListasActivity.class);
+                    startActivity(intent);
+                    return true;
+                } else if (id == R.id.maint) {
+                    Intent intent = new Intent(ListasActivity.this, TiendaActivity.class);
+                    startActivity(intent);
+                } else if (id == R.id.maincarrito) {
+                    Intent intent = new Intent(ListasActivity.this, CartActivity.class);
+                    startActivity(intent);
+                } else if (id == R.id.configuracionFragment) {
+                    // Manejar la selección de RecyclerView
+                    NavController navController = Navigation.findNavController(ListasActivity.this, R.id.nav_host_fragment_content_main);
+                    navController.navigate(R.id.configuracionFragment);
+                }
+
+                DrawerLayout drawer = findViewById(R.id.listas);
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
+
+
+        View header = navigationView.getHeaderView(0);
+        final ImageView photo = header.findViewById(R.id.imageView);
+        final TextView name = header.findViewById(R.id.displayNameTextView);
+
+        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                if(user != null){
+                    if (user.getPhotoUrl()!= null) {
+                        Glide.with(ListasActivity.this)
+                                .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
+                                .circleCrop()
+                                .into(photo);
+                    }
+                    if (user.getDisplayName()!= null) {
+                        name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+                    }
+                    //email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                }
+            }
+        });
+
+        FirebaseFirestore.getInstance().setFirestoreSettings(new FirebaseFirestoreSettings.Builder()
+                .setPersistenceEnabled(false)
+                .build());
+
+
+
+
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -58,7 +168,22 @@ public class ListasActivity extends BaseActivity {
             }
         });
 
-        cargarTitulosListas();
+        printListas();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (drawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void printListas() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            cargarTitulosListas();
+        }
     }
 
     private void cargarTitulosListas() {
@@ -66,24 +191,19 @@ public class ListasActivity extends BaseActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
             String userId = user.getUid();
-            Query query = mDatabase.child("Users").child(userId).child("Listas");
-            query.addValueEventListener(new ValueEventListener() {
+            DatabaseReference listasRef = mDatabase.child("Users").child(userId).child("Listas");
+            listasRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     listaTitulos.clear();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        // Verifica si el valor es de tipo String
-                        if (snapshot.getValue() instanceof String) {
-                            String titulo = (String) snapshot.getValue();
+                        String titulo = snapshot.child("nombre").getValue(String.class);
+                        if (titulo != null) {
                             listaTitulos.add(titulo);
-                        } else {
-                            // Si no es de tipo String, muestra un mensaje de error o maneja el caso según sea necesario
-                            Log.e("ListasActivity", "El valor no es de tipo String");
                         }
                     }
                     mostrarTitulosListas();
                 }
-
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -112,6 +232,7 @@ public class ListasActivity extends BaseActivity {
             }
         });
     }
+
 
     private void crearNuevaLista() {
         Intent intent = new Intent(ListasActivity.this, NuevaListaActivity.class);
