@@ -1,15 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/contlist"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@drawable/_bg___frame_169_shape">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.SocialPuig.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorsplash"
+            app:popupTheme="@style/Theme.SocialPuig.PopupOverlay">
+
+            <!-- ImageView para la imagen -->
+            <ImageView
+                android:id="@+id/toolbar_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/logosplash"
+                android:layout_marginLeft="330dp"
+                android:layout_gravity="top|end" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- TextView para mostrar el título de la lista -->
     <TextView
         android:id="@+id/textViewTituloLista"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:textSize="24sp"
+        android:layout_below="@id/toolbar"
         android:textStyle="bold"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:padding="16dp"/>
 
-</RelativeLayout>
+    <!-- RecyclerView para mostrar los productos asociados a la lista -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewProductos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
+
+    </FrameLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:background="@drawable/_bg__frame_169_shape2"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:layout_marginTop="1dp"
+        android:fitsSystemWindows="true"
+        app:itemTextColor="@color/grismenuletra"
+
+        app:subheaderColor="@color/white"
+        app:itemBackground="@drawable/red_bordertres"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
+
+</LinearLayout>

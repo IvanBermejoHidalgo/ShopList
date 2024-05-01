@@ -1,7 +1,10 @@
 package com.example.socialpuig.Activity;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.ui.AppBarConfiguration;
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +15,7 @@ import android.widget.Toast;
 import com.example.socialpuig.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +26,12 @@ public class NuevaListaActivity extends AppCompatActivity {
     private Button btnGuardarLista;
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
+
+    private AppBarConfiguration mAppBarConfiguration;
+
+    DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
