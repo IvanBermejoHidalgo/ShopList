@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.socialpuig.R;
@@ -43,6 +44,9 @@ public class NuevaListaActivity extends AppCompatActivity {
 
         etNombreLista = findViewById(R.id.etNombreLista);
         btnGuardarLista = findViewById(R.id.btnGuardarLista);
+
+        ImageView backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(v -> onBackPressed());
 
         btnGuardarLista.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +83,12 @@ public class NuevaListaActivity extends AppCompatActivity {
         } else {
             Toast.makeText(NuevaListaActivity.this, "Por favor, introduce un nombre para la lista", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Lógica para volver a la pantalla anterior
+        super.onBackPressed();
     }
 
 }
