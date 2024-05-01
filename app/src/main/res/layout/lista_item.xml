@@ -14,12 +14,12 @@
         android:padding="16dp"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@id/deletePostImageView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- ImageView de la papelera -->
-    <ImageView
+    <!--ImageView
         android:id="@+id/deletePostImageView"
         android:layout_width="36dp"
         android:layout_height="36dp"
@@ -30,6 +30,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/delete"/>
+        app:srcCompat="@drawable/delete"/-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
