@@ -2,81 +2,67 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/contlist"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/_bg___frame_169_shape"
+    android:id="@+id/contlist"
     android:orientation="vertical">
 
-
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="@drawable/_bg___frame_169_shape">
-
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.SocialPuig.AppBarOverlay">
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorsplash"
-            app:popupTheme="@style/Theme.SocialPuig.PopupOverlay">
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back" />
 
-            <!-- ImageView para la imagen -->
-            <ImageView
-                android:id="@+id/toolbar_image"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/logosplash"
-                android:layout_marginLeft="330dp"
-                android:layout_gravity="top|end" />
+        <TextView
+            android:id="@+id/textViewTituloLista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.appcompat.widget.Toolbar>
+        <ImageView
+            android:id="@+id/deletePostImageView"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="15dp"
+            android:layout_marginLeft="5dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/delete"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <!-- TextView para mostrar el título de la lista -->
-    <TextView
-        android:id="@+id/textViewTituloLista"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:layout_below="@id/toolbar"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:padding="16dp"/>
 
     <!-- RecyclerView para mostrar los productos asociados a la lista -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewProductos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="8dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"/>
-
-    </FrameLayout>
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:background="@drawable/_bg__frame_169_shape2"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:layout_marginTop="1dp"
-        android:fitsSystemWindows="true"
-        app:itemTextColor="@color/grismenuletra"
-
-        app:subheaderColor="@color/white"
-        app:itemBackground="@drawable/red_bordertres"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
 
 </LinearLayout>

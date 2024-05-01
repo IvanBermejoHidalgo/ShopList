@@ -1,6 +1,7 @@
 package com.example.socialpuig.Activity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -8,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,6 +35,7 @@ public class ContenidoListaActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
 
     ActivityContenidoListaBinding binding;
+    private String tituloLista;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,28 +43,31 @@ public class ContenidoListaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contenido_lista);
 
         // Obtener el título de la lista enviado desde la actividad anterior
-        String tituloLista = getIntent().getStringExtra("tituloLista");
+        tituloLista = getIntent().getStringExtra("tituloLista");
 
         // Mostrar el título de la lista en un TextView
         TextView textViewTituloLista = findViewById(R.id.textViewTituloLista);
         textViewTituloLista.setText(tituloLista);
 
         recyclerView = findViewById(R.id.recyclerViewProductos);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         // Inicializar la referencia a la base de datos Firebase
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        ImageView backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(v -> onBackPressed());
+
+        ImageView deletePostImageView = findViewById(R.id.deletePostImageView);
+        deletePostImageView.setOnClickListener(v -> eliminarLista());
 
         // Recuperar y mostrar los productos asociados a la lista seleccionada
         getProductos(tituloLista);
     }
 
     private void getProductos(String tituloLista) {
-        // Obtener el usuario actualmente autenticado
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             String userId = user.getUid();
-            // Utilizar userId en lugar de getUid() en tu consulta a Firebase
             Query query = mDatabase.child("Users").child(userId).child("Listas").orderByChild("nombre").equalTo(tituloLista);
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -103,5 +109,28 @@ public class ContenidoListaActivity extends AppCompatActivity {
         // Configurar el adaptador del RecyclerView con la lista de productos
         productosAdapter = new PopularAdapter(productos);
         recyclerView.setAdapter(productosAdapter);
+    }
+
+    private void eliminarLista() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String userId = user.getUid();
+            mDatabase.child("Users").child(userId).child("Listas").child(tituloLista).removeValue()
+                    .addOnSuccessListener(aVoid -> {
+                        // Eliminación exitosa, mostrar mensaje y volver a la pantalla anterior
+                        Toast.makeText(ContenidoListaActivity.this, "Lista eliminada exitosamente", Toast.LENGTH_SHORT).show();
+                        onBackPressed();
+                    })
+                    .addOnFailureListener(e -> {
+                        // Error al eliminar la lista, mostrar mensaje de error
+                        Toast.makeText(ContenidoListaActivity.this, "Error al eliminar la lista: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Lógica para volver a la pantalla anterior
+        super.onBackPressed();
     }
 }
