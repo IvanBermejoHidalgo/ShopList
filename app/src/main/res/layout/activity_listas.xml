@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/_bg___frame_169_shape">
 
+
         <!-- Aquí se agrega el AppBarLayout y la Toolbar -->
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
