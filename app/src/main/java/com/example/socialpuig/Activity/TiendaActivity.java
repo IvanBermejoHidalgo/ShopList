@@ -106,10 +106,9 @@ public class TiendaActivity extends BaseActivity implements CategoryAdapter.OnIt
                 } else if (id == R.id.maincarrito) {
                     Intent intent = new Intent(TiendaActivity.this, CartActivity.class);
                     startActivity(intent);
-                } else if (id == R.id.configuracionFragment) {
-                    // Manejar la selección de RecyclerView
-                    NavController navController = Navigation.findNavController(TiendaActivity.this, R.id.nav_host_fragment_content_main);
-                    navController.navigate(R.id.configuracionFragment);
+                } else if (id == R.id.ConfiguracionActivity) {
+                    Intent intent = new Intent(TiendaActivity.this, ConfiguracionActivity.class);
+                    startActivity(intent);
                 } else if (id == R.id.hombreOption) {
                     // Lógica para obtener y mostrar productos para hombres
                     obtenerProductosPorGenero("hombre");
@@ -224,13 +223,6 @@ public class TiendaActivity extends BaseActivity implements CategoryAdapter.OnIt
         });
     }
 
-    private void bottomNavigation() {
-
-        //binding.cartBtn.setOnClickListener(v -> startActivity(new Intent(TiendaActivity.this, CartActivity.class)));
-
-
-    }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (drawerToggle.onOptionsItemSelected(item)) {
@@ -300,42 +292,4 @@ public class TiendaActivity extends BaseActivity implements CategoryAdapter.OnIt
             }
         });
     }
-
-    /*private void initBanner() {
-        DatabaseReference myRef = database.getReference("Banner");
-        binding.progressBarBanner.setVisibility(View.VISIBLE);
-        ArrayList<SliderItems> items = new ArrayList<>();
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot issue : snapshot.getChildren()) {
-                        items.add(issue.getValue(SliderItems.class));
-                    }
-                    banners(items);
-                    binding.progressBarBanner.setVisibility(View.GONE);
-                }
-            }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
-    private void banners(ArrayList<SliderItems> items) {
-
-        binding.viewpagerSlider.setAdapter(new SliderAdapter(items, binding.viewpagerSlider));
-        binding.viewpagerSlider.setClipToPadding(false);
-        binding.viewpagerSlider.setClipChildren(false);
-        binding.viewpagerSlider.setOffscreenPageLimit(3);
-        binding.viewpagerSlider.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
-
-        CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
-        compositePageTransformer.addTransformer(new MarginPageTransformer(40));
-
-        binding.viewpagerSlider.setPageTransformer(compositePageTransformer);
-    }*/
 }

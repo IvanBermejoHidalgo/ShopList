@@ -34,6 +34,7 @@ import com.bumptech.glide.Glide;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.socialpuig.AppViewModel;
+import com.example.socialpuig.ConfiguracionFragment;
 import com.example.socialpuig.MainActivity;
 import com.example.socialpuig.Post;
 import com.example.socialpuig.R;
@@ -124,10 +125,9 @@ public class HomeActivity extends AppCompatActivity {
                 } else if (id == R.id.maincarrito) {
                     Intent intent = new Intent(HomeActivity.this, CartActivity.class);
                     startActivity(intent);
-                } else if (id == R.id.configuracionFragment) {
-                    // Manejar la selección de RecyclerView
-                    NavController navController = Navigation.findNavController(HomeActivity.this, R.id.nav_host_fragment_content_main);
-                    navController.navigate(R.id.configuracionFragment);
+                } else if (id == R.id.ConfiguracionActivity) {
+                    Intent intent = new Intent(HomeActivity.this, ConfiguracionActivity.class);
+                    startActivity(intent);
                 }
 
                 drawerLayout.closeDrawer(GravityCompat.START);

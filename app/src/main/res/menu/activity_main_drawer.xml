@@ -72,7 +72,7 @@
             android:title="Encuestas" /-->
 
         <item
-            android:id="@+id/configuracionFragment"
+            android:id="@+id/ConfiguracionActivity"
             android:title="CONFIGURACIÓN"
             app:showAsAction="never"
             android:layout_gravity="bottom|end"/>

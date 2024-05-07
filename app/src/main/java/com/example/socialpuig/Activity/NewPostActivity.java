@@ -69,6 +69,18 @@ public class NewPostActivity extends AppCompatActivity {
             this.mediaTipo = media.tipo;
             Glide.with(this).load(media.uri).into((ImageView) findViewById(R.id.previsualizacion));
         });
+
+        ImageView backBtn = findViewById(R.id.backBtn);
+        //backBtn.setOnClickListener(v -> onBackPressed());
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //navController.navigate(R.id.soporteFragment);
+                Intent intent = new Intent(NewPostActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void publicar() {
@@ -144,5 +156,11 @@ public class NewPostActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Lógica para volver a la pantalla anterior
+        super.onBackPressed();
     }
 }

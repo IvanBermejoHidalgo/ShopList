@@ -151,8 +151,8 @@ public class SignInFragment extends Fragment {
 
     private void actualizarUI(FirebaseUser currentUser) {
         if(currentUser != null){
-            navController.navigate(R.id.homeFragment);
-            //startActivity(new Intent(getContext(), HomeActivity.class));
+            //navController.navigate(R.id.homeFragment);
+            startActivity(new Intent(getContext(), HomeActivity.class));
         }
     }
     private void accederConGoogle() {

@@ -201,7 +201,8 @@ public class RegisterFragment extends Fragment {
             if (!TextUtils.isEmpty(username)) {
                 Toast.makeText(requireContext(), "Bienvenido, " + username, Toast.LENGTH_SHORT).show();
             }
-            navController.navigate(R.id.homeFragment);
+            //navController.navigate(R.id.homeFragment);
+            startActivity(new Intent(getContext(), HomeActivity.class));
         }
     }
 

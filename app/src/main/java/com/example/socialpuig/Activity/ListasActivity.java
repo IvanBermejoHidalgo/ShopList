@@ -98,9 +98,9 @@ public class ListasActivity extends BaseActivity {
                 } else if (id == R.id.maincarrito) {
                     Intent intent = new Intent(ListasActivity.this, CartActivity.class);
                     startActivity(intent);
-                } else if (id == R.id.configuracionFragment) {
-                    NavController navController = Navigation.findNavController(ListasActivity.this, R.id.nav_host_fragment_content_main);
-                    navController.navigate(R.id.configuracionFragment);
+                } else if (id == R.id.ConfiguracionActivity) {
+                    Intent intent = new Intent(ListasActivity.this, ConfiguracionActivity.class);
+                    startActivity(intent);
                 }
 
                 DrawerLayout drawer = findViewById(R.id.listas);

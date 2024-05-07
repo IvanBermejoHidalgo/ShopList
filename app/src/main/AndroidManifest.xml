@@ -21,13 +21,29 @@
         android:theme="@style/Theme.SocialPuig"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.ContenidoListaActivity"
+            android:name=".Activity.SoporteActivity"
             android:exported="false"
             android:theme="@style/Theme.SocialPuig2"/>
         <activity
-            android:name=".Activity.NuevaListaActivity"
+            android:name=".Activity.AjustesActivity"
             android:exported="false"
             android:theme="@style/Theme.SocialPuig2"/>
+        <activity
+            android:name=".Activity.MiCuentaActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SocialPuig2" />
+        <activity
+            android:name=".Activity.ConfiguracionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SocialPuig2" />
+        <activity
+            android:name=".Activity.ContenidoListaActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SocialPuig2" />
+        <activity
+            android:name=".Activity.NuevaListaActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SocialPuig2" />
         <activity
             android:name=".Activity.ListasActivity"
             android:exported="false"
@@ -37,17 +53,20 @@
             android:exported="false" />
         <activity
             android:name=".Activity.IniciarSesionActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.SocialPuig2" />
         <activity
             android:name=".Activity.NewPostActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.SocialPuig2"/>
         <activity
             android:name=".Activity.HomeActivity"
             android:exported="false"
             android:theme="@style/Theme.SocialPuig2" />
         <activity
             android:name=".Activity.RegistrarseActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.SocialPuig2" />
         <activity
             android:name=".Activity.ActivityPedidoFinalizado"
             android:exported="false"
