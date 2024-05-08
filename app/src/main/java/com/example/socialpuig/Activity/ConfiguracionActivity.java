@@ -140,14 +140,14 @@ public class ConfiguracionActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.configuraciondos).setOnClickListener(new View.OnClickListener() {
+        /*findViewById(R.id.configuraciondos).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //navController.navigate(R.id.ajustesFragment);
                 Intent intent = new Intent(ConfiguracionActivity.this, AjustesActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
         findViewById(R.id.configuraciontres).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,7 +161,9 @@ public class ConfiguracionActivity extends AppCompatActivity {
         findViewById(R.id.logout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navController.navigate(R.id.signOutFragment);
+                //navController.navigate(R.id.signOutFragment);
+                Intent intent = new Intent(ConfiguracionActivity.this, SignOutActivity.class);
+                startActivity(intent);
             }
         });
     }
