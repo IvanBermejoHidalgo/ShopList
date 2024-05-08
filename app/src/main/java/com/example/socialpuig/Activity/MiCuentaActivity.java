@@ -202,9 +202,8 @@ public class MiCuentaActivity extends AppCompatActivity {
         if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // El usuario otorgó el permiso, puedes realizar la acción deseada
-                openCamera(); // O cualquier otra acción que necesite el permiso
+                openCamera();
             } else {
-                // El usuario denegó el permiso, muestra un mensaje o toma otra acción
                 Toast.makeText(this, "El permiso de la cámara ha sido denegado", Toast.LENGTH_SHORT).show();
             }
         }
@@ -213,7 +212,7 @@ public class MiCuentaActivity extends AppCompatActivity {
         String newName = nameEditText.getText().toString();
 
         // Verifica si el nombre ha cambiado
-        if (!newName.equals(user.getDisplayName())) {
+        if (!newName.isEmpty() && !newName.equals(user.getDisplayName())) {
             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                     .setDisplayName(newName)
                     .build();
@@ -223,10 +222,18 @@ public class MiCuentaActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             displayNameTextView.setText(newName);
                             Toast.makeText(MiCuentaActivity.this, "Nombre actualizado correctamente", Toast.LENGTH_SHORT).show();
+
+                            // Inicia la nueva actividad después de guardar los cambios
+                            Intent intent = new Intent(MiCuentaActivity.this, ConfiguracionActivity.class);
+                            startActivity(intent);
                         } else {
                             Toast.makeText(MiCuentaActivity.this, "Error al actualizar el nombre", Toast.LENGTH_SHORT).show();
                         }
                     });
+        } else if (newName.isEmpty()) {
+            Toast.makeText(MiCuentaActivity.this, "No se ha proporcionado un nuevo nombre", Toast.LENGTH_SHORT).show();
+            //Intent intent = new Intent(MiCuentaActivity.this, ConfiguracionActivity.class);
+            //startActivity(intent);
         }
 
         // Verifica si la foto ha cambiado
@@ -244,6 +251,8 @@ public class MiCuentaActivity extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             Glide.with(MiCuentaActivity.this).load(uri).into(photoImageView);
                                             Toast.makeText(MiCuentaActivity.this, "Foto de perfil actualizada correctamente", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(MiCuentaActivity.this, ConfiguracionActivity.class);
+                                            startActivity(intent);
                                         } else {
                                             Toast.makeText(MiCuentaActivity.this, "Error al actualizar la foto de perfil", Toast.LENGTH_SHORT).show();
                                         }
