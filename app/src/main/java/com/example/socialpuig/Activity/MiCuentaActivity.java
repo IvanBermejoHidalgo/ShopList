@@ -1,14 +1,21 @@
 package com.example.socialpuig.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +34,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class MiCuentaActivity extends AppCompatActivity {
 
     ImageView photoImageView;
@@ -35,6 +47,8 @@ public class MiCuentaActivity extends AppCompatActivity {
     Button saveButton;
     ImageButton changePhotoButton;
     Uri photoUri;
+    private static final int CAMERA_PERMISSION_REQUEST_CODE = 100;
+
 
     private static final int GALLERY_REQUEST_CODE = 1;
     private static final int CAMERA_REQUEST_CODE = 2;
@@ -77,6 +91,8 @@ public class MiCuentaActivity extends AppCompatActivity {
                 }
             });
         }
+
+
     }
 
     private void showImagePickerDialog() {
@@ -98,12 +114,22 @@ public class MiCuentaActivity extends AppCompatActivity {
     private void openGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, GALLERY_REQUEST_CODE);
+
+
     }
 
     private void openCamera() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, CAMERA_REQUEST_CODE);
+        // Comprueba si se tienen permisos para acceder a la cámara
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            // Solicita permisos para acceder a la cámara si no se tienen
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_REQUEST_CODE);
+        } else {
+            // Si se tienen permisos, abre la actividad de la cámara
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intent, CAMERA_REQUEST_CODE);
+        }
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -114,14 +140,75 @@ public class MiCuentaActivity extends AppCompatActivity {
                 if (data != null) {
                     photoUri = data.getData();
                     photoImageView.setImageURI(photoUri);
+                    // Llama al método para guardar los cambios después de haber seleccionado una imagen de la galería
+                    saveChanges(FirebaseAuth.getInstance().getCurrentUser());
                 }
             } else if (requestCode == CAMERA_REQUEST_CODE) {
-                photoUri = (Uri) data.getExtras().get("data");
-                photoImageView.setImageURI(photoUri);
+                if (data != null && data.getExtras() != null && data.getExtras().get("data") != null) {
+                    Bitmap imageBitmap = (Bitmap) data.getExtras().get("data");
+                    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                    if (imageBitmap != null) {
+                        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+                        String path = MediaStore.Images.Media.insertImage(getContentResolver(), imageBitmap, "Title", null);
+                        photoUri = Uri.parse(path);
+                        photoImageView.setImageURI(photoUri);
+                        // Llama al método para guardar los cambios después de haber tomado una foto
+                        saveChanges(FirebaseAuth.getInstance().getCurrentUser());
+                    } else {
+                        Toast.makeText(this, "Error al obtener la imagen de la cámara", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(this, "Error al obtener la imagen de la cámara", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
 
+
+    // Método para guardar la imagen en el almacenamiento externo
+    private String saveImageToExternalStorage(Bitmap bitmap) {
+        // Define un directorio donde se guardará la imagen
+        File directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "MyApp");
+        // Si el directorio no existe, créalo
+        if (!directory.exists()) {
+            if (!directory.mkdirs()) {
+                return null;
+            }
+        }
+
+        // Crea un nombre de archivo único para la imagen
+        String fileName = "IMG_" + System.currentTimeMillis() + ".jpg";
+        // Crea un archivo en el directorio con el nombre de archivo generado
+        File file = new File(directory, fileName);
+
+        try {
+            // Crea un flujo de salida para escribir la imagen en el archivo
+            FileOutputStream outputStream = new FileOutputStream(file);
+            // Comprime la imagen y escribe los bytes en el flujo de salida
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            // Cierra el flujo de salida
+            outputStream.close();
+            // Devuelve la ruta completa del archivo guardado
+            return file.getAbsolutePath();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Si hay un error, devuelve null
+            return null;
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // El usuario otorgó el permiso, puedes realizar la acción deseada
+                openCamera(); // O cualquier otra acción que necesite el permiso
+            } else {
+                // El usuario denegó el permiso, muestra un mensaje o toma otra acción
+                Toast.makeText(this, "El permiso de la cámara ha sido denegado", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
     private void saveChanges(FirebaseUser user) {
         String newName = nameEditText.getText().toString();
 
