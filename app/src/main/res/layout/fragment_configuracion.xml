@@ -72,7 +72,7 @@
         android:layout_marginTop="203dp"
         android:layout_marginLeft="20dp"
         android:textSize="22dp"
-        android:text="AJUSTES" />
+        android:text="COMPRAS" />
 
     <ImageView android:id="@+id/line_11"
         android:src="@drawable/line_3"
@@ -100,7 +100,7 @@
             android:id="@+id/AJUSTES"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NOTIFICACIONES"
+            android:text="COMPRAS"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:textAlignment="center"

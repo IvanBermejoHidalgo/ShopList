@@ -65,5 +65,8 @@ dependencies {
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
     implementation ("com.google.firebase:firebase-analytics")
+    implementation ("com.itextpdf:itextg:5.5.10")
+
+
 
 }

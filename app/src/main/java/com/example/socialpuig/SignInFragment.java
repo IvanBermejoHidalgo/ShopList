@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.example.socialpuig.Activity.AdminActivity;
 import com.example.socialpuig.Activity.HomeActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -151,10 +152,16 @@ public class SignInFragment extends Fragment {
 
     private void actualizarUI(FirebaseUser currentUser) {
         if(currentUser != null){
-            //navController.navigate(R.id.homeFragment);
-            startActivity(new Intent(getContext(), HomeActivity.class));
+            if(currentUser.getEmail().equals("admin@gmail.com")){
+                // Si el usuario es admin, navega a otro fragmento
+                startActivity(new Intent(getContext(), AdminActivity.class));
+            } else {
+                // Si no es admin, navega a la actividad HomeActivity
+                startActivity(new Intent(getContext(), HomeActivity.class));
+            }
         }
     }
+
     private void accederConGoogle() {
         GoogleSignInClient googleSignInClient =
                 GoogleSignIn.getClient(requireActivity(), new

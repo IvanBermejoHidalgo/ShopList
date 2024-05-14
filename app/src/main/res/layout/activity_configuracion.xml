@@ -101,27 +101,27 @@
 
 
 
-    <!--TextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:layout_marginTop="203dp"
+        android:layout_marginTop="223dp"
         android:layout_marginLeft="20dp"
         android:textSize="22dp"
-        android:text="AJUSTES" />
+        android:text="PEDIDOS REALIZADOS" />
 
     <ImageView android:id="@+id/line_11"
         android:src="@drawable/line_3"
         android:contentDescription="line_9"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="243dp"
+        android:layout_marginTop="253dp"
         android:layout_width="370dp"
         android:layout_marginLeft="40dp"
-        android:layout_height="5dp" /-->
+        android:layout_height="5dp" />
 
 
 
-    <!--LinearLayout
+    <LinearLayout
         android:id="@+id/configuraciondos"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -131,25 +131,22 @@
         android:background="@drawable/border_blackdos"
         android:orientation="horizontal">
 
-        <!- Texto "cuenta" ->
         <TextView
             android:id="@+id/AJUSTES"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NOTIFICACIONES"
+            android:text="Pedidos"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:textAlignment="center"
             android:textColor="@color/grismenuletra"
             android:textSize="17dp" />
 
-        <!- Espacio entre el texto y la imagen ->
         <Space
             android:layout_width="16dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
 
-        <!- Imagen "imgvec" ->
         <ImageView
             android:id="@+id/imgvecdos"
             android:layout_width="30dp"
@@ -158,7 +155,7 @@
             android:scaleType="fitCenter"
             android:src="@drawable/vector_ek1" />
 
-    </LinearLayout-->
+    </LinearLayout>
 
 
 
@@ -167,7 +164,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:layout_marginTop="223dp"
+        android:layout_marginTop="350dp"
         android:layout_marginLeft="20dp"
         android:textSize="22dp"
         android:text="SOPORTE" />
@@ -176,7 +173,7 @@
         android:src="@drawable/line_3"
         android:contentDescription="line_9"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="263dp"
+        android:layout_marginTop="383dp"
         android:layout_width="370dp"
         android:layout_marginLeft="40dp"
         android:layout_height="5dp" />
@@ -188,7 +185,7 @@
         android:layout_height="45dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="293dp"
+        android:layout_marginTop="400dp"
         android:background="@drawable/border_blackdos"
         android:orientation="horizontal">
 
