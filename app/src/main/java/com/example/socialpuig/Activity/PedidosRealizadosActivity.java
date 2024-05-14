@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.socialpuig.Adapter.PedidosAdapter;
 import androidx.annotation.NonNull;
 import com.example.socialpuig.Domain.ItemsDomain;
+import com.example.socialpuig.PedidosDentroActivity;
 import com.example.socialpuig.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -68,7 +69,7 @@ public class PedidosRealizadosActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedCartId = userCarts.get(position);
-                Intent intent = new Intent(PedidosRealizadosActivity.this, CartProductsActivity.class);
+                Intent intent = new Intent(PedidosRealizadosActivity.this, PedidosDentroActivity.class);
                 intent.putExtra("cartId", selectedCartId);
                 startActivity(intent);
             }

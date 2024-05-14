@@ -1,41 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/admin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.AdminActivity">
 
-    <!-- Contenido principal -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <!-- Barra de herramientas -->
-        <!--androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:theme="?attr/actionBarTheme" /-->
-
-        <!-- ListView para mostrar los carritos -->
-        <ListView
-            android:id="@+id/listView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-             />
-
-    </RelativeLayout>
-
-    <!-- Menú lateral de navegación -->
-    <!--com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
+    <TextView
+        android:id="@+id/totalComprasTextView"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header_admin"
-        app:menu="@menu/menu_drawer" /-->
+        android:layout_height="wrap_content"
+        android:text="Total de compras: "
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
 
-</androidx.drawerlayout.widget.DrawerLayout>
+    <TextView
+        android:id="@+id/numeroUsuariosTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Número de usuarios registrados: "
+        android:textSize="18sp"
+        android:layout_below="@id/totalComprasTextView"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/mediaPedidosPorUsuarioTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Media de pedidos por usuario: "
+        android:textSize="18sp"
+        android:layout_below="@id/numeroUsuariosTextView"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
