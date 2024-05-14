@@ -140,14 +140,14 @@ public class ConfiguracionActivity extends AppCompatActivity {
             }
         });
 
-        /*findViewById(R.id.configuraciondos).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.configuraciondos).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //navController.navigate(R.id.ajustesFragment);
-                Intent intent = new Intent(ConfiguracionActivity.this, AjustesActivity.class);
+                Intent intent = new Intent(ConfiguracionActivity.this, PedidosRealizadosActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
         findViewById(R.id.configuraciontres).setOnClickListener(new View.OnClickListener() {
             @Override
