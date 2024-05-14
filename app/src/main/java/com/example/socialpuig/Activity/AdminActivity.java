@@ -41,7 +41,7 @@ public class AdminActivity extends AppCompatActivity {
 
                 // Actualizar la UI con el total de compras
                 TextView totalComprasTextView = findViewById(R.id.totalComprasTextView);
-                totalComprasTextView.setText("Total de compras: " + totalCompras);
+                totalComprasTextView.setText("Total de dinero generado: " + totalCompras+"€");
             }
 
             @Override
@@ -67,6 +67,39 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.e("AdminActivity", "Error al leer los datos de usuarios", databaseError.toException());
+            }
+        });
+
+
+        // Obtener la referencia de la base de datos para las compras
+        DatabaseReference comprasNum = FirebaseDatabase.getInstance().getReference().child("Compras");
+
+        // Escuchar los cambios en la base de datos de compras
+        comprasNum.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                /*int Compras = 0;
+                for (DataSnapshot compraSnapshot : dataSnapshot.getChildren()) {
+                    DataSnapshot totalCompraSnapshot = compraSnapshot.child("TotalCompra");
+                    if (totalCompraSnapshot.exists()) {
+                        int totalCompra = totalCompraSnapshot.getValue(Integer.class);
+                        totalCompras += totalCompra;
+                    }
+                }
+
+                // Actualizar la UI con el total de compras
+                TextView totalComprasTextView = findViewById(R.id.totalComprasTextView);
+                totalComprasTextView.setText("Total de compras: " + totalCompras);*/
+                long numpedidos = dataSnapshot.getChildrenCount();
+
+                // Actualizar la UI con el número de usuarios
+                TextView numeroUsuariosTextView = findViewById(R.id.numeroPedidosTextView);
+                numeroUsuariosTextView.setText("Número de pedidos: " + numpedidos);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("AdminActivity", "Error al leer los datos de compras", databaseError.toException());
             }
         });
     }
