@@ -1,47 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.AdminActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/totalComprasTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total de compras: "
+        android:text="Total de dinero generado: 0€"
         android:textSize="18sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"/>
+        android:padding="8dp" />
 
     <TextView
         android:id="@+id/numeroUsuariosTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Número de usuarios registrados: "
+        android:text="Número de usuarios registrados: 0"
         android:textSize="18sp"
-        android:layout_below="@id/totalComprasTextView"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"/>
+        android:padding="8dp" />
 
     <TextView
         android:id="@+id/numeroPedidosTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Media de pedidos por usuario: "
+        android:text="Número de pedidos: 0"
         android:textSize="18sp"
-        android:layout_below="@id/numeroUsuariosTextView"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"/>
+        android:padding="8dp" />
 
     <!--TextView
-        android:id="@+id/mediaPedidosPorUsuarioTextView"
+        android:id="@+id/nikeComprasTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Media de pedidos por usuario: "
+        android:text="Compras de productos Nike: 0"
         android:textSize="18sp"
-        android:layout_below="@id/numeroUsuariosTextView"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"/-->
+        android:padding="8dp" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/zaraComprasTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compras de productos Zara: 0"
+        android:textSize="18sp"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/adidasComprasTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compras de productos Adidas: 0"
+        android:textSize="18sp"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/pumaComprasTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compras de productos Puma: 0"
+        android:textSize="18sp"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/gucciComprasTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compras de productos Gucci: 0"
+        android:textSize="18sp"
+        android:padding="8dp" /-->
+
+    <TextView
+        android:id="@+id/hombreComprasTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compras de productos Hombre: 0"
+        android:textSize="18sp"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/mujerComprasTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compras de productos Mujer: 0"
+        android:textSize="18sp"
+        android:padding="8dp" />
+
+    <com.anychart.AnyChartView
+        android:id="@+id/any_chart_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingClass" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+</LinearLayout>

@@ -67,6 +67,6 @@ dependencies {
     implementation ("com.google.firebase:firebase-analytics")
     implementation ("com.itextpdf:itextg:5.5.10")
 
-
+    implementation("com.github.AnyChart:AnyChart-Android:1.1.5")
 
 }
