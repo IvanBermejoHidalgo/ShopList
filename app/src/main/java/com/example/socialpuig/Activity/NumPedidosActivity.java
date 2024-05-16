@@ -72,10 +72,10 @@ public class NumPedidosActivity extends AppCompatActivity {
 
                 pie.labels().position("outside");
 
-                pie.legend().title().enabled(true);
+                /*pie.legend().title().enabled(true);
                 pie.legend().title()
                         .text("Retail channels")
-                        .padding(0d, 0d, 10d, 0d);
+                        .padding(0d, 0d, 10d, 0d);*/
 
                 pie.legend()
                         .position("center-bottom")

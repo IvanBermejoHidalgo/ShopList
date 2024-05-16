@@ -72,14 +72,14 @@ public class UsuariosActivity extends AppCompatActivity {
 
                 pie.data(pieData);
 
-                pie.title("USUARIOS GENERADOS");
+                pie.title("USUARIOS REGISTRADOS");
 
                 pie.labels().position("outside");
 
-                pie.legend().title().enabled(true);
+                /*pie.legend().title().enabled(true);
                 pie.legend().title()
-                        .text("Género")
-                        .padding(0d, 0d, 10d, 0d);
+                        .text("Usuarios")
+                        .padding(0d, 0d, 10d, 0d);*/
 
                 pie.legend()
                         .position("center-bottom")

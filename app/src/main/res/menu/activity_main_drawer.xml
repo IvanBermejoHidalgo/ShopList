@@ -30,9 +30,9 @@
             android:title="Cerrar sesion" />
         </menu>
         </item-->
-        <item
+        <!--item
             android:id="@+id/perfilFragment"
-            android:title="Perfil" />
+            android:title="Perfil" /-->
         <item
             android:id="@+id/listas"
             android:title="Listas" />
