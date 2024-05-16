@@ -27,7 +27,7 @@
         android:id="@+id/numeroPedidosTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Número de pedidos: 0"
+        android:text="Número de pedidos"
         android:textSize="18sp"
         android:padding="8dp" />
 

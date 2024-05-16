@@ -77,6 +77,15 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
+        TextView numeroPedidosTextView = findViewById(R.id.numeroPedidosTextView);
+        numeroPedidosTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminActivity.this, NumPedidosActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         // Obtener la referencia de la base de datos para las compras
         DatabaseReference comprasRef = FirebaseDatabase.getInstance().getReference().child("Compras");
@@ -190,7 +199,7 @@ public class AdminActivity extends AppCompatActivity {
         });*/
 
         // Obtener la referencia de la base de datos para el número de pedidos
-        comprasRef.addValueEventListener(new ValueEventListener() {
+        /*comprasRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 long numPedidos = dataSnapshot.getChildrenCount();
@@ -204,7 +213,7 @@ public class AdminActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.e("AdminActivity", "Error al leer los datos de compras", databaseError.toException());
             }
-        });
+        });*/
 
 
 
