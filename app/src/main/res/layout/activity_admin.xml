@@ -1,131 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/_bg___frame_169_shape"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Header -->
+    <TextView
+        android:id="@+id/headerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resumen de ShopList"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingBottom="16dp" />
+
+    <!-- Total de dinero generado -->
     <TextView
         android:id="@+id/totalComprasTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Total de dinero generado: 0€"
         android:textSize="18sp"
-        android:padding="8dp" />
+        android:padding="8dp"
+        android:background="@android:color/white"
+        android:elevation="2dp"
+        app:layout_constraintTop_toBottomOf="@id/headerTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
 
-    <!--TextView
-        android:id="@+id/numeroUsuariosTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Número de usuarios registrados: 0"
-        android:textSize="18sp"
-        android:padding="8dp" /-->
-
+    <!-- Número de pedidos -->
     <TextView
         android:id="@+id/numeroPedidosTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Número de pedidos"
         android:textSize="18sp"
-        android:padding="8dp" />
+        android:padding="8dp"
+        android:background="@android:color/white"
+        android:elevation="2dp"
+        app:layout_constraintTop_toBottomOf="@id/totalComprasTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginTop="16dp" />
 
-    <!--TextView
-        android:id="@+id/nikeComprasTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Compras de productos Nike: 0"
-        android:textSize="18sp"
-        android:padding="8dp" />
-
-    <TextView
-        android:id="@+id/zaraComprasTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Compras de productos Zara: 0"
-        android:textSize="18sp"
-        android:padding="8dp" />
-
-    <TextView
-        android:id="@+id/adidasComprasTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Compras de productos Adidas: 0"
-        android:textSize="18sp"
-        android:padding="8dp" />
-
-    <TextView
-        android:id="@+id/pumaComprasTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Compras de productos Puma: 0"
-        android:textSize="18sp"
-        android:padding="8dp" />
-
-    <TextView
-        android:id="@+id/gucciComprasTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Compras de productos Gucci: 0"
-        android:textSize="18sp"
-        android:padding="8dp" /-->
-
-    <!--TextView
-        android:id="@+id/hombreComprasTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Compras de productos Hombre: 0"
-        android:textSize="18sp"
-        android:padding="8dp" />
-
-    <TextView
-        android:id="@+id/mujerComprasTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Compras de productos Mujer: 0"
-        android:textSize="18sp"
-        android:padding="8dp" /-->
-
-
+    <!-- Gráfico de Compras por Marca -->
     <TextView
         android:id="@+id/graficoBrandTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Gráfico de Compras por Marca"
         android:textSize="18sp"
-        android:padding="8dp" />
+        android:padding="8dp"
+        android:background="@android:color/white"
+        android:elevation="2dp"
+        app:layout_constraintTop_toBottomOf="@id/numeroPedidosTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
+    <!-- Gráfico de Compras por Género -->
     <TextView
         android:id="@+id/graficoGeneroTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Gráfico de Compras por Genero"
+        android:text="Gráfico de Compras por Género"
         android:textSize="18sp"
-        android:padding="8dp" />
+        android:padding="8dp"
+        android:background="@android:color/white"
+        android:elevation="2dp"
+        app:layout_constraintTop_toBottomOf="@id/graficoBrandTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
+    <!-- Usuarios Registrados -->
     <TextView
         android:id="@+id/UsuariosTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Usuarios Registrados en la Aplicación"
         android:textSize="18sp"
-        android:padding="8dp" />
-
-    <!--com.anychart.AnyChartView
-        android:id="@+id/any_chart_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:ignore="MissingClass" />
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
+        android:background="@android:color/white"
+        android:elevation="2dp"
+        app:layout_constraintTop_toBottomOf="@id/graficoGeneroTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        /-->
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
