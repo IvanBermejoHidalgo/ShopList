@@ -22,13 +22,22 @@
         android:theme="@style/Theme.SocialPuig"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.UsuariosActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SocialPuig2"/>
+        <activity
+            android:name=".Activity.ComprasGeneroActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SocialPuig2" />
+        <activity
+            android:name=".Activity.ComprasBrandActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SocialPuig2" />
+        <activity
             android:name=".PedidosDentroActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.PedidosRealizadosActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.ComprasActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.CartProductsActivity"
@@ -38,7 +47,8 @@
             android:exported="false" />
         <activity
             android:name=".Activity.AdminActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.SocialPuig2" />
         <activity
             android:name=".Activity.SignOutActivity"
             android:exported="false" />

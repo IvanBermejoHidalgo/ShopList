@@ -1,7 +1,9 @@
 package com.example.socialpuig.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +48,35 @@ public class AdminActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+
+
+        TextView graficoBrandTextView = findViewById(R.id.graficoBrandTextView);
+        graficoBrandTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminActivity.this, ComprasBrandActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView graficoGeneroTextView = findViewById(R.id.graficoGeneroTextView);
+        graficoGeneroTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminActivity.this, ComprasGeneroActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView UsuariosTextView = findViewById(R.id.UsuariosTextView);
+        UsuariosTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminActivity.this, UsuariosActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         // Obtener la referencia de la base de datos para las compras
         DatabaseReference comprasRef = FirebaseDatabase.getInstance().getReference().child("Compras");
@@ -99,6 +130,7 @@ public class AdminActivity extends AppCompatActivity {
                 TextView totalComprasTextView = findViewById(R.id.totalComprasTextView);
                 totalComprasTextView.setText("Total de dinero generado: " + totalCompras + "€");
 
+
                 // Actualizar la UI con el número de compras de productos "nike"
                 /*TextView nikeComprasTextView = findViewById(R.id.nikeComprasTextView);
                 nikeComprasTextView.setText("Compras de productos Nike: " + nikePurchases);
@@ -120,97 +152,14 @@ public class AdminActivity extends AppCompatActivity {
                 gucciComprasTextView.setText("Compras de productos Gucci: " + gucciPurchases);*/
 
                 // Actualizar la UI con el número de compras de productos "puma"
-                TextView hombreComprasTextView = findViewById(R.id.hombreComprasTextView);
-                hombreComprasTextView.setText("Compras de productos Hombre: " + hombrePurchases);
+                //TextView hombreComprasTextView = findViewById(R.id.hombreComprasTextView);
+                //hombreComprasTextView.setText("Compras de productos Hombre: " + hombrePurchases);
 
                 // Actualizar la UI con el número de compras de productos "puma"
-                TextView mujerComprasTextView = findViewById(R.id.mujerComprasTextView);
-                mujerComprasTextView.setText("Compras de productos Mujer: " + mujerPurchases);
+                //TextView mujerComprasTextView = findViewById(R.id.mujerComprasTextView);
+                //mujerComprasTextView.setText("Compras de productos Mujer: " + mujerPurchases);
 
 
-                // GRÁFICO DE BARRAS DE COMPRAS POR MARCAS
-
-                AnyChartView anyChartView = findViewById(R.id.any_chart_view);
-                anyChartView.setProgressBar(findViewById(R.id.progress_bar));
-
-                Cartesian cartesian = AnyChart.column();
-
-                List<DataEntry> data = new ArrayList<>();
-                data.add(new ValueDataEntry("Nike", nikePurchases));
-                data.add(new ValueDataEntry("Adidas", adidasPurchases));
-                data.add(new ValueDataEntry("Puma", pumaPurchases));
-                data.add(new ValueDataEntry("Zara", zaraPurchases));
-                data.add(new ValueDataEntry("Gucci", gucciPurchases));
-                //data.add(new ValueDataEntry("Nail polish", 143760));
-                //data.add(new ValueDataEntry("Eyebrow pencil", 170670));
-                //data.add(new ValueDataEntry("Eyeliner", 213210));
-                //data.add(new ValueDataEntry("Eyeshadows", 249980));
-
-                Column column = cartesian.column(data);
-
-                column.tooltip()
-                        .titleFormat("{%X}")
-                        .position(Position.CENTER_BOTTOM)
-                        .anchor(Anchor.CENTER_BOTTOM)
-                        .offsetX(0d)
-                        .offsetY(5d)
-                        .format("{%Value}{groupsSeparator: }");
-
-                cartesian.animation(true);
-                cartesian.title("VENTAS POR MARCAS");
-
-                cartesian.yScale().minimum(0d);
-
-                cartesian.yAxis(0).labels().format("{%Value}{groupsSeparator: }");
-
-                cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
-                cartesian.interactivity().hoverMode(HoverMode.BY_X);
-
-                cartesian.xAxis(0).title("Product");
-                cartesian.yAxis(0).title("Revenue");
-
-                anyChartView.setChart(cartesian);
-
-
-
-
-
-
-                // GRÁFICO DE ESFERA (PIE CHART) PARA COMPRAS POR GÉNERO
-
-                /*AnyChartView pieChartView2 = findViewById(R.id.pie_chart_view);
-                pieChartView2.setProgressBar(findViewById(R.id.progress_bar));
-
-                Pie pie = AnyChart.pie();
-
-                pie.setOnClickListener(new ListenersInterface.OnClickListener(new String[]{"x", "value"}) {
-                    @Override
-                    public void onClick(Event event) {
-                        Toast.makeText(AdminActivity.this, event.getData().get("x") + ":" + event.getData().get("value"), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                List<DataEntry> pieData = new ArrayList<>();
-                pieData.add(new ValueDataEntry("Hombre", hombrePurchases));
-                pieData.add(new ValueDataEntry("Mujer", mujerPurchases));
-
-                pie.data(pieData);
-
-                pie.title("VENTAS POR GÉNERO");
-
-                pie.labels().position("outside");
-
-                pie.legend().title().enabled(true);
-                pie.legend().title()
-                        .text("Género")
-                        .padding(0d, 0d, 10d, 0d);
-
-                pie.legend()
-                        .position("center-bottom")
-                        .itemsLayout(LegendLayout.HORIZONTAL)
-                        .align(Align.CENTER);
-
-                pieChartView2.setChart(pie);*/
 
             }
 
@@ -221,10 +170,10 @@ public class AdminActivity extends AppCompatActivity {
         });
 
         // Obtener la referencia de la base de datos para los usuarios
-        DatabaseReference usuariosRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        //DatabaseReference usuariosRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
         // Escuchar los cambios en la base de datos de usuarios
-        usuariosRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        /*usuariosRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 long numeroUsuarios = dataSnapshot.getChildrenCount();
@@ -238,7 +187,7 @@ public class AdminActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.e("AdminActivity", "Error al leer los datos de usuarios", databaseError.toException());
             }
-        });
+        });*/
 
         // Obtener la referencia de la base de datos para el número de pedidos
         comprasRef.addValueEventListener(new ValueEventListener() {
@@ -256,6 +205,7 @@ public class AdminActivity extends AppCompatActivity {
                 Log.e("AdminActivity", "Error al leer los datos de compras", databaseError.toException());
             }
         });
+
 
 
 
