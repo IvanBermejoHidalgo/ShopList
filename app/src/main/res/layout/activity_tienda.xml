@@ -211,7 +211,38 @@
                         android:textSize="18sp"
 
                         android:textStyle="bold" />
+                    <!-- Añadimos los botones de género -->
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
+                        <RadioButton
+                            android:id="@+id/radioButtonMale"
+                            android:buttonTint="@color/colorsplash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hombre"
+                            android:textColor="@color/white" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonFemale"
+                            android:layout_width="wrap_content"
+                            android:buttonTint="@color/colorsplash"
+                            android:layout_height="wrap_content"
+                            android:text="Mujer"
+                            android:textColor="@color/white" />
+                        <RadioButton
+                            android:id="@+id/radioButtonTodos"
+                            android:layout_width="wrap_content"
+                            android:buttonTint="@color/colorsplash"
+                            android:checked="true"
+                            android:layout_height="wrap_content"
+                            android:text="Todos"
+                            android:textColor="@color/white" />
+
+                    </RadioGroup>
                     <!--TextView
                         android:id="@+id/textView4"
                         android:layout_width="wrap_content"
@@ -256,7 +287,7 @@
         </RelativeLayout-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="220dp"
+            android:layout_marginTop="270dp"
             android:layout_height="match_parent">
 
             <ProgressBar

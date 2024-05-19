@@ -96,14 +96,10 @@ public class HomeActivity extends AppCompatActivity {
 
         // Setup Navigation withNavController
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.homeActivity, R.id.maint, R.id.hombreOption, R.id.mujerOption, R.id.maincarrito
+                R.id.homeActivity, R.id.maint, R.id.maincarrito
         )
                 .setOpenableLayout(drawerLayout)
                 .build();
-
-        //navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        //NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        //NavigationUI.setupWithNavController(navigationView, navController);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

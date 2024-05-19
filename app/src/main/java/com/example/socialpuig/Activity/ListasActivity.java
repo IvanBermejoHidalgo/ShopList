@@ -74,7 +74,7 @@ public class ListasActivity extends BaseActivity {
 
         // Setup Navigation withNavController
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.homeActivity, R.id.maint, R.id.hombreOption, R.id.mujerOption, R.id.maincarrito
+                R.id.homeActivity, R.id.maint, R.id.maincarrito
         )
                 .setOpenableLayout(drawerLayout)
                 .build();

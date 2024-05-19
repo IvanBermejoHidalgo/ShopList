@@ -20,7 +20,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -57,6 +59,8 @@ public class TiendaActivity extends BaseActivity implements CategoryAdapter.OnIt
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
     private AppBarConfiguration mAppBarConfiguration;
+    private String generoSeleccionado = ""; // Puede ser "hombre", "mujer", o ""
+    private String marcaSeleccionada = ""; // Almacena la marca seleccionada
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,12 +113,6 @@ public class TiendaActivity extends BaseActivity implements CategoryAdapter.OnIt
                 } else if (id == R.id.ConfiguracionActivity) {
                     Intent intent = new Intent(TiendaActivity.this, ConfiguracionActivity.class);
                     startActivity(intent);
-                } else if (id == R.id.hombreOption) {
-                    // Lógica para obtener y mostrar productos para hombres
-                    obtenerProductosPorGenero("hombre");
-                } else if (id == R.id.mujerOption) {
-                    // Lógica para obtener y mostrar productos para mujeres
-                    obtenerProductosPorGenero("mujer");
                 }
 
 
@@ -125,6 +123,41 @@ public class TiendaActivity extends BaseActivity implements CategoryAdapter.OnIt
                 return true;
             }
 
+        });
+
+
+
+        RadioButton radioButtonMale = findViewById(R.id.radioButtonMale);
+        RadioButton radioButtonFemale = findViewById(R.id.radioButtonFemale);
+
+        radioButtonMale.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    obtenerProductosPorGenero("hombre");
+                }
+            }
+        });
+
+        radioButtonFemale.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    obtenerProductosPorGenero("mujer");
+                }
+            }
+        });
+
+        RadioButton radioButtonTodos = findViewById(R.id.radioButtonTodos);
+
+        radioButtonTodos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // Aquí llamas a la función para obtener y mostrar todos los productos
+                    obtenerTodosLosProductos();
+                }
+            }
         });
 
 
@@ -292,4 +325,32 @@ public class TiendaActivity extends BaseActivity implements CategoryAdapter.OnIt
             }
         });
     }
+
+    public void obtenerTodosLosProductos() {
+        DatabaseReference myref = database.getReference("Items");
+        binding.progressBarPopular.setVisibility(View.VISIBLE);
+        ArrayList<ItemsDomain> items = new ArrayList<>();
+
+        myref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        items.add(issue.getValue(ItemsDomain.class));
+                    }
+                    if(!items.isEmpty()){
+                        binding.recyclerviewPopular.setLayoutManager(new GridLayoutManager(TiendaActivity.this,2));
+                        binding.recyclerviewPopular.setAdapter(new PopularAdapter(items));
+                    }
+                    binding.progressBarPopular.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Manejar error
+            }
+        });
+    }
+
 }

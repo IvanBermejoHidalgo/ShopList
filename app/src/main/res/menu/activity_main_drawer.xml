@@ -46,12 +46,12 @@
                     android:id="@+id/maint"
                     android:title="General" />
 
-                <item
+                <!--item
                     android:id="@+id/hombreOption"
                     android:title="Hombre" />
                 <item
                     android:id="@+id/mujerOption"
-                    android:title="Mujer" />
+                    android:title="Mujer" /-->
                 <item
                     android:id="@+id/maincarrito"
                     android:title="Cesta" />

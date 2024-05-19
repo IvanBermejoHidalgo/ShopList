@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     private NavigationView navigationView;
-    TiendaActivity tiendaActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,16 +52,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        //getSupportActionBar().hide();
-
-
-       /* binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
         Button btnIniciaSesion = findViewById(R.id.btnIniciaSesin);
 
@@ -114,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.homeFragment, R.id.maint, R.id.hombreOption, R.id.mujerOption, R.id.maincarrito
+                R.id.homeFragment, R.id.maint, R.id.maincarrito
         )
                 .setOpenableLayout(drawer)
                 .build();
@@ -199,22 +188,7 @@ public class MainActivity extends AppCompatActivity {
                     // Manejar la selección de RecyclerView
                     NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment_content_main);
                     navController.navigate(R.id.configuracionFragment);
-                } else if (id == R.id.hombreOption) {
-                    // Lógica para obtener y mostrar productos para hombres
-                    String genero = "hombre"; // Definir el género como "hombre"
-
-                    // Lanzar la actividad TiendaActivity después de filtrar los productos
-                    Intent intent = new Intent(getApplicationContext(), TiendaActivity.class);
-                    intent.putExtra("gendero", genero); // Pasar el género como extra al intent
-                    startActivity(intent);
-
-                    return true;
-                } else if (id == R.id.mujerOption) {
-                    // Lógica para obtener y mostrar productos para mujeres
-                    //obtenerProductosPorGenero("mujer");
                 }
-
-
 
 
                 DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -223,9 +197,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-
-
-
 
     }
 
