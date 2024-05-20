@@ -1,14 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context="Activity.CartListActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout3"
+    android:background="@drawable/_bg___frame_169_shape"
+    tools:context=".Activity.PedidosRealizadosActivity">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@drawable/_bg___frame_169_shape">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.SocialPuig.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorsplash"
+            app:popupTheme="@style/Theme.SocialPuig.PopupOverlay">
+
+            <!-- ImageView para la imagen -->
+            <ImageView
+                android:id="@+id/toolbar_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/logosplash"
+                android:layout_marginLeft="330dp"
+                android:layout_gravity="top|end" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/pedidosCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Número de pedidos: 0"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="8dp"/>
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/pedidosCountTextView"
+        android:layout_marginTop="16dp" />
+        </RelativeLayout>
 
-</RelativeLayout>
+    </FrameLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:background="@drawable/_bg__frame_169_shape2"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:layout_marginTop="1dp"
+        android:fitsSystemWindows="true"
+        app:itemTextColor="@color/grismenuletra"
+
+        app:subheaderColor="@color/white"
+        app:itemBackground="@drawable/red_bordertres"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

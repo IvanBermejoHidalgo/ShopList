@@ -1,25 +1,18 @@
 package com.example.socialpuig.Activity;
 
-import static java.security.AccessController.getContext;
-
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.content.Context;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -28,19 +21,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.socialpuig.AppViewModel;
-import com.example.socialpuig.ConfiguracionFragment;
-import com.example.socialpuig.MainActivity;
-import com.example.socialpuig.PedidosDentroActivity;
 import com.example.socialpuig.Post;
 import com.example.socialpuig.R;
 import com.example.socialpuig.databinding.ActivityHomeBinding;
-import com.example.socialpuig.databinding.ActivityMainBinding;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

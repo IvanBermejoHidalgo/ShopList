@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.socialpuig.Domain.ItemsDomain;
+import com.example.socialpuig.Helper.ManagmentCart;
 import com.example.socialpuig.R;
 import com.example.socialpuig.databinding.ActivityTramitandoPedidoBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,7 +47,10 @@ public class Activity_Tramitando_Pedido extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(Activity_Tramitando_Pedido.this, ActivityPedidoFinalizado.class));
+                ManagmentCart managmentCart = new ManagmentCart(Activity_Tramitando_Pedido.this);
+                managmentCart.clearCart();
+
+                startActivity(new Intent(Activity_Tramitando_Pedido.this, TiendaActivity.class));
             }
         }, 5000 );
 
