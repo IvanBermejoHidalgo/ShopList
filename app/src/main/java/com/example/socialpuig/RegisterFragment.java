@@ -180,16 +180,10 @@ public class RegisterFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            // La foto de perfil predeterminada se estableció correctamente
-                            MainActivity mainActivity = (MainActivity) getActivity(); // Obtén una referencia a MainActivity
-                            TiendaActivity tiendaActivity = (TiendaActivity) getActivity(); // Obtén una referencia a MainActivity
+                            MainActivity mainActivity = (MainActivity) getActivity();
                             if (mainActivity != null) {
-                                mainActivity.updateNavigationHeaderPhoto(defaultPhotoUri); // Llama al método de actualización en MainActivity
-                            } else if (tiendaActivity != null) {
-                                mainActivity.updateNavigationHeaderPhoto(defaultPhotoUri); // Llama al método de actualización en MainActivity
+                                mainActivity.updateNavigationHeaderPhoto(defaultPhotoUri);
                             }
-                        } else {
-                            // Error al establecer la foto de perfil predeterminada
                         }
                     }
                 });
@@ -265,6 +259,10 @@ public class RegisterFragment extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
+                        FirebaseUser currentUser = mAuth.getCurrentUser();
+                        // Guardar el nombre de usuario en la base de datos
+                        guardarNombreUsuario(currentUser, nombre.getText().toString());
+                        establecerFotoPerfilPredeterminada(currentUser);
                         updateUserInfo();
                     }
                 })
@@ -310,8 +308,8 @@ public class RegisterFragment extends Fragment {
                         //navController.navigate(R.id.homeFragment);
                         FirebaseUser currentUser = mAuth.getCurrentUser();
                         // Guardar el nombre de usuario en la base de datos
-                        guardarNombreUsuario(currentUser, nombre.getText().toString());
-                        //establecerFotoPerfilPredeterminada(currentUser);
+                        //guardarNombreUsuario(currentUser, nombre.getText().toString());
+                        establecerFotoPerfilPredeterminada(currentUser);
                         // Actualizar la interfaz de usuario
                         actualizarUI(currentUser);
                     }
