@@ -30,6 +30,10 @@ import com.example.socialpuig.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.WriteBatch;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -211,55 +215,76 @@ public class MiCuentaActivity extends AppCompatActivity {
     private void saveChanges(FirebaseUser user) {
         String newName = nameEditText.getText().toString();
 
-        // Verifica si el nombre ha cambiado
-        if (!newName.isEmpty() && !newName.equals(user.getDisplayName())) {
-            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                    .setDisplayName(newName)
-                    .build();
+        boolean isNameChanged = !newName.isEmpty() && !newName.equals(user.getDisplayName());
+        boolean isPhotoChanged = photoUri != null;
 
-            user.updateProfile(profileUpdates)
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            displayNameTextView.setText(newName);
-                            Toast.makeText(MiCuentaActivity.this, "Nombre actualizado correctamente", Toast.LENGTH_SHORT).show();
+        if (isNameChanged || isPhotoChanged) {
+            UserProfileChangeRequest.Builder profileUpdatesBuilder = new UserProfileChangeRequest.Builder();
 
-                            // Inicia la nueva actividad después de guardar los cambios
-                            Intent intent = new Intent(MiCuentaActivity.this, ConfiguracionActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(MiCuentaActivity.this, "Error al actualizar el nombre", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        } else if (newName.isEmpty()) {
-            Toast.makeText(MiCuentaActivity.this, "No se ha proporcionado un nuevo nombre", Toast.LENGTH_SHORT).show();
-            //Intent intent = new Intent(MiCuentaActivity.this, ConfiguracionActivity.class);
-            //startActivity(intent);
-        }
+            if (isNameChanged) {
+                profileUpdatesBuilder.setDisplayName(newName);
+            }
 
-        // Verifica si la foto ha cambiado
-        if (photoUri != null) {
-            StorageReference photoRef = FirebaseStorage.getInstance().getReference().child("profile_photos/" + user.getUid());
-            photoRef.putFile(photoUri)
-                    .addOnSuccessListener(taskSnapshot -> {
-                        photoRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                    .setPhotoUri(uri)
-                                    .build();
-
-                            user.updateProfile(profileUpdates)
-                                    .addOnCompleteListener(task -> {
-                                        if (task.isSuccessful()) {
-                                            Glide.with(MiCuentaActivity.this).load(uri).into(photoImageView);
-                                            Toast.makeText(MiCuentaActivity.this, "Foto de perfil actualizada correctamente", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(MiCuentaActivity.this, ConfiguracionActivity.class);
-                                            startActivity(intent);
-                                        } else {
-                                            Toast.makeText(MiCuentaActivity.this, "Error al actualizar la foto de perfil", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
+            if (isPhotoChanged) {
+                StorageReference photoRef = FirebaseStorage.getInstance().getReference().child("profile_photos/" + user.getUid());
+                photoRef.putFile(photoUri)
+                        .addOnSuccessListener(taskSnapshot -> {
+                            photoRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                                profileUpdatesBuilder.setPhotoUri(uri);
+                                updateProfile(user, profileUpdatesBuilder.build(), isNameChanged, newName, uri.toString());
+                            });
                         });
-                    });
+            } else {
+                updateProfile(user, profileUpdatesBuilder.build(), isNameChanged, newName, null);
+            }
+        } else {
+            Toast.makeText(MiCuentaActivity.this, "No se realizaron cambios", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void updateProfile(FirebaseUser user, UserProfileChangeRequest profileUpdates, boolean isNameChanged, String newName, String photoUrl) {
+        user.updateProfile(profileUpdates)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        if (isNameChanged) {
+                            displayNameTextView.setText(newName);
+                            updatePosts(user.getUid(), newName, photoUrl);
+                        } else if (photoUrl != null) {
+                            updatePosts(user.getUid(), null, photoUrl);
+                        }
+                        Intent intent = new Intent(MiCuentaActivity.this, ConfiguracionActivity.class);
+                        startActivity(intent);
+                        Toast.makeText(MiCuentaActivity.this, "Perfil actualizado correctamente", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MiCuentaActivity.this, "Error al actualizar el perfil", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void updatePosts(String userId, String newName, String newPhotoUrl) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Query postsQuery = db.collection("posts").whereEqualTo("uid", userId);
+
+        postsQuery.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                WriteBatch batch = db.batch();
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    if (newName != null) {
+                        batch.update(document.getReference(), "author", newName);
+                    }
+                    if (newPhotoUrl != null) {
+                        batch.update(document.getReference(), "authorPhotoUrl", newPhotoUrl);
+                    }
+                }
+                batch.commit().addOnCompleteListener(batchTask -> {
+                    if (batchTask.isSuccessful()) {
+                        Toast.makeText(MiCuentaActivity.this, "Posts actualizados correctamente", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MiCuentaActivity.this, "Error al actualizar los posts", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
 
     @Override
