@@ -36,6 +36,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.socialpuig.AppViewModel;
 import com.example.socialpuig.ConfiguracionFragment;
 import com.example.socialpuig.MainActivity;
+import com.example.socialpuig.PedidosDentroActivity;
 import com.example.socialpuig.Post;
 import com.example.socialpuig.R;
 import com.example.socialpuig.databinding.ActivityHomeBinding;
@@ -256,10 +257,13 @@ public class HomeActivity extends AppCompatActivity {
                 } else {
                     Glide.with(context).load(post.mediaUrl).centerCrop().into(holder.mediaImageView);
                 }
-                holder.mediaImageView.setOnClickListener(view -> {
+                /*holder.mediaImageView.setOnClickListener(view -> {
                     appViewModel.postSeleccionado.setValue(post);
-                    navController.navigate(R.id.mediaFragment);
-                });
+                    //navController.navigate(R.id.mediaFragment);
+                    //Intent intent = new Intent(HomeActivity.this, MediaActivity.class);
+                    //startActivity(intent);
+
+                });*/
             } else {
                 holder.mediaImageView.setVisibility(View.GONE);
             }
