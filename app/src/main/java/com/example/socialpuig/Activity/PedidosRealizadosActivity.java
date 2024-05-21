@@ -188,6 +188,7 @@ public class PedidosRealizadosActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         recyclerView = binding.productosView;
+        pedidosCountTextView = findViewById(R.id.pedidosCountTextView);
 
 
         printListas();
@@ -219,12 +220,16 @@ public class PedidosRealizadosActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     listaTitulos.clear();
+                    int pedidosCount = 0;
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         String cartId = snapshot.getKey();
                         if (cartId != null) {
                             listaTitulos.add(cartId);
+                            pedidosCount++;
+
                         }
                     }
+                    pedidosCountTextView.setText("Número de pedidos: " + pedidosCount);
                     mostrarTitulosListas();
                 }
 
