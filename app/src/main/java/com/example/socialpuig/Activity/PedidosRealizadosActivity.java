@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -17,9 +18,15 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.ui.AppBarConfiguration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.socialpuig.Adapter.ListasAdapter;
+import com.example.socialpuig.Adapter.PedidosRealizadosAdapter;
 import com.example.socialpuig.AppViewModel;
+import com.example.socialpuig.Domain.ListaDomain;
+import com.example.socialpuig.Domain.PedidosRealizadosDomain;
 import com.example.socialpuig.R;
 import com.example.socialpuig.databinding.ActivityHomeBinding;
 import com.example.socialpuig.databinding.ActivityPedidosRealizadosBinding;
@@ -43,13 +50,17 @@ public class PedidosRealizadosActivity extends AppCompatActivity {
     private List<String> userCarts;
     private TextView pedidosCountTextView;
     NavController navController;
+    private FirebaseAuth mAuth;
     public AppViewModel appViewModel;
     private AppBarConfiguration mAppBarConfiguration;
-
+    private DatabaseReference mDatabase;
+    private PedidosRealizadosAdapter listasAdapter;
     DrawerLayout drawerLayout;
     private NavigationView navigationView;
     ActionBarDrawerToggle drawerToggle;
+    private ArrayList<String> listaTitulos;
     ActivityPedidosRealizadosBinding binding;
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,34 +89,6 @@ public class PedidosRealizadosActivity extends AppCompatActivity {
                 .setOpenableLayout(drawerLayout)
                 .build();
 
-
-
-        View header = navigationView.getHeaderView(0);
-        final ImageView photo = header.findViewById(R.id.imageView);
-        final TextView name = header.findViewById(R.id.displayNameTextView);
-        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-
-                if(user != null){
-                    if (user.getPhotoUrl()!= null) {
-                        Glide.with(PedidosRealizadosActivity.this)
-                                .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
-                                .circleCrop()
-                                .into(photo);
-                    }
-                    if (user.getDisplayName()!= null) {
-                        name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-                    }
-                    //email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-                }
-            }
-        });
-
-        FirebaseFirestore.getInstance().setFirestoreSettings(new FirebaseFirestoreSettings.Builder()
-                .setPersistenceEnabled(false)
-                .build());
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -136,14 +119,14 @@ public class PedidosRealizadosActivity extends AppCompatActivity {
             }
         });
 
-        listView = findViewById(R.id.listView);
-        pedidosCountTextView = findViewById(R.id.pedidosCountTextView);
-        userCarts = new ArrayList<>();
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, userCarts);
-        listView.setAdapter(arrayAdapter);
+        //listView = findViewById(R.id.listView);
+        //pedidosCountTextView = findViewById(R.id.pedidosCountTextView);
+        //userCarts = new ArrayList<>();
+        //arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, userCarts);
+        //listView.setAdapter(arrayAdapter);
 
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference userCartRef = FirebaseDatabase.getInstance().getReference().child("Users").child(userId).child("Cart");
+        //String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        /*DatabaseReference userCartRef = FirebaseDatabase.getInstance().getReference().child("Users").child(userId).child("Cart");
 
         userCartRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -162,9 +145,9 @@ public class PedidosRealizadosActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Manejar el error
             }
-        });
+        });*/
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedCartId = userCarts.get(position);
@@ -172,7 +155,42 @@ public class PedidosRealizadosActivity extends AppCompatActivity {
                 intent.putExtra("cartId", selectedCartId);
                 startActivity(intent);
             }
+        });*/
+
+        View header = navigationView.getHeaderView(0);
+        final ImageView photo = header.findViewById(R.id.imageView);
+        final TextView name = header.findViewById(R.id.displayNameTextView);
+
+        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                if(user != null){
+                    if (user.getPhotoUrl()!= null) {
+                        Glide.with(PedidosRealizadosActivity.this)
+                                .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
+                                .circleCrop()
+                                .into(photo);
+                    }
+                    if (user.getDisplayName()!= null) {
+                        name.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+                    }
+                }
+            }
         });
+
+        FirebaseFirestore.getInstance().setFirestoreSettings(new FirebaseFirestoreSettings.Builder()
+                .setPersistenceEnabled(false)
+                .build());
+
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        recyclerView = binding.productosView;
+
+
+        printListas();
     }
 
     @Override
@@ -182,4 +200,68 @@ public class PedidosRealizadosActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    private void printListas() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            cargarTitulosListas();
+        }
+    }
+
+    private void cargarTitulosListas() {
+        listaTitulos = new ArrayList<>();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            String userId = user.getUid();
+            DatabaseReference cartsRef = mDatabase.child("Users").child(userId).child("Cart");
+            cartsRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    listaTitulos.clear();
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        String cartId = snapshot.getKey();
+                        if (cartId != null) {
+                            listaTitulos.add(cartId);
+                        }
+                    }
+                    mostrarTitulosListas();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(PedidosRealizadosActivity.this, "Error al cargar los títulos de los pedidos realizados: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+
+    private void mostrarTitulosListas() {
+        ArrayList<PedidosRealizadosDomain> listaDeListas = new ArrayList<>();
+        for (String cartId : listaTitulos) {
+            PedidosRealizadosDomain lista = new PedidosRealizadosDomain(cartId);
+            listaDeListas.add(lista);
+        }
+
+        listasAdapter = new PedidosRealizadosAdapter(listaDeListas);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(listasAdapter);
+
+        listasAdapter.setOnItemClickListener(new PedidosRealizadosAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                String cartId = listaTitulos.get(position);
+                abrirContenidoLista(cartId);
+            }
+        });
+    }
+
+    private void abrirContenidoLista(String tituloLista) {
+        // Aquí debes implementar la navegación al contenido de la lista
+        // Por ejemplo:
+        Intent intent = new Intent(PedidosRealizadosActivity.this, PedidosDentroActivity.class);
+        intent.putExtra("tituloLista", tituloLista);
+        startActivity(intent);
+    }
+
 }
