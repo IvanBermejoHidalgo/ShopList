@@ -41,15 +41,28 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <!-- Aquí se agrega el contenido principal -->
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_marginTop="?attr/actionBarSize"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/textViewProductosTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Listas"
+                android:layout_marginStart="10dp"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:textColor="@android:color/white" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/productosView"
                 android:layout_below="@id/toolbar"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="60dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"

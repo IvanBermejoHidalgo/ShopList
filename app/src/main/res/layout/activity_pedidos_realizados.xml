@@ -45,11 +45,13 @@
             android:layout_width="match_parent"
             android:layout_marginTop="?attr/actionBarSize"
             android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/pedidosCountTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
+                android:layout_marginTop="10dp"
                 android:text="Número de pedidos: 0"
                 android:textSize="18sp"
                 android:layout_alignParentTop="true"
@@ -65,7 +67,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/productosView"
                 android:layout_below="@id/toolbar"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="36dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
