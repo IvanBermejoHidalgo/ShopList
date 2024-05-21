@@ -70,10 +70,10 @@ public class SignInFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
 
-        emailEditText = view.findViewById(R.id.emailEditText);
+        //emailEditText = view.findViewById(R.id.emailEditText);
         correo_electronico = view.findViewById(R.id.correo_electronico);
         contraseña = view.findViewById(R.id.contraseña);
-        passwordEditText = view.findViewById(R.id.passwordEditText);
+        //passwordEditText = view.findViewById(R.id.passwordEditText);
         emailSignInButton = view.findViewById(R.id.emailSignInButton);
         signInForm = view.findViewById(R.id.signInForm);
         signInProgressBar = view.findViewById(R.id.signInProgressBar);

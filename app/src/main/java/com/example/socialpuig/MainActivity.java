@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.socialpuig.Activity.CartActivity;
+import com.example.socialpuig.Activity.IniciarSesionActivity;
 import com.example.socialpuig.Activity.ListasActivity;
 import com.example.socialpuig.Activity.RegistrarseActivity;
 import com.example.socialpuig.Activity.TiendaActivity;
@@ -59,10 +60,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Obtener el NavController desde la actividad que contiene esta vista
-                NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment_content_main);
+                //NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment_content_main);
 
                 // Navegar a otra pantalla cuando se haga clic en el botón
-                navController.navigate(R.id.action_logSignFragment_to_signInFragment);
+                //navController.navigate(R.id.action_logSignFragment_to_signInFragment);
+                Intent intent = new Intent(MainActivity.this, IniciarSesionActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -72,12 +75,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Obtener el NavController desde la actividad que contiene esta vista
-                NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment_content_main);
+                //NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment_content_main);
 
                 // Navegar a otra pantalla cuando se haga clic en el botón
-                navController.navigate(R.id.action_logSignFragment_to_registerFragment);
-                //Intent intent = new Intent(MainActivity.this, RegistrarseActivity.class);
-                //startActivity(intent);
+                //navController.navigate(R.id.action_logSignFragment_to_registerFragment);
+                Intent intent = new Intent(MainActivity.this, RegistrarseActivity.class);
+                startActivity(intent);
             }
         });
 
