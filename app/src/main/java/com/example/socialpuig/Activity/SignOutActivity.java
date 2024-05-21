@@ -17,6 +17,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignOutActivity extends AppCompatActivity {
 
+    public SignOutActivity() {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +31,6 @@ public class SignOutActivity extends AppCompatActivity {
 
         FirebaseAuth.getInstance().signOut();
 
-        // Navega a la pantalla de inicio de sesión (SignInActivity)
-        Intent intent = new Intent(this, SignInFragment.class);
-        startActivity(intent);
-
-        // Finaliza esta actividad para evitar volver a ella desde la pantalla de inicio de sesión
-        finish();
+        startActivity(new Intent(SignOutActivity.this, IniciarSesionActivity.class));
     }
 }
