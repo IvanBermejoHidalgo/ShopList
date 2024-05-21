@@ -99,12 +99,17 @@ public class HomeActivity extends AppCompatActivity {
                 if (id == R.id.homeActivity) {
                     Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
                     startActivity(intent);
+                } else if (id == R.id.drawer_layout3) { // ID del elemento de menú "General"
+                    // Abrir la actividad de la tienda
+                    Intent intent = new Intent(HomeActivity.this, PedidosRealizadosActivity.class);
+                    startActivity(intent);
+                    return true;
                 } else if (id == R.id.listas) { // ID del elemento de menú "General"
                     // Abrir la actividad de la tienda
                     Intent intent = new Intent(HomeActivity.this, ListasActivity.class);
                     startActivity(intent);
                     return true;
-                }else if (id == R.id.maint) {
+                } else if (id == R.id.maint) {
                     Intent intent = new Intent(HomeActivity.this, TiendaActivity.class);
                     startActivity(intent);
                 } else if (id == R.id.maincarrito) {

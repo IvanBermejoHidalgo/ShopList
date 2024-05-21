@@ -30,9 +30,9 @@
             android:title="Cerrar sesion" />
         </menu>
         </item-->
-        <!--item
-            android:id="@+id/perfilFragment"
-            android:title="Perfil" /-->
+        <item
+            android:id="@+id/drawer_layout3"
+            android:title="Pedidos" />
         <item
             android:id="@+id/listas"
             android:title="Listas" />

@@ -26,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class PedidosDentroActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -169,8 +170,7 @@ public class PedidosDentroActivity extends AppCompatActivity {
                         ArrayList<ItemsDomain> productos = new ArrayList<>();
                         for (DataSnapshot productoSnapshot : dataSnapshot.getChildren()) {
                             // Ignorar nodos que no sean productos
-                            if (!productoSnapshot.getKey().equals("nombre")) {
-                                // Obtener cada producto y agregarlo a la lista
+                            if (productoSnapshot.getValue() instanceof Map) {
                                 ItemsDomain producto = productoSnapshot.getValue(ItemsDomain.class);
                                 productos.add(producto);
                             }
@@ -194,6 +194,7 @@ public class PedidosDentroActivity extends AppCompatActivity {
             // Por ejemplo, mostrar un mensaje o redirigir a la pantalla de inicio de sesión
         }
     }
+
 
 
     private void mostrarProductos(ArrayList<ItemsDomain> productos) {

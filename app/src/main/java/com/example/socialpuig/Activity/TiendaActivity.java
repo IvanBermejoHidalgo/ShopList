@@ -99,6 +99,11 @@ public class TiendaActivity extends BaseActivity implements CategoryAdapter.OnIt
                 if (id == R.id.homeActivity) {
                     Intent intent = new Intent(TiendaActivity.this, HomeActivity.class);
                     startActivity(intent);
+                } else if (id == R.id.drawer_layout3) { // ID del elemento de menú "General"
+                    // Abrir la actividad de la tienda
+                    Intent intent = new Intent(TiendaActivity.this, PedidosRealizadosActivity.class);
+                    startActivity(intent);
+                    return true;
                 } else if (id == R.id.listas) { // ID del elemento de menú "General"
                     // Abrir la actividad de la tienda
                     Intent intent = new Intent(TiendaActivity.this, ListasActivity.class);

@@ -76,6 +76,11 @@ public class ConfiguracionActivity extends AppCompatActivity {
                 if (id == R.id.homeActivity) {
                     Intent intent = new Intent(ConfiguracionActivity.this, HomeActivity.class);
                     startActivity(intent);
+                } else if (id == R.id.drawer_layout3) { // ID del elemento de menú "General"
+                    // Abrir la actividad de la tienda
+                    Intent intent = new Intent(ConfiguracionActivity.this, PedidosRealizadosActivity.class);
+                    startActivity(intent);
+                    return true;
                 } else if (id == R.id.listas) { // ID del elemento de menú "General"
                     // Abrir la actividad de la tienda
                     Intent intent = new Intent(ConfiguracionActivity.this, ListasActivity.class);
@@ -140,14 +145,14 @@ public class ConfiguracionActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.configuraciondos).setOnClickListener(new View.OnClickListener() {
+        /*findViewById(R.id.configuraciondos).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //navController.navigate(R.id.ajustesFragment);
                 Intent intent = new Intent(ConfiguracionActivity.this, PedidosRealizadosActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
         findViewById(R.id.configuraciontres).setOnClickListener(new View.OnClickListener() {
             @Override

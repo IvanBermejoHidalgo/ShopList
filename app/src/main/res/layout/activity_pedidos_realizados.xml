@@ -15,53 +15,53 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@drawable/_bg___frame_169_shape">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.SocialPuig.AppBarOverlay">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorsplash"
-            app:popupTheme="@style/Theme.SocialPuig.PopupOverlay">
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.SocialPuig.AppBarOverlay">
 
-            <!-- ImageView para la imagen -->
-            <ImageView
-                android:id="@+id/toolbar_image"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/logosplash"
-                android:layout_marginLeft="330dp"
-                android:layout_gravity="top|end" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorsplash"
+                app:popupTheme="@style/Theme.SocialPuig.PopupOverlay">
 
-        </androidx.appcompat.widget.Toolbar>
+                <!-- ImageView para la imagen -->
+                <ImageView
+                    android:id="@+id/toolbar_image"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/logosplash"
+                    android:layout_marginLeft="330dp"
+                    android:layout_gravity="top|end" />
+
+            </androidx.appcompat.widget.Toolbar>
 
 
 
-    </com.google.android.material.appbar.AppBarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_marginTop="?attr/actionBarSize"
             android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/pedidosCountTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:text="Número de pedidos: 0"
-        android:textSize="18sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:padding="8dp"/>
+            <TextView
+                android:id="@+id/pedidosCountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Número de pedidos: 0"
+                android:textSize="18sp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:padding="8dp"/>
 
-    <!--ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/pedidosCountTextView"
-        android:layout_marginTop="16dp" /-->
+            <!--ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/pedidosCountTextView"
+                android:layout_marginTop="16dp" /-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/productosView"
                 android:layout_below="@id/toolbar"
