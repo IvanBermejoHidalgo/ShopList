@@ -27,12 +27,17 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.socialpuig.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.WriteBatch;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -96,7 +101,14 @@ public class MiCuentaActivity extends AppCompatActivity {
             });
         }
 
-
+// Implementa el listener para el botón de eliminar cuenta
+        TextView deleteAccountTextView = findViewById(R.id.deleteAccountTextView);
+        deleteAccountTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDeleteAccountDialog(user);
+            }
+        });
     }
 
     private void showImagePickerDialog() {
@@ -286,6 +298,108 @@ public class MiCuentaActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    private void showDeleteAccountDialog(FirebaseUser user) {
+        new AlertDialog.Builder(this)
+                .setTitle("Confirmar eliminación")
+                .setMessage("¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.")
+                .setPositiveButton("Eliminar", (dialog, which) -> deleteAccount(user))
+                .setNegativeButton("Cancelar", null)
+                .show();
+    }
+    private void deletePosts(String userId, OnCompleteListener<Void> onCompleteListener) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Query postsQuery = db.collection("posts").whereEqualTo("uid", userId);
+
+        postsQuery.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                WriteBatch batch = db.batch();
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    batch.delete(document.getReference());
+                }
+                batch.commit().addOnCompleteListener(onCompleteListener);
+            } else {
+                //onCompleteListener.onComplete(task);
+            }
+        });
+    }
+
+    private void deleteAccount(FirebaseUser user) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        deleteUserRelatedCollections(databaseReference, user.getUid(), task -> {
+            if (task.isSuccessful()) {
+                // Continúa con la eliminación del usuario en la autenticación de Firebase
+                user.delete().addOnCompleteListener(task1 -> {
+                    if (task1.isSuccessful()) {
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(MiCuentaActivity.this, "Cuenta eliminada", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MiCuentaActivity.this, IniciarSesionActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(MiCuentaActivity.this, "Error al eliminar la cuenta", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } else {
+                Toast.makeText(MiCuentaActivity.this, "Error al eliminar el usuario de la base de datos", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+        deletePosts(user.getUid(), task -> {
+            if (task.isSuccessful()) {
+                // Continúa con la eliminación del usuario en la autenticación de Firebase
+                user.delete().addOnCompleteListener(task1 -> {
+                    if (task1.isSuccessful()) {
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(MiCuentaActivity.this, "Cuenta eliminada", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MiCuentaActivity.this, IniciarSesionActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(MiCuentaActivity.this, "Error al eliminar la cuenta", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } else {
+                Toast.makeText(MiCuentaActivity.this, "Error al eliminar los posts del usuario", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+    private void deleteUserRelatedCollections(DatabaseReference databaseReference, String userId, OnCompleteListener<Void> onCompleteListener) {
+        // Elimina el usuario de la base de datos de Firebase Realtime
+        databaseReference.child("Users").child(userId).removeValue()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        // Si se elimina el usuario correctamente, notifica al listener
+                        onCompleteListener.onComplete(task);
+                    } else {
+                        // Si hay un error al eliminar el usuario, notifica al listener con el Task correspondiente
+                        onCompleteListener.onComplete(task);
+                    }
+                });
+    }
+
+
+    private void deleteCollection(Query collection, OnCompleteListener<Void> onCompleteListener) {
+        collection.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                WriteBatch batch = FirebaseFirestore.getInstance().batch();
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    batch.delete(document.getReference());
+                }
+                batch.commit().addOnCompleteListener(onCompleteListener);
+            } else {
+                //onCompleteListener.onComplete(task);
+            }
+        });
+    }
+
 
     @Override
     public void onBackPressed() {
