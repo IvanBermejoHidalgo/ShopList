@@ -7,11 +7,11 @@
     android:id="@+id/contped"
     android:orientation="vertical">
 
-    <TextView
+    <!--TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="textViewTotalCompra" />
+        android:text="textViewTotalCompra" /-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
