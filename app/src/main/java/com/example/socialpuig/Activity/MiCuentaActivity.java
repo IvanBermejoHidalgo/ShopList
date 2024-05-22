@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.socialpuig.MainActivity;
 import com.example.socialpuig.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -303,7 +304,7 @@ public class MiCuentaActivity extends AppCompatActivity {
     private void showDeleteAccountDialog(FirebaseUser user) {
         new AlertDialog.Builder(this)
                 .setTitle("Confirmar eliminación")
-                .setMessage("¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.")
+                .setMessage("¿Estás seguro/a de que deseas eliminar tu cuenta?.")
                 .setPositiveButton("Eliminar", (dialog, which) -> deleteAccount(user))
                 .setNegativeButton("Cancelar", null)
                 .show();
