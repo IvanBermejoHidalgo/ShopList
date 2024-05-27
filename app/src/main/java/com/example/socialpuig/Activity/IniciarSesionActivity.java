@@ -57,19 +57,19 @@ public class IniciarSesionActivity extends AppCompatActivity {
         signInProgressBar = findViewById(R.id.signInProgressBar);
         googleSignInButton = findViewById(R.id.googleSignInButton);
 
-        /*findViewById(R.id.gotoCreateAccountTextView).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.gotoCreateAccountTextView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(IniciarSesionActivity.this, RegisterActivity.class));
+                startActivity(new Intent(IniciarSesionActivity.this, RegistrarseActivity.class));
             }
-        });*/
+        });
 
-        /*findViewById(R.id.gotoCreateAccountTextView2).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.gotoCreateAccountTextView2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(IniciarSesionActivity.this, CambioContraActivity.class));
+                startActivity(new Intent(IniciarSesionActivity.this, CambiarContraActivity.class));
             }
-        });*/
+        });
 
         emailSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override

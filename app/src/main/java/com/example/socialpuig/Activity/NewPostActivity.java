@@ -61,7 +61,7 @@ public class NewPostActivity extends AppCompatActivity {
 
         appViewModel = new ViewModelProvider(this).get(AppViewModel.class);
 
-        findViewById(R.id.camara_fotos).setOnClickListener(v -> tomarFoto());
+        //findViewById(R.id.camara_fotos).setOnClickListener(v -> tomarFoto());
         findViewById(R.id.imagen_galeria).setOnClickListener(v -> seleccionarImagen());
 
         appViewModel.mediaSeleccionado.observe(this, media -> {

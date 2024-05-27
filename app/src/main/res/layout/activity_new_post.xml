@@ -61,12 +61,12 @@
                     android:layout_height="64dp"
                     android:layout_marginLeft="8dp"
                     android:background="@drawable/image" />
-                <androidx.appcompat.widget.AppCompatButton
+                <!--androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/camara_fotos"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_marginLeft="8dp"
-                    android:background="@drawable/camera" />
+                    android:background="@drawable/camera" /-->
 
             </LinearLayout>
         </LinearLayout>

@@ -68,7 +68,12 @@ public class RegistrarseActivity extends AppCompatActivity {
         boton_volver = findViewById(R.id.boton_volver);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
+        findViewById(R.id.gotoCreateAccountTextView2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegistrarseActivity.this, IniciarSesionActivity.class));
+            }
+        });
 
         boton_volver.setOnClickListener(new View.OnClickListener() {
             @Override
