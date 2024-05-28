@@ -5,6 +5,6 @@
     <corners android:radius="0dp" />
     <solid android:color="@color/gray_901" />
     <stroke
-        android:width="2dp"
+        android:width="0.5dp"
         android:color="@color/colorsplash" /> <!-- Cambia el ancho y el color del borde según tus preferencias -->
 </shape>
