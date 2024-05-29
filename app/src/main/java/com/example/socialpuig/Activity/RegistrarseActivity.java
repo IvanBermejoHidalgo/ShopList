@@ -8,13 +8,17 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +55,7 @@ public class RegistrarseActivity extends AppCompatActivity {
     TextView displayNameTextView;
     private FirebaseAuth mAuth;
     private NavigationView navigationView;
-
+    private Spinner genderSpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +68,38 @@ public class RegistrarseActivity extends AppCompatActivity {
         contraseña = findViewById(R.id.contraseña);
         repetir_contraseña = findViewById(R.id.repetir_contraseña);
         displayNameTextView = findViewById(R.id.displayNameTextView);
-
+        genderSpinner = findViewById(R.id.gender_spinner);
         boton_volver = findViewById(R.id.boton_volver);
+
+        // Configurar el spinner de género
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.gender_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        genderSpinner.setAdapter(adapter);
+
+        genderSpinner.setAdapter(new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.gender_array)) {
+            /*@Override
+            public boolean isEnabled(int position) {
+                return true;
+            }*/
+
+            /*@Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView textView = (TextView) view;
+                textView.setTextColor(Color.WHITE); // Cambia el color del texto a blanco
+                return view;
+            }*/
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView textView = (TextView) view;
+                textView.setTextColor(Color.WHITE); // Cambia el color del texto seleccionado a blanco
+                return view;
+            }
+        });
+
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         findViewById(R.id.gotoCreateAccountTextView2).setOnClickListener(new View.OnClickListener() {
@@ -260,6 +294,7 @@ public class RegistrarseActivity extends AppCompatActivity {
         String email = correo_electronico.getText().toString();
         String name = nombre.getText().toString();
         String telefono = numero_telefono.getText().toString();
+        String gender = genderSpinner.getSelectedItem().toString(); // Obtener el género seleccionado
 
         //Crear el map y añadir las claves y valores
         Map<String, Object> hashMap = new HashMap<>();
@@ -270,6 +305,7 @@ public class RegistrarseActivity extends AppCompatActivity {
         hashMap.put("profileImage", "");
         hashMap.put("userType", "user");
         hashMap.put("timestamp", timestamp);
+        hashMap.put("gender", gender); // Agregar el género al mapa
 
         // Crear la referencia de usuarios en la base de datos y añadir los datos del usuario
         FirebaseDatabase database = FirebaseDatabase.getInstance();
