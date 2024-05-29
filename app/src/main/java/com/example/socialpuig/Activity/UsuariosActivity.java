@@ -40,46 +40,36 @@ public class UsuariosActivity extends AppCompatActivity {
 
         DatabaseReference usuariosRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
-        // Escuchar los cambios en la base de datos de usuarios
         usuariosRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                long numeroUsuarios = dataSnapshot.getChildrenCount();
+                long hombres = 0;
+                long mujeres = 0;
 
-                // Actualizar la UI con el número de usuarios
-                //TextView numeroUsuariosTextView = findViewById(R.id.UsuariosTextView);
-                //numeroUsuariosTextView.setText("Número de usuarios registrados: " + numeroUsuarios);
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String genero = snapshot.child("gender").getValue(String.class);
+                    if (genero != null && genero.equals("Hombre")) {
+                        hombres++;
+                    } else if (genero != null && genero.equals("Mujer")) {
+                        mujeres++;
+                    }
+                }
 
-
-
-                // GRÁFICO DE ESFERA (PIE CHART) PARA COMPRAS POR GÉNERO
-
+                // Crear el gráfico de pastel
                 AnyChartView pieChartView = findViewById(R.id.any_chart_view);
                 pieChartView.setProgressBar(findViewById(R.id.progress_bar));
 
                 Pie pie = AnyChart.pie();
 
-                pie.setOnClickListener(new ListenersInterface.OnClickListener(new String[]{"x", "value"}) {
-                    @Override
-                    public void onClick(Event event) {
-                        Toast.makeText(UsuariosActivity.this, event.getData().get("x") + ":" + event.getData().get("value"), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
                 List<DataEntry> pieData = new ArrayList<>();
-                pieData.add(new ValueDataEntry("Usuarios", numeroUsuarios));
-                //pieData.add(new ValueDataEntry("Mujer", mujerPurchases));
+                pieData.add(new ValueDataEntry("Hombres", hombres));
+                pieData.add(new ValueDataEntry("Mujeres", mujeres));
 
                 pie.data(pieData);
 
-                pie.title("USUARIOS REGISTRADOS");
+                pie.title("Usuarios por Género");
 
                 pie.labels().position("outside");
-
-                /*pie.legend().title().enabled(true);
-                pie.legend().title()
-                        .text("Usuarios")
-                        .padding(0d, 0d, 10d, 0d);*/
 
                 pie.legend()
                         .position("center-bottom")
@@ -87,13 +77,11 @@ public class UsuariosActivity extends AppCompatActivity {
                         .align(Align.CENTER);
 
                 pieChartView.setChart(pie);
-
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("AdminActivity", "Error al leer los datos de usuarios", databaseError.toException());
+                Log.e("UsuariosActivity", "Error al leer los datos de usuarios", databaseError.toException());
             }
         });
 
