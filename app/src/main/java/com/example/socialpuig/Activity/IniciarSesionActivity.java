@@ -55,7 +55,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
         emailSignInButton = findViewById(R.id.emailSignInButton);
         signInForm = findViewById(R.id.signInForm);
         signInProgressBar = findViewById(R.id.signInProgressBar);
-        googleSignInButton = findViewById(R.id.googleSignInButton);
+        //googleSignInButton = findViewById(R.id.googleSignInButton);
 
         findViewById(R.id.gotoCreateAccountTextView).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,12 +94,12 @@ public class IniciarSesionActivity extends AppCompatActivity {
                     }
                 });
 
-        googleSignInButton.setOnClickListener(new View.OnClickListener() {
+/*        googleSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 accederConGoogle();
             }
-        });
+        });*/
     }
 
     private void accederConEmail() {

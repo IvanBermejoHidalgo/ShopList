@@ -13,7 +13,7 @@
         android:id="@+id/login1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LOG IN"
+        android:text=""
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30dp"
@@ -114,19 +114,6 @@
             android:text="¿Olvidaste tu contraseña?"
             android:textColor="@color/white" />
 
-        <Button
-            android:id="@+id/emailSignInButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:backgroundTint="@color/colorsplash"
-            android:text="ENTRAR"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
         <LinearLayout
             android:id="@+id/linearRowlineone"
             android:layout_width="match_parent"
@@ -162,6 +149,21 @@
                 android:background="@color/white" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/emailSignInButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/colorsplash"
+            android:text="ENTRAR"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+
 
         <!--TextView
             android:layout_width="match_parent"
@@ -169,13 +171,13 @@
             android:text="Login with your Google account"
             android:textColor="@color/white" /-->
 
-        <com.google.android.gms.common.SignInButton
+        <!--com.google.android.gms.common.SignInButton
             android:id="@+id/googleSignInButton"
             android:layout_width="365dp"
             android:layout_height="42dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:text="Login with your Google account" />
+            android:text="Login with your Google account" /-->
 
 
 
