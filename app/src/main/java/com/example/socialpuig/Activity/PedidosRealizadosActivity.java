@@ -42,6 +42,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class PedidosRealizadosActivity extends AppCompatActivity {
@@ -210,8 +211,11 @@ public class PedidosRealizadosActivity extends AppCompatActivity {
         }
     }
 
+    private HashMap<String, String> tituloIdMap;
+
     private void cargarTitulosListas() {
         listaTitulos = new ArrayList<>();
+        tituloIdMap = new HashMap<>();
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
             String userId = user.getUid();
@@ -220,14 +224,14 @@ public class PedidosRealizadosActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     listaTitulos.clear();
+                    tituloIdMap.clear();
                     int pedidosCount = 0;
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         String cartId = snapshot.getKey();
-                        if (cartId != null) {
-                            listaTitulos.add(cartId);
-                            pedidosCount++;
-
-                        }
+                        String pedidoTitulo = "Pedido " + (pedidosCount + 1);
+                        listaTitulos.add(pedidoTitulo);
+                        tituloIdMap.put(pedidoTitulo, cartId);
+                        pedidosCount++;
                     }
                     pedidosCountTextView.setText("Número de pedidos: " + pedidosCount);
                     mostrarTitulosListas();
@@ -240,6 +244,7 @@ public class PedidosRealizadosActivity extends AppCompatActivity {
             });
         }
     }
+
 
     private void mostrarTitulosListas() {
         ArrayList<PedidosRealizadosDomain> listaDeListas = new ArrayList<>();
@@ -262,9 +267,9 @@ public class PedidosRealizadosActivity extends AppCompatActivity {
     }
 
     private void abrirContenidoLista(String tituloLista) {
-        // Aquí debes implementar la navegación al contenido de la lista
-        // Por ejemplo:
+        String cartId = tituloIdMap.get(tituloLista);
         Intent intent = new Intent(PedidosRealizadosActivity.this, PedidosDentroActivity.class);
+        intent.putExtra("cartId", cartId);
         intent.putExtra("tituloLista", tituloLista);
         startActivity(intent);
     }

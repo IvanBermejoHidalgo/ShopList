@@ -30,7 +30,7 @@ public class PedidosDentroActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private PopularAdapter productosAdapter;
     private DatabaseReference mDatabase;
-    private String tituloLista;
+    private String cartId;
     private TextView textViewTotalCompra;
     ActivityPedidosDentroBinding binding;
 
@@ -39,8 +39,9 @@ public class PedidosDentroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedidos_dentro);
 
-        // Obtener el título de la lista enviado desde la actividad anterior
-        tituloLista = getIntent().getStringExtra("tituloLista");
+        // Obtener el ID del carrito y el título de la lista enviados desde la actividad anterior
+        cartId = getIntent().getStringExtra("cartId");
+        String tituloLista = getIntent().getStringExtra("tituloLista");
 
         // Mostrar el título de la lista en un TextView
         TextView textViewTituloLista = findViewById(R.id.textViewTituloLista);
@@ -56,8 +57,8 @@ public class PedidosDentroActivity extends AppCompatActivity {
         ImageView backBtn = findViewById(R.id.backBtn);
         backBtn.setOnClickListener(v -> onBackPressed());
 
-        // Recuperar y mostrar los productos asociados a la lista seleccionada
-        getProductos(tituloLista);
+        // Recuperar y mostrar los productos asociados al carrito seleccionado
+        getProductos(cartId);
     }
 
     private void getProductos(String cartId) {
