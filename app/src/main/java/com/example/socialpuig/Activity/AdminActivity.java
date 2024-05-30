@@ -216,7 +216,14 @@ public class AdminActivity extends AppCompatActivity {
         });
 
 
-
+        findViewById(R.id.logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //navController.navigate(R.id.signOutFragment);
+                Intent intent = new Intent(AdminActivity.this, SignOutActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

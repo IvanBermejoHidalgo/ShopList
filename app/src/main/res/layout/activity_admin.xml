@@ -102,4 +102,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
 
+    <!-- Botón de Logout -->
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#293B72"
+        android:text="CERRAR SESIÓN"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
