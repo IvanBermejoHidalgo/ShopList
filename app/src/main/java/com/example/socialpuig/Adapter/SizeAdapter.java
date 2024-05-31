@@ -48,7 +48,7 @@ public class SizeAdapter extends RecyclerView.Adapter<SizeAdapter.Viewholder> {
 
         if (selectedPosition == holder.getAdapterPosition()) {
             holder.binding.sizeLayout.setBackgroundResource(R.drawable.size_selected);
-            holder.binding.sizeTxt.setTextColor(context.getResources().getColor(R.color.green));
+            holder.binding.sizeTxt.setTextColor(context.getResources().getColor(R.color.colorsplash));
         } else {
             holder.binding.sizeLayout.setBackgroundResource(R.drawable.size_unselected);
             holder.binding.sizeTxt.setTextColor(context.getResources().getColor(R.color.black));
