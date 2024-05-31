@@ -1,5 +1,5 @@
-SHOPLIST
-ShopList es una aplicación multifuncional que combina características de una red social y un sistema de gestión de compras y usuarios. La aplicación permite a los usuarios interactuar socialmente mientras realizan compras y gestionan sus productos. Además, ofrece un panel de administración para visualizar estadísticas clave.
+SocialPuig - Aplicación de Administración y Usuario
+SocialPuig es una aplicación multifuncional que combina características de una red social y un sistema de gestión de compras y usuarios. La aplicación permite a los usuarios interactuar socialmente mientras realizan compras y gestionan sus productos. Además, ofrece un panel de administración para visualizar estadísticas clave.
 
 Características
 Para Usuarios Normales
@@ -21,3 +21,7 @@ Compras de Productos por Género (Hombre, Mujer).
 Gráficos Interactivos:
 Gráfico de Barras: Muestra las ventas por marcas.
 Gráfico Circular: Muestra las compras por género.
+Tecnologías Utilizadas
+Firebase: Almacenamiento y recuperación de datos en tiempo real.
+AnyChart: Creación de gráficos interactivos.
+Android: Desarrollo de la aplicación nativa.
