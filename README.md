@@ -1,6 +1,6 @@
-# SocialPuig - Aplicación de Administración y Usuario
+# SHOPLIST
 
-SocialPuig es una aplicación multifuncional que combina características de una red social y un sistema de gestión de compras y usuarios. La aplicación permite a los usuarios interactuar socialmente mientras realizan compras y gestionan sus productos. Además, ofrece un panel de administración para visualizar estadísticas clave.
+ShopList es una aplicación multifuncional que combina características de una red social y un sistema de gestión de compras. La aplicación permite a los usuarios interactuar socialmente mientras realizan compras, crean listas y gestionan sus productos. Además, ofrece un panel de administración para visualizar estadísticas clave.
 
 ## Características
 
