@@ -44,13 +44,14 @@
         <LinearLayout
             android:id="@+id/configuracionuno"
             android:layout_width="match_parent"
-            android:layout_height="444dp"
+            android:layout_height="374dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="130dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="160dp"
             android:background="@drawable/borderinfo"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <!-- Texto "cuenta" -->
             <TextView
@@ -59,17 +60,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Motorsport News es la aplicación imprescindible para todos los apasionados del mundo del motor, en concreto de las categorías reinas del motorsport, la
-Formula 1 y MotoGP. Nuestro objetivo es mantener a los aficionados actualizados con lo último en noticias, detalles y estadísticas en tiempo real sobre los pilotos, equipos y carreras más destacadas de estos dos emocionantes mundos del automovilismo.\n\n\n
-
-
-
-La aplicación no se limita a ser un centro informativo, sino que también se convierte en un espacio interactivo donde los aficionados pueden participar en encuestas, acceder a contenido exclusivo, desde entrevistas con pilotos destacados hasta videos de momentos memorables y de imágenes espectaculares."
+                android:text="ShopList es una innovadora aplicación de compra de vestimenta que revoluciona la forma en que compras y gestionas tu guardarropa. Con ShopList, puedes crear listas detalladas de ropa y accesorios, personalizadas según tus gustos y necesidades. Además de organizar tus prendas, ShopList te permite compartir tus listas con amigos, familiares o seguidores, permitiéndote inspirar a otros con tus elecciones de moda y descubrir nuevas tendencias."
                 android:textAlignment="center"
                 android:textColor="@color/grismenuletra"
-                android:textSize="17dp" />
-
+                android:textSize="17dp"
+                android:gravity="center"/>
         </LinearLayout>
+
 
         <FrameLayout
             android:layout_width="match_parent"
