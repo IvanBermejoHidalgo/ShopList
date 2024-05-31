@@ -231,7 +231,7 @@
             android:layout_marginRight="20dp"
             android:paddingLeft="30dp"
             android:paddingRight="10dp"
-            android:text="Añadir método de pago"
+            android:text="Añadir método"
             android:gravity="center_vertical"
             android:visibility="gone"
             android:drawableEnd="@drawable/icono_agregar_boton"
