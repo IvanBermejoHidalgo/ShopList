@@ -62,7 +62,6 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            style="@style/lineas_separatorias_perfil"
             app:layout_constraintBottom_toBottomOf="@id/view_portada_metodos_de_pago"
             android:elevation="10dp" />
 

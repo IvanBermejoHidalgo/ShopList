@@ -63,7 +63,6 @@
             android:id="@+id/separacion"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            style="@style/lineas_separatorias_perfil"
             app:layout_constraintBottom_toBottomOf="@id/view_portada_direcciones_de_envio"
             android:elevation="10dp" />
 

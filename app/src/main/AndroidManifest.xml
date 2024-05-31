@@ -110,10 +110,6 @@
             android:exported="false"
             android:theme="@style/Theme.SocialPuig2" />
         <activity
-            android:name=".Activity.ActivityPedidoFinalizado"
-            android:exported="false"
-            android:theme="@style/Theme.SocialPuig2" />
-        <activity
             android:name=".Activity.Activity_Tramitando_Pedido"
             android:exported="false"
             android:theme="@style/Theme.SocialPuig2" />

@@ -52,30 +52,19 @@
     <style name="toolbar" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <!-- Primary brand color. -->
     </style>
-    <style name="texto_pantalla_favoritos" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <!-- Primary brand color. -->
-        <item name="android:textColor">@color/gris_oscuro</item>
-    </style>
-    <style name="fondo_perfil" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="android:background">@drawable/fondo_perfil_claro</item>
-    </style>
 
     <style name="iconos_perfil" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="tint">@color/white</item>
         <item name="android:background">@color/transparente</item>
     </style>
-    <style name="lineas_separatorias_perfil" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="android:background">@color/gris_claro_lineas</item>
-    </style>
+
     <style name="edittext" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <!-- Primary brand color. -->
         <item name="boxStrokeColor">@color/colorsplash</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:background">#D9D9D9</item>
     </style>
-    <style name="linea_separatoria_editar_perfil" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="android:background">@color/gris_oscuro</item>
-    </style>
+
     <style name="logo_app_style" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <!-- Primary brand color. -->
         <item name="android:src">@drawable/logosplash</item>

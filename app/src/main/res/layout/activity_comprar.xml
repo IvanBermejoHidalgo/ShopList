@@ -26,7 +26,6 @@
 
         <TextView
             android:id="@+id/carrito"
-            style="@style/texto_pantalla_favoritos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -152,7 +151,6 @@
 
                 <TextView
                     android:id="@+id/direccion_envio_existente"
-                    style="@style/borde_escoger_opciones_camiseta"
                     android:layout_width="220dp"
                     android:layout_height="50dp"
                     android:textColor="@color/white"
@@ -166,7 +164,6 @@
 
                 <TextView
                     android:id="@+id/crear_direccion_envio"
-                    style="@style/borde_escoger_opciones_camiseta"
                     android:layout_width="220dp"
                     android:layout_height="50dp"
                     android:textColor="@color/white"
@@ -252,7 +249,6 @@
 
                 <TextView
                     android:id="@+id/metodo_pago_existente"
-                    style="@style/borde_escoger_opciones_camiseta"
                     android:layout_width="220dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
@@ -266,7 +262,6 @@
 
                 <TextView
                     android:id="@+id/crear_metodo_pago"
-                    style="@style/borde_escoger_opciones_camiseta"
                     android:layout_width="220dp"
                     android:layout_height="50dp"
                     android:textColor="@color/white"
