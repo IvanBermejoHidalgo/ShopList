@@ -24,7 +24,6 @@ import java.util.ArrayList;
 public class Activity_Tramitando_Pedido extends AppCompatActivity {
 
     private ActivityTramitandoPedidoBinding binding;
-    //private ArrayList<Model_Camisetas_Tienda> camisetasTiendaList;
     private ArrayList<ItemsDomain> camisetasTiendaList;
     double precioTotal;
     private FirebaseAuth firebaseAuth;
@@ -36,7 +35,6 @@ public class Activity_Tramitando_Pedido extends AppCompatActivity {
         setContentView((binding = ActivityTramitandoPedidoBinding.inflate(getLayoutInflater())).getRoot());
 
         firebaseAuth = FirebaseAuth.getInstance();
-        //cargarCamisetasCarrito();
 
         // Obtener el precio total del intent
         double precioTotalCarrito = getIntent().getDoubleExtra("precio_total", 0.0);
@@ -57,40 +55,4 @@ public class Activity_Tramitando_Pedido extends AppCompatActivity {
 
 
     }
-
-    private void cargarCamisetasCarrito() {
-        camisetasTiendaList = new ArrayList<>();
-
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference.child(firebaseAuth.getUid()).child("Cart")
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        camisetasTiendaList.clear();
-                        precioTotal = 0.0;
-                        for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                            String idCamiseta = "" + dataSnapshot.child("cartId").getValue();
-                            ItemsDomain modelCamisetasTienda = new ItemsDomain();
-                            modelCamisetasTienda.setId(idCamiseta);
-                            double precio = Double.parseDouble("" + dataSnapshot.child("precioTotal").getValue());
-
-                            precioTotal += precio;
-                            camisetasTiendaList.add(modelCamisetasTienda);
-                        }
-
-                        //binding.importe.setText(String.valueOf(precioTotal) + " €");
-                        //binding.numero.setText(""+camisetasTiendaList.size());
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-    }
-
-    //@Override
-    //public void onBackPressed() {
-
-    //}
 }

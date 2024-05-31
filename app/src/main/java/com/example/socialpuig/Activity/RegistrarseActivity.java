@@ -78,19 +78,6 @@ public class RegistrarseActivity extends AppCompatActivity {
         genderSpinner.setAdapter(adapter);
 
         genderSpinner.setAdapter(new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.gender_array)) {
-            /*@Override
-            public boolean isEnabled(int position) {
-                return true;
-            }*/
-
-            /*@Override
-            public View getDropDownView(int position, View convertView, ViewGroup parent) {
-                View view = super.getDropDownView(position, convertView, parent);
-                TextView textView = (TextView) view;
-                textView.setTextColor(Color.WHITE); // Cambia el color del texto a blanco
-                return view;
-            }*/
-
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);

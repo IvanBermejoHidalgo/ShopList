@@ -51,7 +51,6 @@ public class ContenidoListaActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerViewProductos);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        // Inicializar la referencia a la base de datos Firebase
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         ImageView backBtn = findViewById(R.id.backBtn);
@@ -75,7 +74,6 @@ public class ContenidoListaActivity extends AppCompatActivity {
                     if (dataSnapshot.exists()) {
                         // Si la lista existe, recuperar los productos asociados a ella
                         for (DataSnapshot listaSnapshot : dataSnapshot.getChildren()) {
-                            // Obtener la lista de productos de la instantánea de datos
                             Iterable<DataSnapshot> productosSnapshots = listaSnapshot.child("Productos").getChildren();
                             ArrayList<ItemsDomain> productos = new ArrayList<>();
                             for (DataSnapshot productoSnapshot : productosSnapshots) {
@@ -83,7 +81,6 @@ public class ContenidoListaActivity extends AppCompatActivity {
                                 ItemsDomain producto = productoSnapshot.getValue(ItemsDomain.class);
                                 productos.add(producto);
                             }
-                            // Mostrar los productos en el RecyclerView
                             mostrarProductos(productos);
                         }
                     } else {
@@ -99,8 +96,7 @@ public class ContenidoListaActivity extends AppCompatActivity {
                 }
             });
         } else {
-            // Manejar el caso en que el usuario no esté autenticado
-            // Por ejemplo, mostrar un mensaje o redirigir a la pantalla de inicio de sesión
+
         }
     }
 

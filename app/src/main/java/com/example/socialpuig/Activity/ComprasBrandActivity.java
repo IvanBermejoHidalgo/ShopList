@@ -45,8 +45,6 @@ public class ComprasBrandActivity extends AppCompatActivity {
 
         // Obtener la referencia de la base de datos para las compras
         DatabaseReference comprasRef = FirebaseDatabase.getInstance().getReference().child("Compras");
-
-        // Escuchar los cambios en la base de datos de compras
         comprasRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

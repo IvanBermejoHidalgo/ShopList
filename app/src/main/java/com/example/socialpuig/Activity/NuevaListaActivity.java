@@ -63,14 +63,14 @@ public class NuevaListaActivity extends AppCompatActivity {
             FirebaseUser user = mAuth.getCurrentUser();
             if (user != null) {
                 String userId = user.getUid();
-                String listaId = nombreLista; // Usar el nombre de la lista como el ID
+                String listaId = nombreLista;
                 // Guardar la nueva lista en la base de datos
                 mDatabase.child("Users").child(userId).child("Listas").child(listaId).child("nombre").setValue(nombreLista)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(NuevaListaActivity.this, "Nueva lista creada con éxito", Toast.LENGTH_SHORT).show();
-                                finish(); // Finalizar la actividad después de guardar la lista
+                                finish();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {

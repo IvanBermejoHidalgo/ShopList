@@ -88,8 +88,7 @@ public class ListasActivity extends BaseActivity {
                 if (id == R.id.homeActivity) {
                     Intent intent = new Intent(ListasActivity.this, HomeActivity.class);
                     startActivity(intent);
-                } else if (id == R.id.drawer_layout3) { // ID del elemento de menú "General"
-                    // Abrir la actividad de la tienda
+                } else if (id == R.id.drawer_layout3) {
                     Intent intent = new Intent(ListasActivity.this, PedidosRealizadosActivity.class);
                     startActivity(intent);
                     return true;

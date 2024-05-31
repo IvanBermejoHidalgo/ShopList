@@ -53,8 +53,15 @@ public class CartActivity extends BaseActivity {
             }
         });
 
+        binding.backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //onBackPressed();
+                startActivity(new Intent(CartActivity.this, TiendaActivity.class));
+            }
+        });
+
         calculatorCart();
-        setVarialbe();
         initCartList();
     }
 
@@ -69,11 +76,6 @@ public class CartActivity extends BaseActivity {
 
         binding.cartView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         binding.cartView.setAdapter(new CartAdapter(managmentCart.getListCart(), this, () -> calculatorCart()));
-    }
-
-    private void setVarialbe() {
-        binding.backBtn.setOnClickListener(v -> finish());
-
     }
 
     private void calculatorCart() {
@@ -95,9 +97,7 @@ public class CartActivity extends BaseActivity {
 
         // Generar una ID única para el carrito
         String cartId = mDatabase.child("Users").child(userId).child("Cart").push().getKey();
-        // Calcular el total de la compra
         double totalCompra = managmentCart.getTotalWithTaxAndDelivery();
-        // Asociar la ID de carrito a cada elemento del carrito
         for (ItemsDomain item : cartItems) {
             item.setCartId(cartId);
         }
@@ -118,7 +118,7 @@ public class CartActivity extends BaseActivity {
                                 DatabaseReference totalCompraComprasRef = mDatabase.child("Compras").child(cartId).child("TotalCompra");
                                 totalCompraComprasRef.setValue(totalCompra);
 
-                                Toast.makeText(CartActivity.this, "Carrito guardado exitosamente en Firebase y en Compras", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(CartActivity.this, "Carrito guardado exitosamente en Firebase y en Compras", Toast.LENGTH_SHORT).show();
 
                                 Intent intent = new Intent(new Intent(CartActivity.this, Activity_Comprar.class));
                                 intent.putExtra("precio_total", totalCompra);
@@ -128,11 +128,11 @@ public class CartActivity extends BaseActivity {
                                 finish();
                             })
                             .addOnFailureListener(e -> {
-                                Toast.makeText(CartActivity.this, "Error al guardar el carrito en Compras: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(CartActivity.this, "Error al guardar el carrito en Compras: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                             });
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(CartActivity.this, "Error al guardar el carrito en Firebase: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(CartActivity.this, "Error al guardar el carrito en Firebase: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
 

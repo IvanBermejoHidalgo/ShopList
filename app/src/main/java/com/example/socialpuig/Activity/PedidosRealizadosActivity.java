@@ -99,8 +99,7 @@ public class PedidosRealizadosActivity extends AppCompatActivity {
                 if (id == R.id.homeActivity) {
                     Intent intent = new Intent(PedidosRealizadosActivity.this, HomeActivity.class);
                     startActivity(intent);
-                } else if (id == R.id.listas) { // ID del elemento de menú "General"
-                    // Abrir la actividad de la tienda
+                } else if (id == R.id.listas) {
                     Intent intent = new Intent(PedidosRealizadosActivity.this, ListasActivity.class);
                     startActivity(intent);
                     return true;
@@ -119,44 +118,6 @@ public class PedidosRealizadosActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        //listView = findViewById(R.id.listView);
-        //pedidosCountTextView = findViewById(R.id.pedidosCountTextView);
-        //userCarts = new ArrayList<>();
-        //arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, userCarts);
-        //listView.setAdapter(arrayAdapter);
-
-        //String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        /*DatabaseReference userCartRef = FirebaseDatabase.getInstance().getReference().child("Users").child(userId).child("Cart");
-
-        userCartRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int pedidosCount = 0;
-                for (DataSnapshot cartSnapshot : dataSnapshot.getChildren()) {
-                    String cartId = cartSnapshot.getKey();
-                    userCarts.add(cartId);
-                    pedidosCount++;
-                }
-                arrayAdapter.notifyDataSetChanged();
-                pedidosCountTextView.setText("Número de pedidos: " + pedidosCount);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Manejar el error
-            }
-        });*/
-
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedCartId = userCarts.get(position);
-                Intent intent = new Intent(PedidosRealizadosActivity.this, PedidosDentroActivity.class);
-                intent.putExtra("cartId", selectedCartId);
-                startActivity(intent);
-            }
-        });*/
 
         View header = navigationView.getHeaderView(0);
         final ImageView photo = header.findViewById(R.id.imageView);

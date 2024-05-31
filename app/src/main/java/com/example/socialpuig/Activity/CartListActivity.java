@@ -52,7 +52,6 @@ public class CartListActivity extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            // Handle error
                         }
                     });
                 }
@@ -60,7 +59,6 @@ public class CartListActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle error
             }
         });
 

@@ -43,7 +43,6 @@ public class PedidosDentroActivity extends AppCompatActivity {
         cartId = getIntent().getStringExtra("cartId");
         String tituloLista = getIntent().getStringExtra("tituloLista");
 
-        // Mostrar el título de la lista en un TextView
         TextView textViewTituloLista = findViewById(R.id.textViewTituloLista);
         textViewTituloLista.setText(tituloLista);
 
@@ -51,7 +50,7 @@ public class PedidosDentroActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerViewProductos);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        // Inicializar la referencia a la base de datos Firebase
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         ImageView backBtn = findViewById(R.id.backBtn);
@@ -98,8 +97,7 @@ public class PedidosDentroActivity extends AppCompatActivity {
                 }
             });
         } else {
-            // Manejar el caso en que el usuario no esté autenticado
-            // Por ejemplo, mostrar un mensaje o redirigir a la pantalla de inicio de sesión
+
         }
     }
 

@@ -46,7 +46,6 @@ public class Activity_Comprar extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        //cargarPrecioCamisetasCarrito();
         cargarDatosUsuario();
         cargarDireccionesEnvio();
         cargarMetodosPago();
@@ -61,7 +60,8 @@ public class Activity_Comprar extends AppCompatActivity {
         binding.botonCerrarVentana.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                //onBackPressed();
+                startActivity(new Intent(Activity_Comprar.this, TiendaActivity.class));
             }
         });
 
@@ -342,51 +342,4 @@ public class Activity_Comprar extends AppCompatActivity {
                     }
                 });
     }
-
-    private void cargarPrecioCamisetasCarrito() {
-
-        // Obtener el precio total del intent
-        double precioTotalCarrito = getIntent().getDoubleExtra("precio_total", 0.0);
-
-        // Configurar el precio total en el TextView
-        binding.precioTotal.setText(String.valueOf(precioTotalCarrito));
-
-        camisetasTiendaList = new ArrayList<>();
-
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference.child(firebaseAuth.getUid()).child("Cart")
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        camisetasTiendaList.clear();
-                        precioTotal = 0.0;
-
-                        for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                            String idProducto = "" + dataSnapshot.child("idCompra").getValue();
-                            ItemsDomain modelCamisetasTienda = new ItemsDomain();
-                            modelCamisetasTienda.setId(idProducto);
-                            double precio = Double.parseDouble("" + dataSnapshot.child("precioTotal").getValue());
-
-                            precioTotal += precio;
-
-                            camisetasTiendaList.add(modelCamisetasTienda);
-                        }
-
-                        //binding.precioTotal.setText(String.valueOf(precioTotal));
-
-
-
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-    }
-
-
 }

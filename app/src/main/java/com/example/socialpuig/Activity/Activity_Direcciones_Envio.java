@@ -116,7 +116,6 @@ public class Activity_Direcciones_Envio extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle possible errors.
             }
         });
     }

@@ -99,13 +99,11 @@ public class TiendaActivity extends BaseActivity implements CategoryAdapter.OnIt
                 if (id == R.id.homeActivity) {
                     Intent intent = new Intent(TiendaActivity.this, HomeActivity.class);
                     startActivity(intent);
-                } else if (id == R.id.drawer_layout3) { // ID del elemento de menú "General"
-                    // Abrir la actividad de la tienda
+                } else if (id == R.id.drawer_layout3) {
                     Intent intent = new Intent(TiendaActivity.this, PedidosRealizadosActivity.class);
                     startActivity(intent);
                     return true;
-                } else if (id == R.id.listas) { // ID del elemento de menú "General"
-                    // Abrir la actividad de la tienda
+                } else if (id == R.id.listas) {
                     Intent intent = new Intent(TiendaActivity.this, ListasActivity.class);
                     startActivity(intent);
                     return true;
@@ -120,17 +118,12 @@ public class TiendaActivity extends BaseActivity implements CategoryAdapter.OnIt
                     startActivity(intent);
                 }
 
-
-
-
                 DrawerLayout drawer = findViewById(R.id.maint);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             }
 
         });
-
-
 
         RadioButton radioButtonMale = findViewById(R.id.radioButtonMale);
         RadioButton radioButtonFemale = findViewById(R.id.radioButtonFemale);
@@ -195,10 +188,8 @@ public class TiendaActivity extends BaseActivity implements CategoryAdapter.OnIt
                 .build());
 
 
-        //initBanner();
         initCategory();
         initPopular();
-        //bottomNavigation();
 
     }
 

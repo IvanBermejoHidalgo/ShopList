@@ -82,7 +82,6 @@ public class MiCuentaActivity extends AppCompatActivity {
             emailTextView.setText(user.getEmail());
             Glide.with(this).load(user.getPhotoUrl()).into(photoImageView);
 
-            // Implementa el listener del ImageButton para cambiar la foto
             changePhotoButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -93,7 +92,6 @@ public class MiCuentaActivity extends AppCompatActivity {
             ImageView backBtn = findViewById(R.id.backBtn);
             backBtn.setOnClickListener(v -> onBackPressed());
 
-            // Implementa el listener del botón para guardar los cambios
             saveButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -102,7 +100,6 @@ public class MiCuentaActivity extends AppCompatActivity {
             });
         }
 
-// Implementa el listener para el botón de eliminar cuenta
         TextView deleteAccountTextView = findViewById(R.id.deleteAccountTextView);
         deleteAccountTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,10 +135,8 @@ public class MiCuentaActivity extends AppCompatActivity {
     private void openCamera() {
         // Comprueba si se tienen permisos para acceder a la cámara
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            // Solicita permisos para acceder a la cámara si no se tienen
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_REQUEST_CODE);
         } else {
-            // Si se tienen permisos, abre la actividad de la cámara
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(intent, CAMERA_REQUEST_CODE);
         }

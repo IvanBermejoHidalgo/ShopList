@@ -207,7 +207,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="24dp"
                 android:background="@drawable/green_button_bg"
-
                 android:text="Añadir a la cesta"
                 android:textColor="@color/white"
                 android:textSize="20sp"
