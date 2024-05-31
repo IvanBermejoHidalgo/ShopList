@@ -131,7 +131,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-        Query query = FirebaseFirestore.getInstance().collection("posts").orderBy("timeStamp", Query.Direction.ASCENDING).limit(50);
+        Query query = FirebaseFirestore.getInstance().collection("posts").orderBy("timeStamp", Query.Direction.DESCENDING).limit(50);
 
         FirestoreRecyclerOptions<Post> options = new FirestoreRecyclerOptions.Builder<Post>()
                 .setQuery(query, Post.class)

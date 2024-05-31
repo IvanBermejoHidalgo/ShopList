@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/_bg___frame_169_shape"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
@@ -54,10 +55,10 @@
 
     <TextView
         android:id="@+id/texto_metodo_pago"
-        style="@style/color_texto_predeterminado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:textColor="@color/white"
         android:layout_marginLeft="5dp"
         android:text="Metodo de pago"
         android:textSize="17dp"
@@ -67,6 +68,7 @@
     <TextView
         android:id="@+id/numero_metodo_pago"
         style="@style/color_texto_predeterminado"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -79,6 +81,7 @@
     <TextView
         android:id="@+id/texto_titular"
         style="@style/color_texto_predeterminado"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
@@ -92,6 +95,7 @@
     <TextView
         android:id="@+id/titular"
         style="@style/color_texto_predeterminado"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
@@ -107,6 +111,7 @@
     <TextView
         android:id="@+id/numero_tarjeta"
         style="@style/color_texto_predeterminado"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -119,6 +124,7 @@
     <TextView
         android:id="@+id/fecha_caducidad"
         style="@style/color_texto_predeterminado"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -131,6 +137,7 @@
     <TextView
         android:id="@+id/CCV"
         style="@style/color_texto_predeterminado"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

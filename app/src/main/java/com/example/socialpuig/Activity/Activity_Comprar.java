@@ -16,6 +16,7 @@ import com.example.socialpuig.Helper.ManagmentCart;
 import com.example.socialpuig.R;
 import com.example.socialpuig.databinding.ActivityComprarBinding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -211,25 +212,44 @@ public class Activity_Comprar extends AppCompatActivity {
     private void cargarDireccionesEnvio() {
         direccionesEnvioList = new ArrayList<>();
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("DireccionesEnvio");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            Toast.makeText(this, "Usuario no autenticado", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String userUID = user.getUid();
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userUID).child("DireccionesEnvio");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 direccionesEnvioList.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String calle = dataSnapshot.child("calle").getValue(String.class);
+                    String numero = dataSnapshot.child("numero").getValue(String.class);
+                    String piso = dataSnapshot.child("piso").getValue(String.class);
+                    String puerta = dataSnapshot.child("puerta").getValue(String.class);
+                    String localidad = dataSnapshot.child("localidad").getValue(String.class);
 
-                    String direccion = "Calle " + dataSnapshot.child("calle").getValue() + " nº " + dataSnapshot.child("numero").getValue()
-                            + " piso " + dataSnapshot.child("piso").getValue() + " puerta " + dataSnapshot.child("puerta").getValue() + " " + dataSnapshot.child("localidad").getValue();
-
+                    String direccion = "Calle " + calle + " nº " + numero + " piso " + piso + " puerta " + puerta + " " + localidad;
                     direccionesEnvioList.add(direccion);
                 }
+
+                // Habilitar el botón y permitir la selección de dirección solo si hay datos
+                if (!direccionesEnvioList.isEmpty()) {
+                    binding.direccionEnvioExistente.setEnabled(true); // Habilitar el botón
+                } else {
+                    Toast.makeText(Activity_Comprar.this, "No hay direcciones de envío disponibles", Toast.LENGTH_SHORT).show();
+                }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(Activity_Comprar.this, "Error al cargar direcciones", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 
     private String direccionSeleccionada;
     private void escogerDireccionEnvio() {
@@ -253,8 +273,14 @@ public class Activity_Comprar extends AppCompatActivity {
 
     private void cargarMetodosPago() {
         metodosPagoList = new ArrayList<>();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            Toast.makeText(this, "Usuario no autenticado", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String userUID = user.getUid();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userUID).child("MetodosPago");
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("MetodosPago");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

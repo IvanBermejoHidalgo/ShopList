@@ -3,6 +3,7 @@ package com.example.socialpuig.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -100,26 +101,26 @@ public class Activity_Direcciones_Envio extends AppCompatActivity {
         modelDireccionesEnviosList = new ArrayList<>();
         String uid = firebaseAuth.getCurrentUser().getUid();
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("DireccionesEnvio");
-        databaseReference.orderByChild("uid").equalTo(uid)
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        modelDireccionesEnviosList.clear();
-                        for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                            Model_Direcciones_Envio modelDireccionesEnvio = dataSnapshot.getValue(Model_Direcciones_Envio.class);
-                            modelDireccionesEnviosList.add(modelDireccionesEnvio);
-                        }
-                        adapterDireccionesEnvio = new Adapter_Direcciones_Envio(Activity_Direcciones_Envio.this , modelDireccionesEnviosList);
-                        binding.recyclerDireccionesEnvio.setAdapter(adapterDireccionesEnvio);
-                    }
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("DireccionesEnvio");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                modelDireccionesEnviosList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Model_Direcciones_Envio modelDireccionesEnvio = dataSnapshot.getValue(Model_Direcciones_Envio.class);
+                    modelDireccionesEnviosList.add(modelDireccionesEnvio);
+                }
+                adapterDireccionesEnvio = new Adapter_Direcciones_Envio(Activity_Direcciones_Envio.this , modelDireccionesEnviosList);
+                binding.recyclerDireccionesEnvio.setAdapter(adapterDireccionesEnvio);
+            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle possible errors.
+            }
+        });
     }
+
 
     private String calle="",numero="", piso="",puerta="",pais="",provincia="",localidad="", codigoPostal="";
     private void validateData() {
@@ -168,14 +169,18 @@ public class Activity_Direcciones_Envio extends AppCompatActivity {
         hashMap.put("uid", "" + firebaseAuth.getUid());
         hashMap.put("id", "" + timestamp);
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("DireccionesEnvio");
-        databaseReference.child("" + timestamp)
+        // Referencia a la base de datos dentro del nodo "Users" para el usuario actual
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        String userId = firebaseAuth.getUid();
+
+        // Referencia al subnodo "DireccionesEnvio" dentro del usuario
+        databaseReference.child(userId).child("DireccionesEnvio").child("" + timestamp)
                 .setValue(hashMap)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         Toast.makeText(Activity_Direcciones_Envio.this,"Dirección Añadida",Toast.LENGTH_SHORT).show();
-
+                        startActivity(new Intent(Activity_Direcciones_Envio.this, Activity_Comprar.class));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -185,6 +190,7 @@ public class Activity_Direcciones_Envio extends AppCompatActivity {
                     }
                 });
     }
+
 
 
 }

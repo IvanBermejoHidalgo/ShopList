@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/_bg___frame_169_shape"
     android:layout_height="wrap_content"
     android:layout_marginBottom="15dp">
 
@@ -53,7 +54,7 @@
 
     <TextView
         android:id="@+id/texto_ubicacion"
-        style="@style/color_texto_predeterminado"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -65,7 +66,8 @@
 
     <TextView
         android:id="@+id/numero_ubicacion"
-        style="@style/color_texto_predeterminado"
+        android:background="@color/gray_901"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -77,7 +79,8 @@
 
     <TextView
         android:id="@+id/texto_calle"
-        style="@style/color_texto_predeterminado"
+        android:background="@color/gray_901"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
@@ -90,8 +93,10 @@
 
     <TextView
         android:id="@+id/calle"
-        style="@style/color_texto_predeterminado"
+
         android:layout_width="wrap_content"
+        android:background="@color/gray_901"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
         android:layout_marginLeft="5dp"
@@ -103,7 +108,8 @@
 
     <TextView
         android:id="@+id/texto_numero"
-        style="@style/color_texto_predeterminado"
+        android:background="@color/gray_901"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
@@ -116,7 +122,8 @@
 
     <TextView
         android:id="@+id/numero"
-        style="@style/color_texto_predeterminado"
+        android:background="@color/gray_901"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
@@ -129,7 +136,8 @@
 
     <TextView
         android:id="@+id/texto_piso"
-        style="@style/color_texto_predeterminado"
+        android:background="@color/gray_901"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
@@ -142,7 +150,8 @@
 
     <TextView
         android:id="@+id/piso"
-        style="@style/color_texto_predeterminado"
+        android:background="@color/gray_901"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
@@ -155,7 +164,8 @@
 
     <TextView
         android:id="@+id/texto_puerta"
-        style="@style/color_texto_predeterminado"
+        android:background="@color/gray_901"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
@@ -168,7 +178,8 @@
 
     <TextView
         android:id="@+id/puerta"
-        style="@style/color_texto_predeterminado"
+        android:background="@color/gray_901"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
@@ -182,7 +193,8 @@
 
     <TextView
         android:id="@+id/ciudad"
-        style="@style/color_texto_predeterminado"
+        android:background="@color/gray_901"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -194,7 +206,8 @@
 
     <TextView
         android:id="@+id/provincia"
-        style="@style/color_texto_predeterminado"
+        android:background="@color/gray_901"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -206,7 +219,8 @@
 
     <TextView
         android:id="@+id/pais"
-        style="@style/color_texto_predeterminado"
+        android:background="@color/gray_901"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

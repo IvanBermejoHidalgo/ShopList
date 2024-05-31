@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/_bg___frame_169_shape"
     tools:context=".Activity.Activity_Metodos_Pago"
     android:orientation="vertical">
 
@@ -46,7 +47,7 @@
 
         <TextView
             android:id="@+id/texto_titulo_metodos_de_pago"
-            style="@style/color_texto_predeterminado"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Metodos de pago"
@@ -74,6 +75,7 @@
         <TextView
             android:id="@+id/text_metodo_pago"
             style="@style/direccion_envio"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
@@ -112,6 +114,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_titular"
             style="@style/edittext"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            app:hintTextColor="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -124,6 +132,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_titular"
                 android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorsplash"
                 android:layout_height="wrap_content"
                 android:hint="Titular de la tarjeta"
                 android:textSize="15dp" />
@@ -133,6 +143,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_numero"
             style="@style/edittext"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            app:hintTextColor="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -145,6 +161,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_numero"
                 android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorsplash"
                 android:layout_height="wrap_content"
                 android:hint="Número de la tarjeta"
                 android:textSize="15dp" />
@@ -153,7 +171,13 @@
 
         <TextView
             android:id="@+id/text_input_caducidad"
-            style="@style/borde_escoger_opciones_camiseta"
+            style="@style/edittext"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            app:hintTextColor="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
             android:layout_width="130dp"
             android:layout_height="45dp"
             android:layout_marginTop="15dp"
@@ -170,6 +194,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_CVV"
             style="@style/edittext"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            app:hintTextColor="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
             android:layout_width="180dp"
@@ -181,6 +211,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_CVV"
                 android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorsplash"
                 android:layout_height="wrap_content"
                 android:hint="CVV"
                 android:textSize="15dp"
@@ -190,7 +222,8 @@
 
         <Button
             android:id="@+id/boton_agregar_metodo_pago"
-            style="@style/boton_comprar"
+            android:background="@color/colorsplash"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="20dp"
@@ -198,12 +231,13 @@
             android:layout_marginRight="20dp"
             android:paddingLeft="30dp"
             android:paddingRight="10dp"
-            android:hint="Añadir metodo de pago"
+            android:text="Añadir método de pago"
             android:gravity="center_vertical"
             android:visibility="gone"
             android:drawableEnd="@drawable/icono_agregar_boton"
             app:layout_constraintTop_toBottomOf="@id/text_input_CVV"
             app:layout_constraintRight_toRightOf="parent"/>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

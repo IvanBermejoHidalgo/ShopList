@@ -16,7 +16,7 @@
 
     <style name="Theme.SocialPuig2" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/colorsplash</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -69,7 +69,7 @@
     </style>
     <style name="edittext" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <!-- Primary brand color. -->
-        <item name="boxStrokeColor">@color/text_field_claro</item>
+        <item name="boxStrokeColor">@color/colorsplash</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:background">#D9D9D9</item>
     </style>

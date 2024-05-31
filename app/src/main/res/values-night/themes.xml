@@ -14,33 +14,8 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="items_toolbar" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
-        <!-- Primary brand color. -->
-        <!-- <item name="itemIconTint">@color/amarillo</item> -->
-        <item name="android:tint">@color/amarillo</item>
-
-    </style>
-
     <style name="color_texto_predeterminado" parent="">
         <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="borde_imagen_camiseta" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">10dp</item>
-    </style>
-
-    <style name="color_fondo_camisetas" parent="">
-        <item name="android:background">@color/color_fondo_camisetas_oscuro</item>
-    </style>
-
-    <style name="linea_tablayout" parent="">
-        <item name="tabIndicatorColor">@color/amarillo</item>
-    </style>
-
-    <style name="boton_agregar_producto_menu_bottom" parent="">
-        <item name="backgroundTint">@color/amarillo</item>
-        <item name="tint">@color/gris_oscuro</item>
     </style>
 
     <style name="color_fondo_modos" parent="">
@@ -52,19 +27,6 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="fondo_categoria_camiseta" parent="">
-        <item name="android:background">@drawable/fondo_categoria_camiseta_oscuro</item>
-    </style>
-
-    <style name="estilo_mensaje" parent="">
-        <item name="android:background">@drawable/estilo_mensaje_oscuro</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="estilo_mensaje_usuario" parent="">
-        <item name="android:background">@drawable/estilo_mensaje_usuario_oscuro</item>
-        <item name="android:textColor">@color/gris_oscuro</item>
-    </style>
 
     <style name="estilo_toolbar_chat" parent="">
         <item name="android:background">@color/gris_oscuro</item>
@@ -74,11 +36,6 @@
         <item name="android:background">@drawable/boton_comprar_oscuro</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="drawableTint">@color/colorsplash</item>
-    </style>
-
-    <style name="boton_iniciar_chat" parent="">
-        <item name="android:background">@drawable/boton_iniciar_chat_oscuro</item>
-        <item name="android:textColorHint">@color/amarillo</item>
     </style>
 
     <style name="color_transparente_fondo_camisetas_usuarios" parent="">

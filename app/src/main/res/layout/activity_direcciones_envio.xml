@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/_bg___frame_169_shape"
     tools:context="Activity.Activity_Direcciones_Envio"
     android:orientation="vertical">
 
@@ -47,8 +48,8 @@
 
         <TextView
             android:id="@+id/texto_titulo_direcciones_de_envio"
-            style="@style/color_texto_predeterminado"
             android:layout_width="wrap_content"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:text="Direcciones de envio"
             android:textSize="20dp"
@@ -77,6 +78,7 @@
         <TextView
             android:id="@+id/text_direccion"
             style="@style/direccion_envio"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
@@ -114,7 +116,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_calle"
             style="@style/edittext"
-            android:layout_marginTop="10dp"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            app:hintTextColor="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
             android:layout_marginLeft="20dp"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
@@ -125,6 +132,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_calle"
                 android:layout_width="match_parent"
+                android:backgroundTint="@color/colorsplash"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:hint="Calle"
                 android:textSize="15dp" />
@@ -134,6 +143,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_numero"
             style="@style/edittext"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            app:hintTextColor="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
             android:layout_width="80dp"
@@ -146,6 +161,8 @@
                 android:id="@+id/edit_text_numero"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorsplash"
+                android:textColor="@color/white"
                 android:hint="Num."
                 android:textSize="15dp" />
 
@@ -155,6 +172,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_piso"
             style="@style/edittext"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            app:hintTextColor="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
             android:layout_marginTop="10dp"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
@@ -167,6 +190,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_piso"
                 android:layout_width="match_parent"
+                android:backgroundTint="@color/colorsplash"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:hint="Piso"
                 android:textSize="15dp" />
@@ -176,6 +201,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_puerta"
             style="@style/edittext"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            app:hintTextColor="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
             android:layout_marginTop="10dp"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
@@ -186,6 +217,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_puerta"
+                android:backgroundTint="@color/colorsplash"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Puerta"
@@ -196,6 +229,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_pais"
             style="@style/edittext"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            app:hintTextColor="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
             android:layout_marginTop="10dp"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
@@ -207,6 +246,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_pais"
                 android:layout_width="match_parent"
+                android:backgroundTint="@color/colorsplash"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:hint="Pais"
                 android:textSize="15dp" />
@@ -215,6 +256,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_provincia"
             style="@style/edittext"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            app:hintTextColor="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -232,6 +279,8 @@
                 android:id="@+id/edit_text_provincia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorsplash"
+                android:textColor="@color/white"
                 android:hint="Provincia"
                 android:textSize="15dp" />
 
@@ -240,6 +289,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_localidad"
             style="@style/edittext"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            app:hintTextColor="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
             android:layout_marginTop="10dp"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
@@ -251,6 +306,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_localidad"
                 android:layout_width="match_parent"
+                android:backgroundTint="@color/colorsplash"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:hint="Localidad"
                 android:textSize="15dp" />
@@ -260,6 +317,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_cp"
             style="@style/edittext"
+            android:background="@color/gray_901"
+            app:cursorColor="@color/colorsplash"
+            android:textColorHint="@color/colorsplash"
+            app:hintTextColor="@color/colorsplash"
+            android:textColor="@color/white"
+            app:boxStrokeColor="@drawable/border_selector"
             android:layout_marginTop="10dp"
             android:layout_width="100dp"
             android:layout_marginRight="20dp"
@@ -270,6 +333,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_cp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorsplash"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
@@ -280,7 +345,8 @@
 
         <Button
             android:id="@+id/boton_agregar_direccion"
-            style="@style/boton_comprar"
+            android:background="@color/colorsplash"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="20dp"

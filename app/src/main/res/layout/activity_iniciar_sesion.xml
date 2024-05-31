@@ -53,9 +53,10 @@
             android:background="@color/gray_901"
             app:cursorColor="@color/colorsplash"
             android:textColorHint="@color/colorsplash"
+            app:hintTextColor="@color/colorsplash"
             android:textColor="@color/white"
             app:boxStrokeColor="@drawable/border_selector"
-            app:hintTextColor="@color/colorsplash"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"

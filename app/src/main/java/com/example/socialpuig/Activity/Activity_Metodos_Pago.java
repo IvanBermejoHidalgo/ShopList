@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -95,7 +96,7 @@ public class Activity_Metodos_Pago extends AppCompatActivity {
         modelMetodosPagosList = new ArrayList<>();
         String uid = firebaseAuth.getCurrentUser().getUid();
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("MetodosPago");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("DireccionesEnvio");
         databaseReference.orderByChild("uid").equalTo(uid)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -143,31 +144,38 @@ public class Activity_Metodos_Pago extends AppCompatActivity {
         long timestamp = System.currentTimeMillis();
 
         HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("titular", "" + titular);
-        hashMap.put("numero", "" + numero);
-        hashMap.put("caducidad", "" + fechaCaducidad);
-        hashMap.put("cvv", "" + CVV);
+        hashMap.put("titular", titular);
+        hashMap.put("numero", numero);
+        hashMap.put("caducidad", fechaCaducidad);
+        hashMap.put("cvv", CVV);
         hashMap.put("timestamp", timestamp);
-        hashMap.put("uid", "" + firebaseAuth.getUid());
-        hashMap.put("id", "" + timestamp);
+        hashMap.put("uid", firebaseAuth.getUid());
+        hashMap.put("id", timestamp);
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("MetodosPago");
-        databaseReference.child("" + timestamp)
+        String userUID = firebaseAuth.getUid();
+        if (userUID == null) {
+            Toast.makeText(Activity_Metodos_Pago.this, "Usuario no autenticado", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userUID).child("MetodosPago");
+        databaseReference.child(String.valueOf(timestamp))
                 .setValue(hashMap)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Toast.makeText(Activity_Metodos_Pago.this,"Metodo de pago añadido",Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(Activity_Metodos_Pago.this, "Método de pago añadido", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Activity_Metodos_Pago.this, Activity_Comprar.class));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Activity_Metodos_Pago.this,"Error al añadir el metodo de pago",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Activity_Metodos_Pago.this, "Error al añadir el método de pago", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
+
 
     private void mostrarFechaCaducidad() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
