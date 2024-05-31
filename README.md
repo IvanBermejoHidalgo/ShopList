@@ -1,4 +1,4 @@
-# SHOPLIST
+# SHOPLIST - Iván Bermejo
 
 ShopList es una aplicación multifuncional que combina características de una red social y un sistema de gestión de compras. La aplicación permite a los usuarios interactuar socialmente mientras realizan compras, crean listas y gestionan sus productos. Además, ofrece un panel de administración para visualizar estadísticas clave.
 
@@ -24,5 +24,3 @@ ShopList es una aplicación multifuncional que combina características de una r
 - **Gráficos Interactivos**:
   - **Gráfico de Barras**: Muestra las ventas por marcas.
   - **Gráfico Circular**: Muestra las compras por género.
-
-![Descripción de la imagen]([ruta/a/tu/logo.png](https://github.com/IvanBermejoHidalgo/ShopList/blob/master/app/src/main/res/drawable/logosplash.png))
