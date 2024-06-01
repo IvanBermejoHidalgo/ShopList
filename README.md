@@ -24,3 +24,10 @@ ShopList es una aplicación multifuncional que combina características de una r
 - **Gráficos Interactivos**:
   - **Gráfico de Barras**: Muestra las ventas por marcas.
   - **Gráfico Circular**: Muestra las compras por género.
+
+## Contacto
+
+- **Nombre:** Iván Bermejo Hidalgo
+- **Email:** ibermejo@elpuig.xeill.net
+- **GitHub:** [IvanBermejoHidalgo](https://github.com/IvanBermejoHidalgo)
+
